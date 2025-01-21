@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy77dt25sj2ey"]
+
+[ext_resource type="PackedScene" uid="uid://cbnwiodw2fqfp" path="res://HUD.tscn" id="1_81lip"]
+
+[node name="Camera2D" type="Camera2D"]
+position = Vector2(-3, 0)
+limit_left = -1650
+limit_top = -750
+limit_right = 1650
+limit_bottom = 1225
+editor_draw_limits = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("1_81lip")]
+position = Vector2(11, 50)
