@@ -8,6 +8,13 @@ var projetil = preload("res://projectile.tscn")
 
 var new_position
 
+# Variaveis de HUD
+var health = 200
+var maxHealth = 200
+var gold = 0
+var ataque = 0
+var critico = 0
+
 # Variáveis de XP e Nível
 @export var level: int = 1
 @export var current_xp: int = 0
@@ -52,3 +59,17 @@ func _on_atk_speed_timeout():
 	tiro.position = position
 	tiro.direction = (position - get_global_mouse_position()).normalized()
 	owner.add_child(tiro)
+
+func collect_item(value, type):
+	if type == "itemGold":
+		gold += value
+	if type == "itemXP":
+		gain_xp(value)
+
+func take_damage(amount):
+	health -= amount
+	if health <= 0:
+		die()
+
+func die():
+	print("Player died")

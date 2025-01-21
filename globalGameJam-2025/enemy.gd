@@ -6,6 +6,7 @@ var player_path: NodePath = "/root/GameScene/Player"
 var player
 
 var xp_reward: int = 15
+var damage: int = 15
 
 func _ready() -> void:
 	player = get_node_or_null(player_path)
@@ -26,7 +27,7 @@ func die() -> void:
 		player.gain_xp(xp_reward)
 	queue_free()
 
-# Callback para o sinal body_entered
-func _on_body_entered(body: Node) -> void:
+func _on_area_body_entered(body: Node) -> void:
 	if body == player:
+		player.take_damage(damage)
 		die()
