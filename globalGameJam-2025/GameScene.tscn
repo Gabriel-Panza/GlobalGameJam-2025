@@ -5,14 +5,14 @@
 [ext_resource type="Script" path="res://camera_2d.gd" id="3_1wcaj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mwiyp"]
-radius = 32.0
+radius = 17.0
 height = 124.0
 
 [node name="GameScene" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(600, 330)
-scale = Vector2(9.5, 5.35)
+position = Vector2(600, 323.5)
+scale = Vector2(9.5, 5.05469)
 texture = ExtResource("1_p8ugb")
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -20,6 +20,8 @@ position = Vector2(580, 330)
 script = ExtResource("2_jd4s0")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(1.00002, 0)
+scale = Vector2(0.484375, 1)
 texture = ExtResource("1_p8ugb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
