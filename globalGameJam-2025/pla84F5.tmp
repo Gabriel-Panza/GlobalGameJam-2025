@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc1g3ofhfukk7"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_sp03d"]
+[ext_resource type="Texture2D" uid="uid://jnpajgcnv4qn" path="res://icon.svg" id="2_sq3ot"]
+[ext_resource type="PackedScene" uid="uid://cbnwiodw2fqfp" path="res://HUD.tscn" id="3_bobk1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mwiyp"]
+radius = 17.0
+height = 124.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(0, 330)
+script = ExtResource("1_sp03d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.00002, 0)
+scale = Vector2(0.533, 1)
+texture = ExtResource("2_sq3ot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_mwiyp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-3, 0)
+limit_left = -1650
+limit_top = -750
+limit_right = 1650
+limit_bottom = 1225
+editor_draw_limits = true
+
+[node name="HUD" parent="." instance=ExtResource("3_bobk1")]
+position = Vector2(-575, -324)
+script = null
