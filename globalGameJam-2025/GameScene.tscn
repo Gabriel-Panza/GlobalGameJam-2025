@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6dxk82l08c5d"]
+[gd_scene load_steps=5 format=3 uid="uid://b6dxk82l08c5d"]
 
 [ext_resource type="Texture2D" uid="uid://jnpajgcnv4qn" path="res://icon.svg" id="1_p8ugb"]
 [ext_resource type="Script" path="res://player.gd" id="2_jd4s0"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="3_1wcaj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mwiyp"]
+radius = 32.0
+height = 124.0
 
 [node name="GameScene" type="Node2D"]
 
@@ -19,6 +23,7 @@ script = ExtResource("2_jd4s0")
 texture = ExtResource("1_p8ugb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_mwiyp")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 0
