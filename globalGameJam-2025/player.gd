@@ -12,7 +12,7 @@ var new_position
 var health = 200
 var maxHealth = 200
 var gold = 0
-var ataque = 0
+var ataque = 20
 var critico = 0
 
 # Variáveis de XP e Nível
@@ -65,6 +65,11 @@ func collect_item(value, type):
 		gold += value
 	if type == "itemXP":
 		gain_xp(value)
+	if type == "itemHP":
+		if health+value <= maxHealth:
+			health += value
+		else:
+			health = maxHealth
 
 func take_damage(amount):
 	health -= amount
