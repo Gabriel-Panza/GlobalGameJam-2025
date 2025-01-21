@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://blqqoudwv65hp"]
+
+[ext_resource type="Texture2D" uid="uid://t146v1wr4q87" path="res://sprites/New Piskel.png" id="1_c6pcf"]
+[ext_resource type="Script" path="res://projectile.gd" id="1_xt63k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_maafy"]
+radius = 32.3883
+
+[node name="projectile" type="CharacterBody2D"]
+script = ExtResource("1_xt63k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_c6pcf")
+
+[node name="Impact" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Impact"]
+position = Vector2(9, 0)
+shape = SubResource("CircleShape2D_maafy")
+
+[connection signal="area_entered" from="Impact" to="." method="_on_impact_area_entered"]
+[connection signal="body_entered" from="Impact" to="." method="_on_impact_body_entered"]

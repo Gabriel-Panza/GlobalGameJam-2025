@@ -32,3 +32,11 @@ editor_draw_limits = true
 
 [node name="HUD" parent="Camera2D/CanvasLayer" instance=ExtResource("3_bobk1")]
 position = Vector2(11, 50)
+
+[node name="AtkSpeed" type="Timer" parent="."]
+autostart = true
+
+[node name="Cano" type="Marker2D" parent="."]
+position = Vector2(44, -6)
+
+[connection signal="timeout" from="AtkSpeed" to="." method="_on_atk_speed_timeout"]

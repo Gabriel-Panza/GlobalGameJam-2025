@@ -3,7 +3,7 @@ extends CharacterBody2D
 # Variáveis de Velocidade
 var speed := 600
 var velocity_vector := Vector2.ZERO
-
+var projetil = preload("res://projectile.tscn")
 # Variáveis de Limite de Tela
 var fundo_width: int = 0
 var fundo_height: int = 0
@@ -56,3 +56,10 @@ func level_up() -> void:
 	level += 1
 	xp_to_next_level = int(xp_to_next_level * 1.5)  # Aumenta o requisito de XP
 	emit_signal("level_updated", level, current_xp, xp_to_next_level)
+
+
+func _on_atk_speed_timeout():
+	var tiro = projetil.instantiate()
+	tiro.position = position
+	tiro.direction = (position - get_global_mouse_position()).normalized()
+	owner.add_child(tiro)

@@ -9,6 +9,7 @@ var xp_reward: int = 15
 
 func _ready() -> void:
 	player = get_node_or_null(player_path)
+	add_to_group("Inimigo")
 
 func _process(_delta: float) -> void:
 	if player:
