@@ -7,6 +7,7 @@ var player
 
 var xp_reward: int = 15
 var damage: int = 15
+var health: int = 50
 
 func _ready() -> void:
 	player = get_node_or_null(player_path)
@@ -22,6 +23,11 @@ func _process(_delta: float) -> void:
 	# Move o inimigo
 	move_and_slide()
 
+func take_damage(amount):
+	health -= amount
+	if health <= 0:
+		die()
+		
 func die() -> void:
 	if player:
 		player.gain_xp(xp_reward)

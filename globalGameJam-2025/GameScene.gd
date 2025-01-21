@@ -1,7 +1,7 @@
 extends Node2D
 
 # Intervalo de spawn de inimigos
-var spawn_interval: float = 0.75
+var spawn_interval: float = 1.0
 var spawn_offset: float = 50.0
 
 # Intervalo de drop de itens
