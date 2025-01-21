@@ -7,14 +7,16 @@
 [node name="GameScene" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(581, 325.5)
-scale = Vector2(9, 5.069)
+position = Vector2(600, 330)
+scale = Vector2(9.5, 5.35)
 texture = ExtResource("1_p8ugb")
 
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(580, 330)
 script = ExtResource("2_jd4s0")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("1_p8ugb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 
