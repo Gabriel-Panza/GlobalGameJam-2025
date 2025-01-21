@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player.gd" id="1_sp03d"]
 [ext_resource type="Texture2D" uid="uid://jnpajgcnv4qn" path="res://icon.svg" id="2_sq3ot"]
-[ext_resource type="PackedScene" uid="uid://cbnwiodw2fqfp" path="res://HUD.tscn" id="3_bobk1"]
+[ext_resource type="PackedScene" uid="uid://dy77dt25sj2ey" path="res://Camera2D.tscn" id="3_yunjf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mwiyp"]
 radius = 17.0
@@ -20,20 +20,9 @@ texture = ExtResource("2_sq3ot")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_mwiyp")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-3, 0)
-limit_left = -1650
-limit_top = -750
-limit_right = 1650
-limit_bottom = 1225
-editor_draw_limits = true
+[node name="Camera2D" parent="." instance=ExtResource("3_yunjf")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
-
-[node name="HUD" parent="Camera2D/CanvasLayer" instance=ExtResource("3_bobk1")]
-position = Vector2(11, 50)
-
-[node name="Atk Speed" type="Timer" parent="."]
+[node name="AtkSpeed" type="Timer" parent="."]
 autostart = true
 
-[connection signal="timeout" from="Atk Speed" to="." method="_on_atk_speed_timeout"]
+[connection signal="timeout" from="AtkSpeed" to="." method="_on_atk_speed_timeout"]

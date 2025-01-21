@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var target
-const SPEED = 300.0
+const SPEED = 600.0
 var direction
 
 func _ready() -> void:
@@ -9,8 +9,6 @@ func _ready() -> void:
 	
 func _physics_process(delta):
 	position -= direction * SPEED * delta 
-
-
 
 func _on_impact_body_entered(body):
 	print(body)

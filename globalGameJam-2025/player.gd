@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Variáveis de Velocidade
-var speed := 600
+var speed := 300
 var velocity_vector := Vector2.ZERO
 
 var projetil = preload("res://projectile.tscn")

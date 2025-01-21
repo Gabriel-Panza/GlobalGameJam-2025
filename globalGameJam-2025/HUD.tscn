@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbnwiodw2fqfp"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_esuf2"]
-[ext_resource type="PackedScene" path="res://LevelUpPopup.tscn" id="2_8x5t7"]
+[ext_resource type="PackedScene" uid="uid://blduajxx0mkka" path="res://LevelUpPopup.tscn" id="2_8x5t7"]
 
 [node name="HUD" type="Node2D"]
 script = ExtResource("1_esuf2")
@@ -19,3 +19,4 @@ offset_bottom = 27.0
 scale = Vector2(1.76, 1.55048)
 
 [node name="LevelUpPopup" parent="." instance=ExtResource("2_8x5t7")]
+content_scale_aspect = 1
