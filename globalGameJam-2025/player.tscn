@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cc1g3ofhfukk7"]
+[gd_scene load_steps=6 format=3 uid="uid://cc1g3ofhfukk7"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_sp03d"]
 [ext_resource type="Texture2D" uid="uid://jnpajgcnv4qn" path="res://icon.svg" id="2_sq3ot"]
@@ -7,6 +7,10 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mwiyp"]
 radius = 17.0
 height = 124.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yk0ca"]
+radius = 19.0
+height = 120.0
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, 330)
@@ -21,8 +25,18 @@ texture = ExtResource("2_sq3ot")
 shape = SubResource("CapsuleShape2D_mwiyp")
 
 [node name="Camera2D" parent="." instance=ExtResource("3_yunjf")]
+limit_left = -1900
+limit_top = -1100
+limit_right = 1900
+limit_bottom = 1600
 
 [node name="AtkSpeed" type="Timer" parent="."]
 autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.970995, 0.970995)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_yk0ca")
 
 [connection signal="timeout" from="AtkSpeed" to="." method="_on_atk_speed_timeout"]
