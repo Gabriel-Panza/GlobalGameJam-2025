@@ -15,8 +15,8 @@ script = ExtResource("1_n24re")
 anchors_preset = -1
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 796.0
-offset_bottom = 396.0
+offset_right = 454.0
+offset_bottom = 304.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.8, 1.8)
@@ -25,19 +25,19 @@ size_flags_stretch_ratio = 0.0
 [node name="Button1" type="Button" parent="VBoxContainer"]
 layout_direction = 1
 layout_mode = 2
-theme_override_font_sizes/font_size = 44
+theme_override_font_sizes/font_size = 36
 text = "Option1"
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_direction = 1
 layout_mode = 2
-theme_override_font_sizes/font_size = 44
+theme_override_font_sizes/font_size = 36
 text = "Option2"
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_direction = 1
 layout_mode = 2
-theme_override_font_sizes/font_size = 44
+theme_override_font_sizes/font_size = 36
 text = "Option3"
 
 [connection signal="pressed" from="VBoxContainer/Button1" to="." method="_on_option_pressed"]
