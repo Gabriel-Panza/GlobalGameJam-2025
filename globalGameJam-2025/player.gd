@@ -18,7 +18,7 @@ signal xp_updated(current_xp, xp_to_next_level)
 signal level_updated(level, current_xp, xp_to_next_level)
 
 func _ready() -> void:
-	var sprite_node = $"../Sprite2D"
+	var sprite_node = $"../Fundo"
 	if sprite_node and sprite_node.texture:
 		fundo_width = sprite_node.texture.get_width() * sprite_node.scale.x/2
 		fundo_height = sprite_node.texture.get_height() * sprite_node.scale.y
