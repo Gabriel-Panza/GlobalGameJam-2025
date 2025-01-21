@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://blduajxx0mkka"]
+
+[ext_resource type="Script" path="res://LevelUpPopup.gd" id="1_n24re"]
+
+[node name="LevelUpPopup" type="PopupPanel"]
+initial_position = 2
+size = Vector2i(800, 400)
+visible = true
+always_on_top = true
+script = ExtResource("1_n24re")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -396.0
+offset_top = -196.0
+offset_right = 396.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="Button1" type="Button" parent="VBoxContainer"]
+layout_direction = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Option1"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_direction = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Option2"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_direction = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Option3"
+
+[connection signal="option_selected" from="." to="." method="_on_option_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button1" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_option_pressed"]
