@@ -20,12 +20,21 @@ func _ready() -> void:
 		hud_offset = global_position - camera.global_position
 		
 		# Conecte os sinais do jogador ao HUD
+		player.connect("hp_updated", Callable(self, "_on_hp_updated"))
+		player.connect("gold_updated", Callable(self, "_on_gold_updated"))
 		player.connect("xp_updated", Callable(self, "_on_xp_updated"))
 		player.connect("level_updated", Callable(self, "_on_level_updated"))
 		player.connect("level_updated", Callable(self, "_on_level_up"))
 	else:
 		print("Jogador ou câmera não encontrados!")
 
+func _on_hp_updated(current_hp, max_health) -> void:
+	$ProgressBar2.value = current_hp
+	$ProgressBar2.max_value = max_health
+	
+func _on_gold_updated(gold) -> void:
+	$Label3.text = "Gold: %d" % gold
+	
 func _on_xp_updated(current_xp, xp_to_next_level) -> void:
 	$ProgressBar.value = current_xp
 	$ProgressBar.max_value = xp_to_next_level

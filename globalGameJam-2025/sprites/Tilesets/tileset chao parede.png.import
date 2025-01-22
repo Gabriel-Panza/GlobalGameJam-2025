@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t146v1wr4q87"
-path="res://.godot/imported/New Piskel.png-1d1450533306d83717fbc2d6a043035f.ctex"
+uid="uid://ch2qxlxscj6q8"
+path="res://.godot/imported/tileset chao parede.png-573081c84cc3349fd6dd2460f763f9b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/New Piskel.png"
-dest_files=["res://.godot/imported/New Piskel.png-1d1450533306d83717fbc2d6a043035f.ctex"]
+source_file="res://sprites/Tilesets/tileset chao parede.png"
+dest_files=["res://.godot/imported/tileset chao parede.png-573081c84cc3349fd6dd2460f763f9b9.ctex"]
 
 [params]
 

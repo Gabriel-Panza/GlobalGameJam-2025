@@ -22,6 +22,8 @@ var critico = 0
 
 signal xp_updated(current_xp, xp_to_next_level)
 signal level_updated(level, current_xp, xp_to_next_level)
+signal hp_updated(health, maxHealth)
+signal gold_updated(gold)
 
 func _process(delta: float) -> void:
 	velocity_vector.x = 0
@@ -63,6 +65,7 @@ func _on_atk_speed_timeout():
 func collect_item(value, type):
 	if type == "itemGold":
 		gold += value
+		emit_signal("gold_updated", gold)
 	if type == "itemXP":
 		gain_xp(value)
 	if type == "itemHP":
@@ -70,9 +73,11 @@ func collect_item(value, type):
 			health += value
 		else:
 			health = maxHealth
+		emit_signal("hp_updated", health, maxHealth)
 
 func take_damage(amount):
 	health -= amount
+	emit_signal("hp_updated", health, maxHealth)
 	if health <= 0:
 		die()
 

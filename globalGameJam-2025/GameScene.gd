@@ -7,6 +7,12 @@ var spawn_offset: float = 50.0
 # Intervalo de drop de itens
 var drop_interval: float = 30.0
 
+# Lista de caminhos para cenas de itens
+@export var item_scenes: Array[String] = [
+	"res://itemHP.tscn",
+	"res://itemGold.tscn"
+]
+
 func _ready() -> void:
 	# Cria e configura o Timer para inimigos
 	var enemy_timer = Timer.new()
@@ -32,7 +38,9 @@ func spawn_enemy():
 	_spawn_entity("res://enemy.tscn")
 
 func spawn_drop():
-	_spawn_entity("res://item_drop.tscn")
+	var random_index = randi() % item_scenes.size()
+	var resource = load(item_scenes[random_index])
+	_spawn_entity(resource)
 
 func _spawn_entity(resource_path: String):
 	var camera = get_tree().get_current_scene().get_node("Player/Camera2D")
