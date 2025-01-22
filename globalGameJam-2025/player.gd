@@ -15,7 +15,7 @@ var original_health = 200
 var maxHealth = 200
 var original_maxHealth = 200
 var gold = 0
-var ataque = 50
+var ataque = 20
 var original_ataque = 20
 var critico = 0
 var original_critico = 0
@@ -30,6 +30,7 @@ signal xp_updated(current_xp, xp_to_next_level)
 signal level_updated(level, current_xp, xp_to_next_level)
 signal hp_updated(health, maxHealth)
 signal gold_updated(gold)
+signal stats_updated()
 
 func _process(delta: float) -> void:
 	if speed > 0:
@@ -81,10 +82,12 @@ func collect_item(value, type):
 		else:
 			health = maxHealth
 		emit_signal("hp_updated", health, maxHealth)
+	emit_signal("stats_updated")
 
 func take_damage(amount):
 	health -= amount
 	emit_signal("hp_updated", health, maxHealth)
+	emit_signal("stats_updated")
 	if health <= 0:
 		die()
 

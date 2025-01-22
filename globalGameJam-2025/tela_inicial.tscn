@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://br6kkxbnhspqx"]
+[gd_scene load_steps=5 format=3 uid="uid://c5nrissuxu3tu"]
 
 [ext_resource type="Texture2D" uid="uid://bao12i0hfsea" path="res://sprites/Tilesets/tileset chao area tranquila inicial.png" id="1_hkxae"]
 [ext_resource type="PackedScene" uid="uid://cc1g3ofhfukk7" path="res://player.tscn" id="2_ek31v"]

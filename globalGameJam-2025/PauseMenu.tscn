@@ -2,104 +2,168 @@
 
 [ext_resource type="Script" path="res://PauseMenu.gd" id="1_2v82j"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ap8ih"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_428n7"]
+bg_color = Color(0.2, 0.239216, 0.270588, 1)
 
-[node name="PauseMenu" type="Panel"]
+[node name="PauseControl" type="Control"]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = 220.0
+offset_top = 64.0
+offset_right = 220.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ap8ih")
 script = ExtResource("1_2v82j")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="PauseMenu" type="Panel" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 106.0
-offset_top = 22.0
-offset_right = 436.0
-offset_bottom = 263.0
-scale = Vector2(2.68, 2.2)
-theme_override_constants/separation = 120
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(17.48, 9.96)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu"]
+offset_left = 1.20137
+offset_top = 1.80723
+offset_right = 353.201
+offset_bottom = 242.807
+scale = Vector2(0.0994, 0.152211)
+theme_override_constants/separation = 90
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/HBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="ResumeButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="PauseMenu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.941176, 0, 0.501961, 1)
+theme_override_colors/font_hover_color = Color(0.941176, 0, 0.501961, 1)
+theme_override_colors/font_pressed_color = Color(0.941176, 0, 0.501961, 1)
+theme_override_colors/font_color = Color(0.941176, 0, 0.611765, 1)
 theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 24
 text = "Resume"
 
-[node name="OptionsButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="PauseMenu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.941176, 0, 0.501961, 1)
+theme_override_colors/font_hover_color = Color(0.941176, 0, 0.501961, 1)
+theme_override_colors/font_pressed_color = Color(0.941176, 0, 0.501961, 1)
+theme_override_colors/font_color = Color(0.941176, 0, 0.611765, 1)
 theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 24
 text = "Options"
 
-[node name="MenuButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="MenuButton" type="Button" parent="PauseMenu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.941176, 0, 0.501961, 1)
+theme_override_colors/font_hover_color = Color(0.941176, 0, 0.501961, 1)
+theme_override_colors/font_pressed_color = Color(0.941176, 0, 0.501961, 1)
+theme_override_colors/font_color = Color(0.941176, 0, 0.611765, 1)
 theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 24
 text = "Menu"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PauseMenu/HBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="HP---MaxHealth" type="Label" parent="HBoxContainer/VBoxContainer2"]
+[node name="HP_MaxHealth" type="Label" parent="PauseMenu/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 tooltip_text = "This represents how much damage you can take"
 mouse_filter = 0
+theme_override_colors/font_color = Color(0.941176, 0, 0.611765, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 20
 text = "Health: 200/200"
 horizontal_alignment = 2
 
-[node name="Ataque" type="Label" parent="HBoxContainer/VBoxContainer2"]
+[node name="Ataque" type="Label" parent="PauseMenu/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 tooltip_text = "This represents how much damage you can deal"
 mouse_filter = 0
+theme_override_colors/font_color = Color(0.941176, 0, 0.611765, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 20
 text = "Attack: 20"
 horizontal_alignment = 2
 
-[node name="Atk-Speed" type="Label" parent="HBoxContainer/VBoxContainer2"]
+[node name="Atk_Speed" type="Label" parent="PauseMenu/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 tooltip_text = "This represents how fast you shoot"
 mouse_filter = 0
+theme_override_colors/font_color = Color(0.941176, 0, 0.611765, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 20
 text = "Atk-Speed: 100%"
 horizontal_alignment = 2
 
-[node name="Critico" type="Label" parent="HBoxContainer/VBoxContainer2"]
+[node name="Critico" type="Label" parent="PauseMenu/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 tooltip_text = "This represents the odds of dealing double damage"
 mouse_filter = 0
+theme_override_colors/font_color = Color(0.941176, 0, 0.611765, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 20
 text = "Crit-Rate: 0%"
 horizontal_alignment = 2
 
-[node name="Speed" type="Label" parent="HBoxContainer/VBoxContainer2"]
+[node name="Speed" type="Label" parent="PauseMenu/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 tooltip_text = "This represents how fast you can move"
 mouse_filter = 0
+theme_override_colors/font_color = Color(0.941176, 0, 0.611765, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 20
 text = "Speed: 300"
 horizontal_alignment = 2
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/ResumeButton" to="." method="_unpause_game"]
+[node name="OptionsMenu" type="Panel" parent="PauseMenu"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.411902, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_428n7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/OptionsMenu"]
+layout_mode = 0
+offset_left = 3.19442
+offset_top = 5.22088
+offset_right = 65.1944
+offset_bottom = 109.221
+scale = Vector2(0.528949, 0.296015)
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="PauseMenu/OptionsMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.337255, 0.6, 1)
+theme_override_constants/outline_size = 4
+text = "Options"
+
+[node name="HSlider" type="HSlider" parent="PauseMenu/OptionsMenu/VBoxContainer"]
+layout_mode = 2
+value = 50.0
+
+[node name="HSlider2" type="HSlider" parent="PauseMenu/OptionsMenu/VBoxContainer"]
+layout_mode = 2
+value = 50.0
+
+[node name="BackButton" type="Button" parent="PauseMenu/OptionsMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.337255, 0.6, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 12
+text = "Back"
+
+[connection signal="pressed" from="PauseMenu/HBoxContainer/VBoxContainer/ResumeButton" to="." method="_unpause_game"]
+[connection signal="pressed" from="PauseMenu/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="PauseMenu/HBoxContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="PauseMenu/OptionsMenu/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
