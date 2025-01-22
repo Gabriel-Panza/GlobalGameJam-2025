@@ -10,7 +10,7 @@ var options = [
 	{ "id": "option_1", "text": "Speed Up" },
 	{ "id": "option_2", "text": "Health Up" },
 	{ "id": "option_3", "text": "Attack Up" },
-	{ "id": "option_4", "text": "Critical Up" },
+	{ "id": "option_4", "text": "Crit-Rate Up" },
 	{ "id": "option_5", "text": "Atk-Speed Up" }
 ]
 

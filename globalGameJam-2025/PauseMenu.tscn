@@ -1,0 +1,105 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk3qeu16nglea"]
+
+[ext_resource type="Script" path="res://PauseMenu.gd" id="1_2v82j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ap8ih"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[node name="PauseMenu" type="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ap8ih")
+script = ExtResource("1_2v82j")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 22.0
+offset_right = 436.0
+offset_bottom = 263.0
+scale = Vector2(2.68, 2.2)
+theme_override_constants/separation = 120
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+text = "Resume"
+
+[node name="OptionsButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+text = "Options"
+
+[node name="MenuButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+text = "Menu"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HP---MaxHealth" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+tooltip_text = "This represents how much damage you can take"
+mouse_filter = 0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "Health: 200/200"
+horizontal_alignment = 2
+
+[node name="Ataque" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+tooltip_text = "This represents how much damage you can deal"
+mouse_filter = 0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "Attack: 20"
+horizontal_alignment = 2
+
+[node name="Atk-Speed" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+tooltip_text = "This represents how fast you shoot"
+mouse_filter = 0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "Atk-Speed: 100%"
+horizontal_alignment = 2
+
+[node name="Critico" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+tooltip_text = "This represents the odds of dealing double damage"
+mouse_filter = 0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "Crit-Rate: 0%"
+horizontal_alignment = 2
+
+[node name="Speed" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+tooltip_text = "This represents how fast you can move"
+mouse_filter = 0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "Speed: 300"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ResumeButton" to="." method="_unpause_game"]
