@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnogqowa457up"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_8f1ow"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8f1ow")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.998
+anchor_bottom = 0.994
+offset_right = 0.303955
+offset_bottom = -0.112
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 446.0
+offset_top = 295.0
+offset_right = 626.0
+offset_bottom = 375.0
+
+[node name="Start Game" type="Button" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Start Game"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 26.0
+offset_right = 141.0
+offset_bottom = 49.0
+bbcode_enabled = true
+text = "[i] Start Game [/i]"
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 400.0
+offset_right = 629.0
+offset_bottom = 484.0
+
+[node name="Button2" type="Button" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer2/Button2"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -134.0
+offset_top = 26.0
+offset_right = -38.0
+offset_bottom = 49.0
+grow_horizontal = 0
+bbcode_enabled = true
+text = "[i] Quit Game [/i]"
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 293.0
+offset_right = 484.0
+offset_bottom = 333.0
+
+[connection signal="pressed" from="MarginContainer/Start Game" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="MarginContainer2/Button2" to="." method="_on_button_2_pressed"]

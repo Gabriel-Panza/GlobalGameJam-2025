@@ -5,7 +5,6 @@ var game_scene
 var speedPlayer
 var speedEnemy
 var speedProjectile
-
 var options = [
 	{ "id": "option_1", "text": "Speed Up" },
 	{ "id": "option_2", "text": "Health Up" },
@@ -18,10 +17,12 @@ signal option_selected(option)
 
 func _ready() -> void:
 	game_scene = get_node_or_null(game_scene_path)
+	visible = false
 
 func show_popup():
 	# Randomiza 3 opções do vetor de opções
 	options.shuffle()
+	visible = true 
 	var randomized_options = options.slice(0, 3)
 	
 	# Atualiza os botões com as opções randomizadas
