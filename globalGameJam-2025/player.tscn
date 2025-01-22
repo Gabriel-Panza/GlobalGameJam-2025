@@ -31,9 +31,9 @@ scale = Vector2(0.970995, 0.970995)
 shape = SubResource("CapsuleShape2D_yk0ca")
 
 [node name="Camera2D" parent="." instance=ExtResource("3_yunjf")]
-limit_left = -1900
-limit_top = -1100
-limit_right = 1900
+limit_left = -2045
+limit_top = -1104
+limit_right = 2050
 limit_bottom = 1600
 
 [node name="AtkSpeed" type="Timer" parent="."]

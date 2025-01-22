@@ -1,12 +1,12 @@
 [gd_resource type="TileSet" load_steps=9 format=3 uid="uid://dgclrcnucqxj7"]
 
-[ext_resource type="Texture2D" uid="uid://cep50pccshsjk" path="res://sprites/tileset chao parede.png" id="1_4t7vi"]
-[ext_resource type="Texture2D" uid="uid://cw08q0lv1obvo" path="res://sprites/tileset esteiras.png" id="2_cwbri"]
-[ext_resource type="Texture2D" uid="uid://dfbxibi6h7c7s" path="res://sprites/tileset caixotes com sabão.png" id="3_xuexa"]
-[ext_resource type="Texture2D" uid="uid://bng0x8timc7xs" path="res://sprites/tileset bacia de sabão liquido.png" id="4_51x8e"]
+[ext_resource type="Texture2D" uid="uid://ch2qxlxscj6q8" path="res://sprites/Tilesets/tileset chao parede.png" id="1_7e1o5"]
+[ext_resource type="Texture2D" uid="uid://c15ff00oabwis" path="res://sprites/Tilesets/tileset esteiras.png" id="2_0x72x"]
+[ext_resource type="Texture2D" uid="uid://duu5objw58v6i" path="res://sprites/Tilesets/tileset caixotes com sabão.png" id="3_aw74j"]
+[ext_resource type="Texture2D" uid="uid://fpx88kupyn48" path="res://sprites/Tilesets/tileset bacia de sabão liquido.png" id="4_glwa6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xork6"]
-texture = ExtResource("1_4t7vi")
+texture = ExtResource("1_7e1o5")
 1:1/0 = 0
 2:1/0 = 0
 3:1/0 = 0
@@ -119,7 +119,7 @@ texture = ExtResource("1_4t7vi")
 5:7/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p8grq"]
-texture = ExtResource("2_cwbri")
+texture = ExtResource("2_0x72x")
 4:1/0 = 0
 6:1/0 = 0
 1:2/0 = 0
@@ -138,7 +138,7 @@ texture = ExtResource("2_cwbri")
 6:6/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rspdo"]
-texture = ExtResource("3_xuexa")
+texture = ExtResource("3_aw74j")
 6:1/0 = 0
 7:1/0 = 0
 8:1/0 = 0
@@ -395,7 +395,7 @@ texture = ExtResource("3_xuexa")
 22:13/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0lhst"]
-texture = ExtResource("4_51x8e")
+texture = ExtResource("4_glwa6")
 6:0/0 = 0
 8:0/0 = 0
 10:0/0 = 0

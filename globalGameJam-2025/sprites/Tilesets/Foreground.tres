@@ -1,14 +1,13 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dqpgo1qlrbc0b"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://dqpgo1qlrbc0b"]
 
-[ext_resource type="Texture2D" uid="uid://bng0x8timc7xs" path="res://sprites/tileset bacia de sabão liquido.png" id="1_5cgir"]
-[ext_resource type="Texture2D" uid="uid://dfbxibi6h7c7s" path="res://sprites/tileset caixotes com sabão.png" id="2_j85r7"]
+[ext_resource type="Texture2D" uid="uid://fpx88kupyn48" path="res://sprites/Tilesets/tileset bacia de sabão liquido.png" id="1_40l7y"]
+[ext_resource type="Texture2D" uid="uid://duu5objw58v6i" path="res://sprites/Tilesets/tileset caixotes com sabão.png" id="2_spmpo"]
+[ext_resource type="Texture2D" uid="uid://c15ff00oabwis" path="res://sprites/Tilesets/tileset esteiras.png" id="3_det1f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hlttb"]
-texture = ExtResource("1_5cgir")
-6:0/0 = 0
+texture = ExtResource("1_40l7y")
 8:0/0 = 0
 10:0/0 = 0
-0:2/0 = 0
 1:2/0 = 0
 2:2/0 = 0
 3:2/0 = 0
@@ -16,12 +15,10 @@ texture = ExtResource("1_5cgir")
 6:2/0 = 0
 8:2/0 = 0
 10:2/0 = 0
-0:3/0 = 0
 1:3/0 = 0
 2:3/0 = 0
 3:3/0 = 0
 4:3/0 = 0
-0:4/0 = 0
 1:4/0 = 0
 2:4/0 = 0
 3:4/0 = 0
@@ -29,7 +26,6 @@ texture = ExtResource("1_5cgir")
 6:4/0 = 0
 8:4/0 = 0
 10:4/0 = 0
-0:5/0 = 0
 1:5/0 = 0
 2:5/0 = 0
 3:5/0 = 0
@@ -37,9 +33,36 @@ texture = ExtResource("1_5cgir")
 6:6/0 = 0
 8:6/0 = 0
 10:6/0 = 0
+6:3/0 = 0
+6:5/0 = 0
+4:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+3:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+5:6/0 = 0
+5:2/0 = 0
+5:3/0 = 0
+5:4/0 = 0
+5:5/0 = 0
+12:2/0 = 0
+12:4/0 = 0
+12:6/0 = 0
+12:8/0 = 0
+10:8/0 = 0
+8:8/0 = 0
+12:10/0 = 0
+10:10/0 = 0
+8:10/0 = 0
+12:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ai50"]
-texture = ExtResource("2_j85r7")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gjafn"]
+texture = ExtResource("2_spmpo")
 6:1/0 = 0
 7:1/0 = 0
 8:1/0 = 0
@@ -271,71 +294,28 @@ texture = ExtResource("2_j85r7")
 19:17/0 = 0
 20:17/0 = 0
 21:17/0 = 0
-17:10/0 = 0
-21:10/0 = 0
-26:11/0 = 0
-22:11/0 = 0
-21:11/0 = 0
-20:11/0 = 0
-19:11/0 = 0
-18:11/0 = 0
-17:11/0 = 0
-22:15/0 = 0
-21:15/0 = 0
-20:15/0 = 0
-19:15/0 = 0
-18:15/0 = 0
-17:15/0 = 0
-16:15/0 = 0
-15:15/0 = 0
-22:17/0 = 0
-22:13/0 = 0
-15:17/0 = 0
-14:17/0 = 0
-13:17/0 = 0
-12:17/0 = 0
-11:17/0 = 0
-10:17/0 = 0
-9:17/0 = 0
-8:17/0 = 0
-7:17/0 = 0
-6:17/0 = 0
-5:17/0 = 0
-4:17/0 = 0
-3:17/0 = 0
-2:17/0 = 0
-1:17/0 = 0
-4:16/0 = 0
-5:16/0 = 0
-0:17/0 = 0
-0:16/0 = 0
-0:14/0 = 0
-1:14/0 = 0
-2:14/0 = 0
-3:14/0 = 0
-4:14/0 = 0
-5:14/0 = 0
-4:12/0 = 0
-6:14/0 = 0
-7:14/0 = 0
-8:14/0 = 0
-9:14/0 = 0
-10:14/0 = 0
-11:14/0 = 0
-12:14/0 = 0
-13:14/0 = 0
-14:14/0 = 0
-0:8/0 = 0
-4:8/0 = 0
-5:8/0 = 0
+13:9/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0bhao"]
+texture = ExtResource("3_det1f")
+4:1/0 = 0
+6:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+4:3/0 = 0
+6:3/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+1:5/0 = 0
+2:5/0 = 0
 4:5/0 = 0
-12:1/0 = 0
-12:4/0 = 0
-5:1/0 = 0
-5:2/0 = 0
-5:3/0 = 0
-5:4/0 = 0
+6:5/0 = 0
+4:6/0 = 0
+6:6/0 = 0
 
 [resource]
 sources/0 = SubResource("TileSetAtlasSource_hlttb")
-sources/1 = SubResource("TileSetAtlasSource_3ai50")
+sources/2 = SubResource("TileSetAtlasSource_gjafn")
+sources/3 = SubResource("TileSetAtlasSource_0bhao")
