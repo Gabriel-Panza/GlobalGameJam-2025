@@ -20,22 +20,23 @@ func _ready() -> void:
 	add_to_group("Inimigo")
 
 func _process(_delta: float) -> void:
-	if player:
-		var direction = (player.global_position - global_position).normalized()
-		velocity = direction * speed
-	else:
-		velocity = Vector2.ZERO
-	
-	# Move o inimigo
-	var collision = move_and_collide(velocity * _delta)
-	if collision and collision.get_collider() == player:
-		if damage_timer.is_stopped():
-			_apply_damage()
-			damage_timer.start()
-	else:
-		if not damage_timer.is_stopped():
-			damage_timer.stop()
+	if speed > 0:
+		if player:
+			var direction = (player.global_position - global_position).normalized()
+			velocity = direction * speed
+		else:
+			velocity = Vector2.ZERO
 		
+		# Move o inimigo
+		var collision = move_and_collide(velocity * _delta)
+		if collision and collision.get_collider() == player:
+			if damage_timer.is_stopped():
+				_apply_damage()
+				damage_timer.start()
+		else:
+			if not damage_timer.is_stopped():
+				damage_timer.stop()
+
 func take_damage(amount):
 	health -= amount
 	if health <= 0:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbnwiodw2fqfp"]
+[gd_scene load_steps=5 format=3 uid="uid://cbnwiodw2fqfp"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_esuf2"]
+[ext_resource type="PackedScene" uid="uid://njuy4b4rglov" path="res://LevelUpPopup.tscn" id="2_jet5o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tafyd"]
 bg_color = Color(0.94902, 0.490196, 0.796078, 1)
@@ -54,3 +55,5 @@ offset_bottom = 80.0
 scale = Vector2(1.19731, 1.12)
 theme_override_font_sizes/font_size = 30
 text = "Gold: 0"
+
+[node name="LevelUpPopup" parent="." instance=ExtResource("2_jet5o")]

@@ -1,5 +1,7 @@
 extends Node2D
 
+var timer_path: NodePath = "/root/GameScene/Player/AtkSpeed"
+var timer
 var player_path: NodePath = "/root/GameScene/Player"
 var player
 var camera_path: NodePath = "/root/GameScene/Player/Camera2D"
@@ -10,6 +12,7 @@ var level_up_popup
 func _ready() -> void:
 	player = get_node_or_null(player_path)
 	camera = get_node_or_null(camera_path)
+	timer = get_node_or_null(timer_path)
 	
 	level_up_popup = preload("res://LevelUpPopup.tscn").instantiate()
 	add_child(level_up_popup)
@@ -50,8 +53,13 @@ func _on_level_up(level, current_xp, xp_to_next_level):
 func _apply_effect(option):
 	match option:
 		"option_1":
-			player.speed += 10
+			player.speed += player.original_speed * 0.05
 		"option_2":
-			player.hp += 10
+			player.health += player.original_health * 0.05
+			player.maxHealth += player.original_maxHealth * 0.05
 		"option_3":
-			player.damage += 10
+			player.ataque += player.original_ataque * 0.05
+		"option_4":
+			player.critico += player.original_critico + 0.025
+		"option_5":
+			timer.wait_time -= 0.005

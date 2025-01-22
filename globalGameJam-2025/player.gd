@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 # Variáveis de Velocidade
-var speed := 300
+var speed: float = 300
+var original_speed: float = 300
 var velocity_vector := Vector2.ZERO
 
 var projetil = preload("res://projectile.tscn")
@@ -10,10 +11,15 @@ var new_position
 
 # Variaveis de HUD
 var health = 200
+var original_health = 200
 var maxHealth = 200
+var original_maxHealth = 200
 var gold = 0
-var ataque = 20
+var ataque = 50
+var original_ataque = 20
 var critico = 0
+var original_critico = 0
+var atkSpeed = 1
 
 # Variáveis de XP e Nível
 @export var level: int = 1
@@ -26,21 +32,22 @@ signal hp_updated(health, maxHealth)
 signal gold_updated(gold)
 
 func _process(delta: float) -> void:
-	velocity_vector.x = 0
-	velocity_vector.y = 0
-	if Input.is_action_pressed("ui_right"):
-		velocity_vector.x += 300
-	if Input.is_action_pressed("ui_left"):
-		velocity_vector.x -= 300
-	if Input.is_action_pressed("ui_down"):
-		velocity_vector.y += 300
-	if Input.is_action_pressed("ui_up"):
-		velocity_vector.y -= 300
+	if speed > 0:
+		velocity_vector.x = 0
+		velocity_vector.y = 0
+		if Input.is_action_pressed("ui_right"):
+			velocity_vector.x += 300
+		if Input.is_action_pressed("ui_left"):
+			velocity_vector.x -= 300
+		if Input.is_action_pressed("ui_down"):
+			velocity_vector.y += 300
+		if Input.is_action_pressed("ui_up"):
+			velocity_vector.y -= 300
 
-	velocity_vector = velocity_vector.normalized() * speed
-	new_position = position + velocity_vector * delta
-	position = new_position
-	move_and_slide()
+		velocity_vector = velocity_vector.normalized() * speed
+		new_position = position + velocity_vector * delta
+		position = new_position
+		move_and_slide()
 
 func gain_xp(amount: int) -> void:
 	current_xp += amount

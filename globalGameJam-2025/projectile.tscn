@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_maafy"]
 radius = 32.3883
 
-[node name="projectile" type="CharacterBody2D"]
+[node name="projectile" type="CharacterBody2D" groups=["Vivos"]]
 script = ExtResource("1_xt63k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

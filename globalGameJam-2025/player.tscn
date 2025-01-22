@@ -12,7 +12,7 @@ height = 124.0
 radius = 19.0
 height = 120.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(0, 330)
 script = ExtResource("1_sp03d")
 

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var target
-const SPEED = 600.0
+var speed: float = 600.0
 var direction
 
 var player_path: NodePath = "/root/GameScene/Player"
@@ -12,7 +12,9 @@ func _ready() -> void:
 	target = get_global_mouse_position()
 	
 func _physics_process(delta):
-	position -= direction * SPEED * delta 
+	position -= direction * speed * delta 
+	if speed == 0:
+		queue_free()
 
 func _on_impact_body_entered(body):
 	if body.is_in_group("Inimigo"):

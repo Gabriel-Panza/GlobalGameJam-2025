@@ -1,45 +1,77 @@
 extends Node2D
 
+# Adicione os caminhos para os nós dos limites
+var limite_esquerdo_path: NodePath = "Limites/LimiteEsquerdo"
+var limite_direito_path: NodePath = "Limites/LimiteDireito"
+var limite_cima_path: NodePath = "Limites/LimiteCima"
+var limite_baixo_path: NodePath = "Limites/LimiteBaixo"
+
+# Variáveis para armazenar os limites
+var map_left: float
+var map_right: float
+var map_top: float
+var map_bottom: float
+
 # Intervalo de spawn de inimigos
-var spawn_interval: float = 1.0
+var spawn_interval: float = 1.5
 var spawn_offset: float = 50.0
 
 # Intervalo de drop de itens
 var drop_interval: float = 30.0
 
-# Lista de caminhos para cenas de itens
+var enemy_timer: Timer
+var drop_timer: Timer
+var atkSpeed_timer: Timer
+
+var timer_path: NodePath = "/root/GameScene/Player/AtkSpeed"
+
 @export var item_scenes: Array[String] = [
 	"res://itemHP.tscn",
 	"res://itemGold.tscn"
 ]
 
 func _ready() -> void:
+	atkSpeed_timer = get_node_or_null(timer_path)
+	
+	# Obtenha as posições globais dos nós dos limites
+	map_left = get_node(limite_esquerdo_path).global_position.x
+	map_right = get_node(limite_direito_path).global_position.x
+	map_top = get_node(limite_cima_path).global_position.y
+	map_bottom = get_node(limite_baixo_path).global_position.y
+	
 	# Cria e configura o Timer para inimigos
-	var enemy_timer = Timer.new()
+	enemy_timer = Timer.new()
 	enemy_timer.wait_time = spawn_interval
 	enemy_timer.one_shot = false
 	enemy_timer.autostart = true
+	enemy_timer.connect("timeout", Callable(self, "spawn_enemy"))
 	add_child(enemy_timer)
 
-	# Conecta o sinal `timeout` ao método `spawn_enemy`
-	enemy_timer.connect("timeout", Callable(self, "spawn_enemy"))
 	
 	# Cria e configura o Timer para drops de itens
-	var drop_timer = Timer.new()
+	drop_timer = Timer.new()
 	drop_timer.wait_time = drop_interval
 	drop_timer.one_shot = false
 	drop_timer.autostart = true
+	drop_timer.connect("timeout", Callable(self, "spawn_drop"))
 	add_child(drop_timer)
 
-	# Conecta o sinal `timeout` ao método `spawn_drop`
-	drop_timer.connect("timeout", Callable(self, "spawn_drop"))
+
+func is_within_map_bounds(position: Vector2) -> bool:
+	return position.x >= map_left and position.x <= map_right and position.y >= map_top and position.y <= map_bottom
+
+func clamp_position_to_bounds(position: Vector2) -> Vector2:
+	# Ajusta a posição para ficar dentro dos limites do mapa
+	position.x = clamp(position.x, map_left+50, map_right-50)
+	position.y = clamp(position.y, map_top-50, map_bottom+50)
+	return position
 
 func spawn_enemy():
 	_spawn_entity("res://enemy.tscn")
 
 func spawn_drop():
 	var random_index = randi() % item_scenes.size()
-	var resource = load(item_scenes[random_index])
+	var resource = item_scenes[random_index]
 	_spawn_entity(resource)
 
 func _spawn_entity(resource_path: String):
@@ -71,9 +103,25 @@ func _spawn_entity(resource_path: String):
 			3:  # Right
 				spawn_position.x = right
 				spawn_position.y = randf_range(top, bottom)
+
+		if not is_within_map_bounds(spawn_position):
+			spawn_position = clamp_position_to_bounds(spawn_position)
 		
 		var resource = load(resource_path)
 		if resource:
 			var entity = resource.instantiate()
 			entity.position = spawn_position
 			add_child(entity)
+
+func pause_timers():
+	if enemy_timer.is_paused() == false:
+		enemy_timer.set_paused(true)
+	if drop_timer.is_paused() == false:
+		drop_timer.set_paused(true)
+	if atkSpeed_timer.is_paused() == false:
+		atkSpeed_timer.set_paused(true)
+
+func resume_timers():
+	enemy_timer.set_paused(false)
+	drop_timer.set_paused(false)
+	atkSpeed_timer.set_paused(false)
