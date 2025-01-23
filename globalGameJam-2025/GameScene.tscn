@@ -56,6 +56,8 @@ shape = SubResource("RectangleShape2D_mb347")
 [node name="LimiteDireito" type="StaticBody2D" parent="Limites"]
 position = Vector2(1807, -35)
 disable_mode = 1
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/LimiteDireito"]
 position = Vector2(-79.2145, 241.972)
@@ -67,6 +69,8 @@ position = Vector2(384, -931)
 rotation = 1.5708
 scale = Vector2(1.15315, 1.6)
 disable_mode = 1
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/LimiteCima"]
 position = Vector2(-19.077, 240)
@@ -78,6 +82,8 @@ position = Vector2(386, 1418)
 rotation = 1.5708
 scale = Vector2(1.39315, 1.6)
 disable_mode = 1
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/LimiteBaixo"]
 position = Vector2(-34.151, 246.781)
@@ -88,6 +94,8 @@ shape = SubResource("RectangleShape2D_mb347")
 
 [node name="Esteira1" type="StaticBody2D" parent="Limites/Objetos"]
 position = Vector2(-1158, -544)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Esteira1"]
 position = Vector2(8, 52)
@@ -95,12 +103,15 @@ shape = SubResource("RectangleShape2D_cmgnj")
 
 [node name="Esteira2" type="StaticBody2D" parent="Limites/Objetos"]
 position = Vector2(-960, 685)
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Esteira2"]
 position = Vector2(4.5, 77)
 shape = SubResource("RectangleShape2D_cmgnj")
 
 [node name="Esteira3" type="StaticBody2D" parent="Limites/Objetos"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Esteira3"]
 position = Vector2(-445, 220)
@@ -108,6 +119,8 @@ shape = SubResource("RectangleShape2D_ph16s")
 
 [node name="Esteira4" type="StaticBody2D" parent="Limites/Objetos"]
 position = Vector2(1472, -835)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Esteira4"]
 position = Vector2(-445, 220)
@@ -115,6 +128,8 @@ shape = SubResource("RectangleShape2D_ph16s")
 
 [node name="Esteira5" type="StaticBody2D" parent="Limites/Objetos"]
 position = Vector2(900, 666)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Esteira5"]
 position = Vector2(-1.5, 29)

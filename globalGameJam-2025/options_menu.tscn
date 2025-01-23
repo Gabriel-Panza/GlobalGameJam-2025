@@ -49,6 +49,7 @@ offset_bottom = 243.0
 script = ExtResource("2_5h2ah")
 
 [node name="SFX Volume" type="Label" parent="."]
+layout_mode = 0
 offset_left = 363.0
 offset_top = 187.0
 offset_right = 686.0
@@ -59,6 +60,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HSlider2" type="HSlider" parent="."]
+layout_mode = 0
 offset_left = 409.0
 offset_top = 232.0
 offset_right = 625.0
