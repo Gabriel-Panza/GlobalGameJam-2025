@@ -219,11 +219,14 @@ layer_1/tile_data = PackedInt32Array(1376288, 0, 5, 1376289, 65536, 5, 1376290, 
 [node name="Player" parent="." instance=ExtResource("2_ek31v")]
 position = Vector2(583, 328)
 
-[node name="BubbleGun" type="Sprite2D" parent="."]
+[node name="BubbleGun" type="CharacterBody2D" parent="."]
 position = Vector2(384, 196.5)
 scale = Vector2(1.75, 1.78125)
-texture = ExtResource("3_q40a2")
 script = ExtResource("5_k88aj")
+
+[node name="BubbleGun2" type="Sprite2D" parent="BubbleGun"]
+scale = Vector2(0.982, 1)
+texture = ExtResource("3_q40a2")
 
 [node name="BubbleGun" type="Area2D" parent="BubbleGun"]
 position = Vector2(2.28571, 1.40351)
@@ -232,11 +235,14 @@ position = Vector2(2.28571, 1.40351)
 position = Vector2(-0.925934, -0.533333)
 shape = SubResource("RectangleShape2D_s00sm")
 
-[node name="ExplubbleBomb" type="Sprite2D" parent="."]
+[node name="ExplubbleBomb" type="CharacterBody2D" parent="."]
 position = Vector2(466, 196)
 scale = Vector2(1.6875, 1.8125)
-texture = ExtResource("4_0x5hn")
 script = ExtResource("5_k88aj")
+
+[node name="ExplubbleBomb2" type="Sprite2D" parent="ExplubbleBomb"]
+scale = Vector2(0.931, 1)
+texture = ExtResource("4_0x5hn")
 
 [node name="ExplubbleBomb" type="Area2D" parent="ExplubbleBomb"]
 position = Vector2(0.592593, 0.551724)
@@ -245,11 +251,13 @@ position = Vector2(0.592593, 0.551724)
 position = Vector2(-0.925934, -0.533333)
 shape = SubResource("RectangleShape2D_s00sm")
 
-[node name="SoapGauntlet" type="Sprite2D" parent="."]
+[node name="SoapGauntlet" type="CharacterBody2D" parent="."]
 position = Vector2(528, 196)
 scale = Vector2(1.75, 1.875)
-texture = ExtResource("5_oe04i")
 script = ExtResource("5_k88aj")
+
+[node name="SoapGauntlet2" type="Sprite2D" parent="SoapGauntlet"]
+texture = ExtResource("5_oe04i")
 
 [node name="SoapGauntlet" type="Area2D" parent="SoapGauntlet"]
 position = Vector2(0.571429, 0.533333)

@@ -97,7 +97,7 @@ func collect_item(value, type):
 	emit_signal("stats_updated")
 
 func take_damage(amount):
-	var shield = get_node_or_null("itemShield")
+	var shield = get_node_or_null("/root/GameScene/Player/itemShield")
 	if shield:
 		shield.queue_free()
 		return
@@ -116,6 +116,7 @@ func selectWeapon():
 			pause_control.slots[0].texture = load(weapon_data[arma])
 			projetil = preload("res://projectile.tscn")
 			ataque = 20
+			original_ataque = 20
 			$AtkSpeed.wait_time = 1
 			$AtkSpeed.set_paused(true)
 
@@ -123,6 +124,7 @@ func selectWeapon():
 			pause_control.slots[0].texture = load(weapon_data[arma])
 			projetil = preload("res://bomb.tscn")
 			ataque = 40
+			original_ataque = 40
 			$AtkSpeed.wait_time = 3
 			$AtkSpeed.set_paused(true)
 
@@ -130,6 +132,7 @@ func selectWeapon():
 			pause_control.slots[0].texture = load(weapon_data[arma])
 			projetil = preload("res://punch.tscn")
 			ataque = 10
+			original_ataque = 10
 			$AtkSpeed.wait_time = 0.4
 			$AtkSpeed.set_paused(true)
 	get_tree().set_meta("arma", arma)

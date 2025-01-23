@@ -105,26 +105,7 @@ func _process(delta):
 
 func _create_bubblegum_particle() -> void:
 	if itemBublegum:
-		var bubblegum_particle = GPUParticles2D.new()
-		bubblegum_particle.set_one_shot(true)
-		bubblegum_particle.set_lifetime(2.0)
-		# Configura a cor das partículas
-		var material = ShaderMaterial.new()
-		material.shader = Shader.new()
-		material.shader_code = """
-								shader_type canvas_item;
-
-								void fragment() {
-									COLOR = vec4(1.0, 0.0, 1.0, 1.0);
-								}
-								"""
-		bubblegum_particle.material = material
-		bubblegum_particle.z_index = 1
-		bubblegum_particle.position = player.position
-		bubblegum_particle.collision_layer = 3
-		bubblegum_particle.collision_mask = 2
-		bubblegum_particle.connect("body_entered", Callable(self, "_on_bubblegum_body_entered"))
-		player.add_child(bubblegum_particle)
+		#Cria um efeito rosa de chiclete no chão em volta do player e adiciona uma connection pra função on_bubblegum_body_entered(body)
 
 func _on_bubblegum_body_entered(body):
 	if body.is_in_group("Inimigo"):
@@ -134,23 +115,7 @@ func _on_bubblegum_body_entered(body):
 
 func _create_boots_particle() -> void:
 	if itemBoots:
-		var particle = GPUParticles2D.new()
-		particle.set_one_shot(true)
-		particle.set_lifetime(0.5)
-		# Configura a cor das partículas
-		var material = ShaderMaterial.new()
-		material.shader = Shader.new()
-		material.shader_code = """
-								shader_type canvas_item;
-
-								void fragment() {
-									COLOR = vec4(1.0, 1.0, 1.0, 1.0);
-								}
-								"""
-		particle.material = material
-		particle.z_index = 1
-		particle.position = player.position
-		player.add_child(particle)
+		#Cria um efeito branco de sabão como um rastro no player
 
 func update_status_labels():
 	if player:

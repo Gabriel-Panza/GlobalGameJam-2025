@@ -7,11 +7,11 @@
 radius = 33.0
 height = 96.0
 
-[node name="Punch" type="CharacterBody2D"]
+[node name="Punch" type="CharacterBody2D" groups=["Vivos"]]
 collision_mask = 3
 script = ExtResource("1_gpdie")
 
-[node name="Sprite2D" type="Sprite2D" parent="." groups=["Vivos"]]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(22, 18.5)
 scale = Vector2(2.375, 2.15625)
 texture = ExtResource("1_rg5py")

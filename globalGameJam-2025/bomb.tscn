@@ -6,11 +6,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_jglgo"]
 radius = 289.389
 
-[node name="Bomb" type="CharacterBody2D"]
+[node name="Bomb" type="CharacterBody2D" groups=["Vivos"]]
 collision_mask = 3
 script = ExtResource("1_jf8w7")
 
-[node name="Sprite2D" type="Sprite2D" parent="." groups=["Vivos"]]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.5, 4.5)
 scale = Vector2(2.59375, 2.59375)
 texture = ExtResource("2_mumt1")

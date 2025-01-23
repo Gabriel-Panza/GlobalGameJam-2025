@@ -1,4 +1,4 @@
-extends Sprite2D
+extends CharacterBody2D
 
 var player
 var player_path: NodePath = "/root/GameScene/Player"
