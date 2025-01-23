@@ -39,6 +39,10 @@ var itemShield: bool
 
 var slots = []
 
+var bubblegum_timer: Timer
+var boots_timer: Timer
+var shield: Node2D
+
 func _ready() -> void:
 	slot1 = get_node_or_null(slot1_path)
 	slot2 = get_node_or_null(slot2_path)
@@ -61,6 +65,21 @@ func _ready() -> void:
 	itemBoots = false
 	itemShield = false
 	
+	# Conecta o sinal do temporizador para criar a partícula rosa a cada 5 segundos
+	bubblegum_timer = Timer.new()
+	bubblegum_timer.set_wait_time(5.0)
+	bubblegum_timer.set_one_shot(false)
+	bubblegum_timer.connect("timeout", Callable(self, "_create_bubblegum_particle"))
+	bubblegum_timer.start()
+	player.add_child(bubblegum_timer)
+	
+	boots_timer = Timer.new()
+	boots_timer.set_wait_time(0.5)
+	boots_timer.set_one_shot(false)
+	boots_timer.connect("timeout", Callable(self, "_create_boots_particle"))
+	boots_timer.start()
+	player.add_child(boots_timer)
+	
 	player.connect("stats_updated", Callable(self, "update_status_labels"))
 	
 func _process(delta):
@@ -69,20 +88,77 @@ func _process(delta):
 			_unpause_game()
 		else:
 			_pause_game()
-	#if itemBoots:
-		#player.speed = player.speed*0.25 # Ajustar pra isso ser um efeito passivo que mantem o speed do jogador sempre com 25% mais do que a base (ao inves de incrementar a cada frame como está aí) mesmo quando ele pega um bonus dps de ter esse item. Ou seja, se o player somar 40 ao speed, ele na vdd vai somar 50 (40 + 25% de 40)
-		##Cria uma particula branca no chão que o player deixa pra tras
-	#if itemShield:
-		## Cria um escudo que se regenera a cada 20 segundos dps de perdido, que anula o proximo ataque feito contra o jogador
-	#if itemBublegum:
-		## Cria uma particula rosa no chão com colisão. Se um objeto do grupo "Inimigo" colidir com essa particula rosa, até ele sair da area de colisão da particula ele fica com o movimento reduzido em 50%
+
+	# Lógica do item Shield
+	if itemShield:
+		if not is_instance_valid(shield):
+			shield = preload("res://itemShield.tscn").instantiate()
+			shield.name = "Shield"
+			shield.z_index = 2
+			shield.position = Vector2.ZERO
+			player.add_child(shield)
+			await get_tree().create_timer(20.0).timeout
+			if shield:
+				shield.queue_free()
+		else:
+			shield.position = Vector2.ZERO
+
+func _create_bubblegum_particle() -> void:
+	if itemBublegum:
+		var bubblegum_particle = GPUParticles2D.new()
+		bubblegum_particle.set_one_shot(true)
+		bubblegum_particle.set_lifetime(2.0)
+		# Configura a cor das partículas
+		var material = ShaderMaterial.new()
+		material.shader = Shader.new()
+		material.shader_code = """
+								shader_type canvas_item;
+
+								void fragment() {
+									COLOR = vec4(1.0, 0.0, 1.0, 1.0);
+								}
+								"""
+		bubblegum_particle.material = material
+		bubblegum_particle.z_index = 1
+		bubblegum_particle.position = player.position
+		bubblegum_particle.collision_layer = 3
+		bubblegum_particle.collision_mask = 2
+		bubblegum_particle.connect("body_entered", Callable(self, "_on_bubblegum_body_entered"))
+		player.add_child(bubblegum_particle)
+
+func _on_bubblegum_body_entered(body):
+	if body.is_in_group("Inimigo"):
+		body.speed *= 0.5  # Reduz a velocidade dos inimigos em 50%
+		await get_tree().create_timer(2.0).timeout
+		body.speed *= 2.0  # Restaura a velocidade original depois de 2 segundos
+
+func _create_boots_particle() -> void:
+	if itemBoots:
+		var particle = GPUParticles2D.new()
+		particle.set_one_shot(true)
+		particle.set_lifetime(0.5)
+		# Configura a cor das partículas
+		var material = ShaderMaterial.new()
+		material.shader = Shader.new()
+		material.shader_code = """
+								shader_type canvas_item;
+
+								void fragment() {
+									COLOR = vec4(1.0, 1.0, 1.0, 1.0);
+								}
+								"""
+		particle.material = material
+		particle.z_index = 1
+		particle.position = player.position
+		player.add_child(particle)
+
 func update_status_labels():
 	if player:
 		health_label.text = "Health: %d/%d" % [player.health, player.maxHealth]
 		attack_label.text = "Attack: %d" % player.ataque
 		atk_speed_label.text = "Atk-Speed: %.2f%%" % (player.atkSpeed * 100)
 		crit_label.text = "Crit-Rate: %.2f%%" % (player.critico * 100)
-		speed_label.text = "Speed: %d" % player.speed
+		speed_label.text = "Speed: %.2f" % player.speed
 
 func _pause_game():
 	update_status_labels()
@@ -124,6 +200,8 @@ func add_item_to_slot(item_sprite: Texture, name: String):
 			if name == "itemBoots":
 				game_scene.item_scenes.erase("res://itemBoots.tscn")
 				itemBoots = true
+				player.speed *= 1.25
+				player.original_speed *= 1.25
 			slot.texture = item_sprite
 			return
 	print("Todos os slots estão cheios!")

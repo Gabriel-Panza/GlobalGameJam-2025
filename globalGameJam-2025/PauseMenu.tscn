@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://gip0vj1v18d2"]
+[gd_scene load_steps=4 format=3 uid="uid://bk3qeu16nglea"]
 
 [ext_resource type="Script" path="res://PauseMenu.gd" id="1_2v82j"]
 [ext_resource type="Texture2D" uid="uid://bovrdh23eh723" path="res://sprites/Weapons/Bubble_Gun.png" id="2_4drt3"]

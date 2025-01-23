@@ -21,8 +21,10 @@ var drop_interval: float = 45.0
 var enemy_timer: Timer
 var drop_timer: Timer
 var atkSpeed_timer: Timer
+var player
 
 var timer_path: NodePath = "/root/GameScene/Player/AtkSpeed"
+var player_path: NodePath = "/root/GameScene/Player"
 
 @export var item_scenes: Array[String] = [
 	"res://itemHP.tscn",
@@ -33,9 +35,14 @@ var timer_path: NodePath = "/root/GameScene/Player/AtkSpeed"
 ]
 
 func _ready() -> void:
+	player = get_node_or_null(player_path)
+	if player:
+		player.arma = get_tree().get_meta("arma")
+		player.selectWeapon()
 	atkSpeed_timer = get_node_or_null(timer_path)
-	var player = $Player
-	player.selectWeapon()
+	if atkSpeed_timer:
+		atkSpeed_timer.set_paused(false)
+		
 	# Obtenha as posições globais dos nós dos limites
 	map_left = get_node(limite_esquerdo_path).global_position.x
 	map_right = get_node(limite_direito_path).global_position.x

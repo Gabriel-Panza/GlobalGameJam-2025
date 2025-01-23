@@ -1,9 +1,8 @@
 extends CharacterBody2D
 
-
 var target
 var speed: float = 600.0
-var direction
+var direction: Vector2 = Vector2.ZERO
 
 var player_path: NodePath = "/root/GameScene/Player"
 var player

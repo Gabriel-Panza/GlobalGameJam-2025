@@ -4,7 +4,9 @@ extends CharacterBody2D
 var speed: float = 300
 var original_speed: float = 300
 var velocity_vector := Vector2.ZERO
-var arma = "res://sprites/Weapons/Bubble_Gun.png"
+var pause_control_path: NodePath = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl"
+var pause_control: Control
+var arma
 var projetil
 
 var new_position
@@ -31,6 +33,15 @@ signal level_updated(level, current_xp, xp_to_next_level)
 signal hp_updated(health, maxHealth)
 signal gold_updated(gold)
 signal stats_updated()
+
+var weapon_data = {
+	"res://projectile.tscn": "res://sprites/Weapons/Bubble_Gun.png",
+	"res://bomb.tscn": "res://sprites/Weapons/Explubble_Bomb.png",
+	"res://punch.tscn": "res://sprites/Weapons/Soap_Gauntlet.png"
+}
+
+func _ready() -> void:
+	pause_control = get_node_or_null(pause_control_path)
 
 func _process(delta: float) -> void:
 	if speed > 0:
@@ -65,10 +76,11 @@ func level_up() -> void:
 	emit_signal("level_updated", level, current_xp, xp_to_next_level)
 
 func _on_atk_speed_timeout():
-	var tiro = projetil.instantiate()
-	tiro.position = position
-	tiro.direction = (position - get_global_mouse_position()).normalized()
-	owner.add_child(tiro)
+	if projetil:
+		var tiro = projetil.instantiate()
+		tiro.position = position
+		tiro.direction = (position - get_global_mouse_position()).normalized()
+		owner.add_child(tiro)
 
 func collect_item(value, type):
 	if type == "itemGold":
@@ -85,6 +97,10 @@ func collect_item(value, type):
 	emit_signal("stats_updated")
 
 func take_damage(amount):
+	var shield = get_node_or_null("itemShield")
+	if shield:
+		shield.queue_free()
+		return
 	health -= amount
 	emit_signal("hp_updated", health, maxHealth)
 	emit_signal("stats_updated")
@@ -95,22 +111,25 @@ func die():
 	print("Player died")
 
 func selectWeapon():
-	print("entrou")
-	var pauseMenu = $Camera2D/CanvasLayer/HUD/PauseControl
-	pauseMenu.slots[0].set_texture(load("res://sprites/Weapons/Soap_Gauntlet.png"))
-	arma = pauseMenu.slots[0].texture.resource_path
-	print(arma)
 	match arma:
-		"res://sprites/Weapons/Bubble_Gun.png":
+		"res://projectile.tscn":
+			pause_control.slots[0].texture = load(weapon_data[arma])
 			projetil = preload("res://projectile.tscn")
-		"res://sprites/Weapons/Explubble_Bomb.png":
+			ataque = 20
+			$AtkSpeed.wait_time = 1
+			$AtkSpeed.set_paused(true)
+
+		"res://bomb.tscn":
+			pause_control.slots[0].texture = load(weapon_data[arma])
 			projetil = preload("res://bomb.tscn")
-			atkSpeed = 3
 			ataque = 40
-			$AtkSpeed.wait_time = atkSpeed
-		"res://sprites/Weapons/Soap_Gauntlet.png":
-			atkSpeed = 0.25
-			ataque = 10
-			$AtkSpeed.wait_time = atkSpeed
+			$AtkSpeed.wait_time = 3
+			$AtkSpeed.set_paused(true)
+
+		"res://punch.tscn":
+			pause_control.slots[0].texture = load(weapon_data[arma])
 			projetil = preload("res://punch.tscn")
-	
+			ataque = 10
+			$AtkSpeed.wait_time = 0.4
+			$AtkSpeed.set_paused(true)
+	get_tree().set_meta("arma", arma)

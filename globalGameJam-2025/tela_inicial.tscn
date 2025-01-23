@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://br6kkxbnhspqx"]
+[gd_scene load_steps=12 format=3 uid="uid://c5nrissuxu3tu"]
 
 [ext_resource type="Script" path="res://tela_inicial.gd" id="1_3717t"]
 [ext_resource type="Texture2D" uid="uid://bao12i0hfsea" path="res://sprites/Tilesets/tileset chao area tranquila inicial.png" id="1_hkxae"]
 [ext_resource type="PackedScene" uid="uid://cc1g3ofhfukk7" path="res://player.tscn" id="2_ek31v"]
 [ext_resource type="Texture2D" uid="uid://bovrdh23eh723" path="res://sprites/Weapons/Bubble_Gun.png" id="3_q40a2"]
 [ext_resource type="Texture2D" uid="uid://c58lgucib0q8h" path="res://sprites/Weapons/Explubble_Bomb.png" id="4_0x5hn"]
+[ext_resource type="Script" path="res://swap_weapon.gd" id="5_k88aj"]
 [ext_resource type="Texture2D" uid="uid://bb3gij4pbvyyp" path="res://sprites/Weapons/Soap_Gauntlet.png" id="5_oe04i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ladf8"]
@@ -199,10 +200,13 @@ texture = ExtResource("1_hkxae")
 [sub_resource type="TileSet" id="TileSet_v51wa"]
 sources/0 = SubResource("TileSetAtlasSource_ladf8")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s00sm"]
+size = Vector2(21.8519, 28.8)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fl7t0"]
 size = Vector2(80, 33)
 
-[node name="TelaInicial" type="Node2D"]
+[node name="GameScene" type="Node2D"]
 script = ExtResource("1_3717t")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -219,16 +223,40 @@ position = Vector2(583, 328)
 position = Vector2(384, 196.5)
 scale = Vector2(1.75, 1.78125)
 texture = ExtResource("3_q40a2")
+script = ExtResource("5_k88aj")
+
+[node name="BubbleGun" type="Area2D" parent="BubbleGun"]
+position = Vector2(2.28571, 1.40351)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BubbleGun/BubbleGun"]
+position = Vector2(-0.925934, -0.533333)
+shape = SubResource("RectangleShape2D_s00sm")
 
 [node name="ExplubbleBomb" type="Sprite2D" parent="."]
 position = Vector2(466, 196)
 scale = Vector2(1.6875, 1.8125)
 texture = ExtResource("4_0x5hn")
+script = ExtResource("5_k88aj")
+
+[node name="ExplubbleBomb" type="Area2D" parent="ExplubbleBomb"]
+position = Vector2(0.592593, 0.551724)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplubbleBomb/ExplubbleBomb"]
+position = Vector2(-0.925934, -0.533333)
+shape = SubResource("RectangleShape2D_s00sm")
 
 [node name="SoapGauntlet" type="Sprite2D" parent="."]
 position = Vector2(528, 196)
 scale = Vector2(1.75, 1.875)
 texture = ExtResource("5_oe04i")
+script = ExtResource("5_k88aj")
+
+[node name="SoapGauntlet" type="Area2D" parent="SoapGauntlet"]
+position = Vector2(0.571429, 0.533333)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoapGauntlet/SoapGauntlet"]
+position = Vector2(0, -0.533333)
+shape = SubResource("RectangleShape2D_s00sm")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -236,4 +264,7 @@ texture = ExtResource("5_oe04i")
 position = Vector2(582, 18.5)
 shape = SubResource("RectangleShape2D_fl7t0")
 
+[connection signal="body_entered" from="BubbleGun/BubbleGun" to="BubbleGun" method="_on_weapon_area_body_entered"]
+[connection signal="body_entered" from="ExplubbleBomb/ExplubbleBomb" to="ExplubbleBomb" method="_on_weapon_area_body_entered"]
+[connection signal="body_entered" from="SoapGauntlet/SoapGauntlet" to="SoapGauntlet" method="_on_weapon_area_body_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

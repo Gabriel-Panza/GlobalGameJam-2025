@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyhu7m6lho6q8"]
+[gd_scene load_steps=4 format=3 uid="uid://dkcynhjqy82nh"]
 
 [ext_resource type="Script" path="res://item.gd" id="1_wuglh"]
 [ext_resource type="Texture2D" uid="uid://d25k8rrscw5ug" path="res://sprites/Acessorios/Bubble_Gum.png" id="2_6rgde"]
