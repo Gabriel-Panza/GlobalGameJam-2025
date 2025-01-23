@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnogqowa457up"]
+[gd_scene load_steps=9 format=3 uid="uid://bnogqowa457up"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_8f1ow"]
 [ext_resource type="Texture2D" uid="uid://bsauybu8g4q5a" path="res://Menu/Icons/Play_Default.png" id="2_gavoa"]
+[ext_resource type="Texture2D" uid="uid://g4x5vjxonalu" path="res://Menu/Icons/91689.jpg" id="2_hxvpa"]
 [ext_resource type="Texture2D" uid="uid://duupu2bl248bx" path="res://Menu/Icons/Play_Click.png" id="3_14epx"]
 [ext_resource type="Texture2D" uid="uid://g6brsy2thjf2" path="res://Menu/Icons/Quit_Default.png" id="4_shbha"]
 [ext_resource type="Texture2D" uid="uid://cjx1hbtabu5s2" path="res://Menu/Icons/Quit_Click.png" id="5_36p6i"]
+[ext_resource type="Texture2D" uid="uid://doiykcwu0qsnl" path="res://Menu/Icons/Options_Default.png" id="7_duqna"]
+[ext_resource type="Texture2D" uid="uid://bm780yvyvsmk5" path="res://Menu/Icons/Options_Click.png" id="8_pafmj"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -20,8 +23,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.998
 anchor_bottom = 0.994
-offset_right = 0.303955
-offset_bottom = -0.112
+offset_right = 6.30396
+offset_bottom = 9.888
+texture = ExtResource("2_hxvpa")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -47,5 +52,27 @@ layout_mode = 2
 texture_normal = ExtResource("4_shbha")
 texture_hover = ExtResource("5_36p6i")
 
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 543.0
+offset_right = 253.0
+offset_bottom = 646.0
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer3"]
+layout_mode = 2
+texture_normal = ExtResource("7_duqna")
+texture_hover = ExtResource("8_pafmj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 115.0
+offset_right = 705.0
+offset_bottom = 141.0
+bbcode_enabled = true
+text = "[b] Bubbleman and the Popcalypse! [/b]"
+
 [connection signal="pressed" from="MarginContainer/TextureButton" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="MarginContainer2/TextureButton" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="MarginContainer3/TextureButton" to="." method="_on_options_button_pressed"]
