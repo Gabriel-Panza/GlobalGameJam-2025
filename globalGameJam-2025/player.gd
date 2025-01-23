@@ -4,8 +4,8 @@ extends CharacterBody2D
 var speed: float = 300
 var original_speed: float = 300
 var velocity_vector := Vector2.ZERO
-
-var projetil = preload("res://projectile.tscn")
+var arma = "res://sprites/Weapons/Bubble_Gun.png"
+var projetil
 
 var new_position
 
@@ -93,3 +93,24 @@ func take_damage(amount):
 
 func die():
 	print("Player died")
+
+func selectWeapon():
+	print("entrou")
+	var pauseMenu = $Camera2D/CanvasLayer/HUD/PauseControl
+	pauseMenu.slots[0].set_texture(load("res://sprites/Weapons/Soap_Gauntlet.png"))
+	arma = pauseMenu.slots[0].texture.resource_path
+	print(arma)
+	match arma:
+		"res://sprites/Weapons/Bubble_Gun.png":
+			projetil = preload("res://projectile.tscn")
+		"res://sprites/Weapons/Explubble_Bomb.png":
+			projetil = preload("res://bomb.tscn")
+			atkSpeed = 3
+			ataque = 40
+			$AtkSpeed.wait_time = atkSpeed
+		"res://sprites/Weapons/Soap_Gauntlet.png":
+			atkSpeed = 0.25
+			ataque = 10
+			$AtkSpeed.wait_time = atkSpeed
+			projetil = preload("res://punch.tscn")
+	

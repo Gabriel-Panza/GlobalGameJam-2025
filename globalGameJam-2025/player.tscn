@@ -38,6 +38,7 @@ limit_right = 2050
 limit_bottom = 1600
 
 [node name="AtkSpeed" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [connection signal="timeout" from="AtkSpeed" to="." method="_on_atk_speed_timeout"]

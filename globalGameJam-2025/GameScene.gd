@@ -5,7 +5,6 @@ var limite_esquerdo_path: NodePath = "Limites/LimiteEsquerdo"
 var limite_direito_path: NodePath = "Limites/LimiteDireito"
 var limite_cima_path: NodePath = "Limites/LimiteCima"
 var limite_baixo_path: NodePath = "Limites/LimiteBaixo"
-
 # Variáveis para armazenar os limites
 var map_left: float
 var map_right: float
@@ -35,7 +34,8 @@ var timer_path: NodePath = "/root/GameScene/Player/AtkSpeed"
 
 func _ready() -> void:
 	atkSpeed_timer = get_node_or_null(timer_path)
-	
+	var player = $Player
+	player.selectWeapon()
 	# Obtenha as posições globais dos nós dos limites
 	map_left = get_node(limite_esquerdo_path).global_position.x
 	map_right = get_node(limite_direito_path).global_position.x

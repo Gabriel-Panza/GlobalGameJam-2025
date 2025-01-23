@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk3qeu16nglea"]
+[gd_scene load_steps=4 format=3 uid="uid://gip0vj1v18d2"]
 
 [ext_resource type="Script" path="res://PauseMenu.gd" id="1_2v82j"]
 [ext_resource type="Texture2D" uid="uid://bovrdh23eh723" path="res://sprites/Weapons/Bubble_Gun.png" id="2_4drt3"]
@@ -29,6 +29,7 @@ offset_bottom = 40.0
 scale = Vector2(17.48, 9.96)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu"]
+layout_mode = 0
 offset_left = 1.20137
 offset_top = 1.80723
 offset_right = 353.201
@@ -150,6 +151,7 @@ layout_mode = 2
 
 [node name="OptionsMenu" type="Panel" parent="PauseMenu"]
 visible = false
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.411902, 1)
