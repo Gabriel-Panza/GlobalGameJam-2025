@@ -55,7 +55,5 @@ func _apply_damage() -> void:
 		player.take_damage(damage)
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print(area)
 	if area.name == "Corpo":
 		_apply_damage()
-		print(player.health)
