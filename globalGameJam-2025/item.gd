@@ -1,6 +1,6 @@
 extends Area2D
 
-var value: int = 20
+var value: int = 15
 
 var pause_control_path: NodePath = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl"
 var pause_control: Control

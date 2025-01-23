@@ -41,7 +41,7 @@ func show_popup():
 		elif obj in get_tree().get_nodes_in_group("Player"):
 			speedPlayer = obj.speed
 		else:
-			speedProjectile = obj.owner.speed
+			speedProjectile = obj.speed
 		obj.speed = 0
 
 func _on_option_pressed(option: Variant) -> void:

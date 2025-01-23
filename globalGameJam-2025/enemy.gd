@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var navigation_agent = $NavigationAgent2D
+
 var speed: float = 100.0
 
 var gamescene_path: NodePath = "/root/GameScene"
@@ -9,7 +11,6 @@ var player
 
 @onready var damage_timer = $Timer
 
-var xp_reward: int = 15
 var damage: int = 15
 var health: int = 50
 
@@ -18,6 +19,9 @@ func _ready() -> void:
 	player = get_node_or_null(player_path)
 	damage_timer.connect("timeout", Callable(self, "_apply_damage"))
 	add_to_group("Inimigo")
+	
+	if navigation_agent and player:
+		navigation_agent.target_position = player.global_position
 
 func _process(_delta: float) -> void:
 	if speed > 0:
@@ -27,17 +31,11 @@ func _process(_delta: float) -> void:
 		else:
 			velocity = Vector2.ZERO
 		
-		# Move o inimigo
+		move_and_slide()
+		
+		# Verifica collisão do inimigo
 		if (damage_timer.paused):
 			damage_timer.set_paused(false)
-		var collision = move_and_collide(velocity * _delta)
-		if collision and collision.get_collider() == player:
-			if damage_timer.is_stopped():
-				_apply_damage()
-				damage_timer.start()
-		else:
-			if not damage_timer.is_stopped():
-				damage_timer.stop()
 	else:
 		damage_timer.set_paused(true)
 
@@ -61,3 +59,8 @@ func _apply_damage() -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "Corpo":
 		_apply_damage()
+		damage_timer.start()
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.name == "Corpo":
+		damage_timer.stop()

@@ -103,19 +103,70 @@ func _process(delta):
 		else:
 			shield.position = Vector2.ZERO
 
-func _create_bubblegum_particle() -> void:
-	pass
-		#Cria um efeito rosa de chiclete no chão em volta do player e adiciona uma connection pra função on_bubblegum_body_entered(body)
-
 func _on_bubblegum_body_entered(body):
 	if body.is_in_group("Inimigo"):
 		body.speed *= 0.5  # Reduz a velocidade dos inimigos em 50%
 		await get_tree().create_timer(2.0).timeout
 		body.speed *= 2.0  # Restaura a velocidade original depois de 2 segundos
 
+func _on_bubblegum_particle_timeout(bubblegum: Sprite2D):
+	if bubblegum and bubblegum.is_instance_valid():
+		bubblegum.queue_free()
+
+func _create_bubblegum_particle() -> void:
+	if itemBublegum:
+		# Cria o sprite representando o efeito de chiclete
+		var bubblegum = Sprite2D.new()
+		#bubblegum.texture = preload("res://path_to_bubblegum_texture.png")  # Substitua pelo caminho da textura do chiclete
+		bubblegum.position = position  # Define a posição inicial como a do jogador
+		bubblegum.scale = Vector2(1, 1)  # Tamanho inicial
+		bubblegum.modulate = Color(1, 0, 1, 0.7)  # Define uma cor rosa semitransparente
+
+		# Adiciona uma área de colisão para detectar inimigos
+		var collision_area = Area2D.new()
+		var collision_shape = CollisionShape2D.new()
+		collision_shape.shape = CircleShape2D.new()
+		collision_shape.shape.radius = 32  # Ajuste o raio conforme necessário
+		collision_area.add_child(collision_shape)
+		bubblegum.add_child(collision_area)
+
+		# Conecta o sinal para reduzir a velocidade dos inimigos
+		collision_area.connect("body_entered", Callable(self, "_on_bubblegum_body_entered"))
+
+		# Adiciona o efeito ao jogo
+		get_tree().root.add_child(bubblegum)
+
+		# Animação simples para desaparecer
+		var timer = Timer.new()
+		timer.wait_time = 2.0
+		timer.one_shot = true
+		timer.connect("timeout", Callable(self, "_on_bubblegum_particle_timeout"), bubblegum)
+		bubblegum.add_child(timer)
+		timer.start()
+
+func _on_soap_particle_timeout(soap: Sprite2D):
+	if soap and soap.is_instance_valid():
+		soap.queue_free()
+
 func _create_boots_particle() -> void:
-	pass
-		#Cria um efeito branco de sabão como um rastro no player
+	if itemBoots:
+		# Cria o sprite representando o efeito de sabão
+		var soap = Sprite2D.new()
+		#soap.texture = preload("res://path_to_soap_texture.png")  # Substitua pelo caminho da textura do sabão
+		soap.position = position - Vector2(0, 10)  # Posição inicial (ajuste conforme necessário)
+		soap.scale = Vector2(0.5, 0.5)  # Tamanho inicial
+		soap.modulate = Color(1, 1, 1, 0.8)  # Cor branca semitransparente
+
+		# Adiciona o efeito ao jogo
+		get_tree().root.add_child(soap)
+
+		# Animação de fade e desaparecimento
+		var fade_timer = Timer.new()
+		fade_timer.wait_time = 0.5
+		fade_timer.one_shot = true
+		fade_timer.connect("timeout", Callable(self, "_on_soap_particle_timeout"), soap)
+		soap.add_child(fade_timer)
+		fade_timer.start()
 
 func update_status_labels():
 	if player:
