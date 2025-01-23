@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bnogqowa457up"]
+[gd_scene load_steps=9 format=3 uid="uid://do7fbjct0axmq"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_8f1ow"]
 [ext_resource type="Texture2D" uid="uid://bsauybu8g4q5a" path="res://Menu/Icons/Play_Default.png" id="2_gavoa"]
@@ -18,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8f1ow")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Fundo" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.998
@@ -28,12 +28,24 @@ offset_bottom = 9.888
 texture = ExtResource("2_hxvpa")
 expand_mode = 1
 
+[node name="Titulo" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 120.0
+offset_right = 770.0
+offset_bottom = 160.0
+theme_override_colors/default_color = Color(0.701961, 0.556863, 0.960784, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 1, 1)
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[b] Bubbleman and the Popcalypse! [/b]"
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 446.0
-offset_top = 211.0
-offset_right = 626.0
-offset_bottom = 291.0
+offset_left = 450.0
+offset_top = 210.0
+offset_right = 642.0
+offset_bottom = 290.0
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer"]
 layout_mode = 2
@@ -42,37 +54,28 @@ texture_hover = ExtResource("3_14epx")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 446.0
-offset_top = 326.0
-offset_right = 626.0
-offset_bottom = 406.0
+offset_left = 450.0
+offset_top = 300.0
+offset_right = 662.0
+offset_bottom = 400.0
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer2"]
-layout_mode = 2
-texture_normal = ExtResource("4_shbha")
-texture_hover = ExtResource("5_36p6i")
-
-[node name="MarginContainer3" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 543.0
-offset_right = 253.0
-offset_bottom = 646.0
-
-[node name="TextureButton" type="TextureButton" parent="MarginContainer3"]
 layout_mode = 2
 texture_normal = ExtResource("7_duqna")
 texture_hover = ExtResource("8_pafmj")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="MarginContainer3" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 421.0
-offset_top = 115.0
-offset_right = 705.0
-offset_bottom = 141.0
-bbcode_enabled = true
-text = "[b] Bubbleman and the Popcalypse! [/b]"
+offset_left = 450.0
+offset_top = 390.0
+offset_right = 642.0
+offset_bottom = 470.0
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer3"]
+layout_mode = 2
+texture_normal = ExtResource("4_shbha")
+texture_hover = ExtResource("5_36p6i")
 
 [connection signal="pressed" from="MarginContainer/TextureButton" to="." method="_on_start_game_pressed"]
-[connection signal="pressed" from="MarginContainer2/TextureButton" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="MarginContainer3/TextureButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/TextureButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer3/TextureButton" to="." method="_on_button_2_pressed"]

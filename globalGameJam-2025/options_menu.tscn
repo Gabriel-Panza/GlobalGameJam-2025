@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://djy8vtqgqsokw"]
+[gd_scene load_steps=3 format=3 uid="uid://qmyoe8q6c30b"]
 
 [ext_resource type="Texture2D" uid="uid://g4x5vjxonalu" path="res://Menu/Icons/91689.jpg" id="1_23gn4"]
 [ext_resource type="Script" path="res://h_slider.gd" id="2_5h2ah"]
@@ -24,7 +24,19 @@ offset_left = 357.0
 offset_top = 61.0
 offset_right = 680.0
 offset_bottom = 178.0
+theme_override_font_sizes/font_size = 32
 text = "Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music Volume" type="Label" parent="."]
+layout_mode = 0
+offset_left = 361.0
+offset_top = 125.0
+offset_right = 684.0
+offset_bottom = 242.0
+text = "Music Volume
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -36,22 +48,30 @@ offset_right = 623.0
 offset_bottom = 243.0
 script = ExtResource("2_5h2ah")
 
-[node name="Label" type="Label" parent="HSlider"]
-layout_mode = 0
-offset_left = -46.0
-offset_top = 6.0
-offset_right = 277.0
-offset_bottom = 123.0
-text = "text"
+[node name="SFX Volume" type="Label" parent="."]
+offset_left = 363.0
+offset_top = 187.0
+offset_right = 686.0
+offset_bottom = 304.0
+text = "SFX Volume
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 31.0
-offset_top = 593.0
-offset_right = 92.0
-offset_bottom = 624.0
-text = "Return"
+[node name="HSlider2" type="HSlider" parent="."]
+offset_left = 409.0
+offset_top = 232.0
+offset_right = 625.0
+offset_bottom = 305.0
+script = ExtResource("2_5h2ah")
 
-[connection signal="pressed" from="Button" to="HSlider" method="_on_return_pressed"]
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 484.0
+offset_top = 307.0
+offset_right = 545.0
+offset_bottom = 338.0
+text = "Back
+"
+
+[connection signal="pressed" from="BackButton" to="HSlider" method="_on_return_pressed"]
