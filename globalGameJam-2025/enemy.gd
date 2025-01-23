@@ -28,8 +28,6 @@ func _process(_delta: float) -> void:
 			velocity = Vector2.ZERO
 		
 		# Move o inimigo
-		if (damage_timer.paused):
-			damage_timer.set_paused(false)
 		var collision = move_and_collide(velocity * _delta)
 		if collision and collision.get_collider() == player:
 			if damage_timer.is_stopped():
@@ -38,8 +36,6 @@ func _process(_delta: float) -> void:
 		else:
 			if not damage_timer.is_stopped():
 				damage_timer.stop()
-	else:
-		damage_timer.set_paused(true)
 
 func take_damage(amount):
 	health -= amount
@@ -51,9 +47,15 @@ func die() -> void:
 	if random <= 0.1:
 		gamescene.spawn_drop()
 	if player:
-		gamescene._spawn_xp("res://itemXP.tscn", position)
+		player.gain_xp(xp_reward)
 	queue_free()
 
 func _apply_damage() -> void:
 	if player:
 		player.take_damage(damage)
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	print(area)
+	if area.name == "Corpo":
+		_apply_damage()
+		print(player.health)

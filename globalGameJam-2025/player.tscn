@@ -24,11 +24,11 @@ texture = ExtResource("2_sq3ot")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_mwiyp")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Corpo" type="Area2D" parent="."]
 scale = Vector2(0.970995, 0.970995)
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corpo"]
 shape = SubResource("CapsuleShape2D_yk0ca")
 
 [node name="Camera2D" parent="." instance=ExtResource("3_yunjf")]
@@ -38,7 +38,7 @@ limit_right = 2050
 limit_bottom = 1600
 
 [node name="AtkSpeed" type="Timer" parent="."]
-wait_time = 0.001
+wait_time = 0.5
 autostart = true
 
 [connection signal="timeout" from="AtkSpeed" to="." method="_on_atk_speed_timeout"]
