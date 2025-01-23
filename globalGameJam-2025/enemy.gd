@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var navigation_agent = $NavigationAgent2D
 
 var speed: float = 100.0
-
+@onready var aparencia = $aparencia
 var gamescene_path: NodePath = "/root/GameScene"
 var gamescene
 var player_path: NodePath = "/root/GameScene/Player"
@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 			velocity = direction * speed
 		else:
 			velocity = Vector2.ZERO
-		
+		animationManager()
 		move_and_slide()
 		
 		# Verifica collisão do inimigo
@@ -64,3 +64,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.name == "Corpo":
 		damage_timer.stop()
+
+func animationManager():
+	aparencia.play("default")
