@@ -30,6 +30,12 @@ var slot2_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl/P
 var slot2: TextureRect
 var slot3_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl/PauseMenu/HBoxContainer/VBoxContainer2/HBoxContainer/Slot3"
 var slot3: TextureRect
+var slot4_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl/PauseMenu/HBoxContainer/VBoxContainer2/HBoxContainer/Slot4"
+var slot4: TextureRect
+
+var itemBublegum: bool
+var itemBoots: bool
+var itemShield: bool
 
 var slots = []
 
@@ -37,7 +43,8 @@ func _ready() -> void:
 	slot1 = get_node_or_null(slot1_path)
 	slot2 = get_node_or_null(slot2_path)
 	slot3 = get_node_or_null(slot3_path)
-	
+	slot4 = get_node_or_null(slot4_path)
+
 	player = get_node_or_null(player_path)
 	game_scene = get_node_or_null(game_scene_path)
 	pause_menu = get_node_or_null(pause_menu_path)
@@ -49,7 +56,10 @@ func _ready() -> void:
 	crit_label = get_node_or_null(crit_label_path)
 	speed_label = get_node_or_null(speed_label_path)
 	
-	slots = [slot1, slot2, slot3]
+	slots = [slot1, slot2, slot3, slot4]
+	itemBublegum = false
+	itemBoots = false
+	itemShield = false
 	
 	player.connect("stats_updated", Callable(self, "update_status_labels"))
 	
@@ -59,7 +69,13 @@ func _process(delta):
 			_unpause_game()
 		else:
 			_pause_game()
-
+	#if itemBoots:
+		#player.speed = player.speed*0.25 # Ajustar pra isso ser um efeito passivo que mantem o speed do jogador sempre com 25% mais do que a base (ao inves de incrementar a cada frame como está aí) mesmo quando ele pega um bonus dps de ter esse item. Ou seja, se o player somar 40 ao speed, ele na vdd vai somar 50 (40 + 25% de 40)
+		##Cria uma particula branca no chão que o player deixa pra tras
+	#if itemShield:
+		## Cria um escudo que se regenera a cada 20 segundos dps de perdido, que anula o proximo ataque feito contra o jogador
+	#if itemBublegum:
+		## Cria uma particula rosa no chão com colisão. Se um objeto do grupo "Inimigo" colidir com essa particula rosa, até ele sair da area de colisão da particula ele fica com o movimento reduzido em 50%
 func update_status_labels():
 	if player:
 		health_label.text = "Health: %d/%d" % [player.health, player.maxHealth]
@@ -101,10 +117,13 @@ func add_item_to_slot(item_sprite: Texture, name: String):
 		if not slot.texture:
 			if name == "itemBublegum":
 				game_scene.item_scenes.erase("res://itemBubblegum.tscn")
+				itemBublegum = true
 			if name == "itemShield":
 				game_scene.item_scenes.erase("res://itemShield.tscn")
+				itemShield = true
 			if name == "itemBoots":
 				game_scene.item_scenes.erase("res://itemBoots.tscn")
+				itemBoots = true
 			slot.texture = item_sprite
 			return
 	print("Todos os slots estão cheios!")
