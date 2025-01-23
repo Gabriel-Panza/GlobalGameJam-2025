@@ -17,7 +17,7 @@ var spawn_interval: float = 1.5
 var spawn_offset: float = 50.0
 
 # Intervalo de drop de itens
-var drop_interval: float = 30.0
+var drop_interval: float = 45.0
 
 var enemy_timer: Timer
 var drop_timer: Timer
