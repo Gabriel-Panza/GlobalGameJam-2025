@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3nai2slgl3rq"]
+
+[ext_resource type="Script" path="res://item.gd" id="1_q4ota"]
+[ext_resource type="Texture2D" uid="uid://0fuyh51bm446" path="res://sprites/Acessorios/Pop_Shield.png" id="2_gfcpl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qllp8"]
+size = Vector2(114, 116)
+
+[node name="itemShield" type="Area2D"]
+script = ExtResource("1_q4ota")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gfcpl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qllp8")

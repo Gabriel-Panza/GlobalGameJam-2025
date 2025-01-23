@@ -23,7 +23,21 @@ var speedPlayer
 var speedEnemy
 var speedProjectile
 
+# Referências aos slots
+var slot1_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl/PauseMenu/HBoxContainer/VBoxContainer2/HBoxContainer/Slot1"
+var slot1: TextureRect
+var slot2_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl/PauseMenu/HBoxContainer/VBoxContainer2/HBoxContainer/Slot2"
+var slot2: TextureRect
+var slot3_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl/PauseMenu/HBoxContainer/VBoxContainer2/HBoxContainer/Slot3"
+var slot3: TextureRect
+
+var slots = []
+
 func _ready() -> void:
+	slot1 = get_node_or_null(slot1_path)
+	slot2 = get_node_or_null(slot2_path)
+	slot3 = get_node_or_null(slot3_path)
+	
 	player = get_node_or_null(player_path)
 	game_scene = get_node_or_null(game_scene_path)
 	pause_menu = get_node_or_null(pause_menu_path)
@@ -34,6 +48,8 @@ func _ready() -> void:
 	atk_speed_label = get_node_or_null(atk_speed_label_path)
 	crit_label = get_node_or_null(crit_label_path)
 	speed_label = get_node_or_null(speed_label_path)
+	
+	slots = [slot1, slot2, slot3]
 	
 	player.connect("stats_updated", Callable(self, "update_status_labels"))
 	
@@ -79,6 +95,19 @@ func _unpause_game():
 			obj.speed = speedProjectile
 	if game_scene:
 		game_scene.resume_timers()
+
+func add_item_to_slot(item_sprite: Texture, name: String):
+	for slot in slots:
+		if not slot.texture:
+			if name == "itemBublegum":
+				game_scene.item_scenes.erase("res://itemBubblegum.tscn")
+			if name == "itemShield":
+				game_scene.item_scenes.erase("res://itemShield.tscn")
+			if name == "itemBoots":
+				game_scene.item_scenes.erase("res://itemBoots.tscn")
+			slot.texture = item_sprite
+			return
+	print("Todos os slots estão cheios!")
 
 func _on_options_button_pressed() -> void:
 	options_menu.show()

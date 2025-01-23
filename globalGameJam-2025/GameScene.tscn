@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://b6dxk82l08c5d"]
+[gd_scene load_steps=9 format=4 uid="uid://b6dxk82l08c5d"]
 
 [ext_resource type="Script" path="res://GameScene.gd" id="1_8uqw1"]
 [ext_resource type="TileSet" uid="uid://dgclrcnucqxj7" path="res://sprites/Tilesets/Chao_Parede.tres" id="2_sgk41"]
@@ -6,7 +6,16 @@
 [ext_resource type="TileSet" uid="uid://dqpgo1qlrbc0b" path="res://sprites/Tilesets/Foreground.tres" id="3_c7aac"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mb347"]
-size = Vector2(13.4846, 104.415)
+size = Vector2(7.51779, 105.708)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmgnj"]
+size = Vector2(109, 520)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ph16s"]
+size = Vector2(106, 328)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gy05"]
+size = Vector2(111, 390)
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_8uqw1")
@@ -40,25 +49,21 @@ collision_layer = 65535
 collision_mask = 65535
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/LimiteEsquerdo"]
-visible = false
-position = Vector2(-12, 240.814)
+position = Vector2(64.2216, 217.209)
 scale = Vector2(16.8173, 20.5136)
 shape = SubResource("RectangleShape2D_mb347")
 
 [node name="LimiteDireito" type="StaticBody2D" parent="Limites"]
-visible = false
 position = Vector2(1807, -35)
 disable_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/LimiteDireito"]
-visible = false
-position = Vector2(-10, 240.002)
+position = Vector2(-79.2145, 241.972)
 scale = Vector2(16.8173, 20.7936)
 shape = SubResource("RectangleShape2D_mb347")
 
 [node name="LimiteCima" type="StaticBody2D" parent="Limites"]
-visible = false
-position = Vector2(384, -952)
+position = Vector2(384, -931)
 rotation = 1.5708
 scale = Vector2(1.15315, 1.6)
 disable_mode = 1
@@ -69,13 +74,48 @@ scale = Vector2(16.8173, 19.9936)
 shape = SubResource("RectangleShape2D_mb347")
 
 [node name="LimiteBaixo" type="StaticBody2D" parent="Limites"]
-visible = false
-position = Vector2(386, 1435)
+position = Vector2(386, 1418)
 rotation = 1.5708
 scale = Vector2(1.39315, 1.6)
 disable_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/LimiteBaixo"]
-position = Vector2(-10, 241.5)
+position = Vector2(-34.151, 246.781)
 scale = Vector2(16.8173, 19.9936)
 shape = SubResource("RectangleShape2D_mb347")
+
+[node name="Objetos" type="Node" parent="Limites"]
+
+[node name="Esteira1" type="StaticBody2D" parent="Limites/Objetos"]
+position = Vector2(-1158, -544)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Esteira1"]
+position = Vector2(8, 52)
+shape = SubResource("RectangleShape2D_cmgnj")
+
+[node name="Esteira2" type="StaticBody2D" parent="Limites/Objetos"]
+position = Vector2(-960, 685)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Esteira2"]
+position = Vector2(4.5, 77)
+shape = SubResource("RectangleShape2D_cmgnj")
+
+[node name="Esteira3" type="StaticBody2D" parent="Limites/Objetos"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Esteira3"]
+position = Vector2(-445, 220)
+shape = SubResource("RectangleShape2D_ph16s")
+
+[node name="Esteira4" type="StaticBody2D" parent="Limites/Objetos"]
+position = Vector2(1472, -835)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Esteira4"]
+position = Vector2(-445, 220)
+shape = SubResource("RectangleShape2D_ph16s")
+
+[node name="Esteira5" type="StaticBody2D" parent="Limites/Objetos"]
+position = Vector2(900, 666)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Esteira5"]
+position = Vector2(-1.5, 29)
+shape = SubResource("RectangleShape2D_4gy05")

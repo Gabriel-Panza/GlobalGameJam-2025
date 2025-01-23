@@ -1,12 +1,21 @@
 extends Area2D
 
 var value: int = 20
-var type
+
+var pause_control_path: NodePath = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl"
+var pause_control: Control
+
+@onready var sprite = $Sprite2D
+
 func _ready():
-	type = name
+	pause_control = get_node_or_null(pause_control_path)
 	connect("body_entered", Callable(self, "_on_body_entered"))
 
 func _on_body_entered(body):
 	if body.name == "Player":
-		body.collect_item(value, type)
+		if name == "itemXP" or name == "itemHP" or name == "itemGold":
+			body.collect_item(value, name)
+		if name == "itemBublegum" or name == "itemShield" or name == "itemBoots":
+			if pause_control:
+				pause_control.add_item_to_slot(sprite.texture, name)
 		queue_free()

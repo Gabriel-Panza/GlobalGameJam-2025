@@ -7,6 +7,7 @@
 radius = 32.3883
 
 [node name="projectile" type="CharacterBody2D" groups=["Vivos"]]
+collision_mask = 2
 script = ExtResource("1_xt63k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -15,6 +16,7 @@ scale = Vector2(2.28125, 2.25)
 texture = ExtResource("1_c6pcf")
 
 [node name="Impact" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Impact"]
 position = Vector2(9, 0)

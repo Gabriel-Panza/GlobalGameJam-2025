@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bd3yfncty63h0"]
 
 [ext_resource type="Script" path="res://item.gd" id="1_xo32s"]
-[ext_resource type="Texture2D" uid="uid://jnpajgcnv4qn" path="res://icon.svg" id="2_we20u"]
+[ext_resource type="Texture2D" uid="uid://crbbh5rjyond6" path="res://sprites/Drops/XP_Soap.png" id="2_0pmq1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qllp8"]
 size = Vector2(114, 116)
@@ -10,7 +10,7 @@ size = Vector2(114, 116)
 script = ExtResource("1_xo32s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_we20u")
+texture = ExtResource("2_0pmq1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qllp8")

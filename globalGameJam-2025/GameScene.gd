@@ -27,7 +27,10 @@ var timer_path: NodePath = "/root/GameScene/Player/AtkSpeed"
 
 @export var item_scenes: Array[String] = [
 	"res://itemHP.tscn",
-	"res://itemGold.tscn"
+	"res://itemGold.tscn",
+	"res://itemShield.tscn",
+	"res://itemBubblegum.tscn",
+	"res://itemBoots.tscn"
 ]
 
 func _ready() -> void:
@@ -112,6 +115,19 @@ func _spawn_entity(resource_path: String):
 			var entity = resource.instantiate()
 			entity.position = spawn_position
 			add_child(entity)
+
+func _spawn_xp(xp_scene_path: String, position: Vector2) -> void:
+	# Carrega o arquivo da cena de XP
+	var xp_scene = load(xp_scene_path)
+	if xp_scene:
+		# Instancia a cena de XP
+		var xp_instance = xp_scene.instantiate()
+
+		# Define a posição inicial da XP
+		xp_instance.position = position
+
+		# Adiciona ao `GameScene` ou ao nó pai desejado
+		add_child(xp_instance)
 
 func pause_timers():
 	if enemy_timer.is_paused() == false:

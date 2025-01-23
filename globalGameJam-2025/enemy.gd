@@ -51,7 +51,7 @@ func die() -> void:
 	if random <= 0.1:
 		gamescene.spawn_drop()
 	if player:
-		player.gain_xp(xp_reward)
+		gamescene._spawn_xp("res://itemXP.tscn", position)
 	queue_free()
 
 func _apply_damage() -> void:

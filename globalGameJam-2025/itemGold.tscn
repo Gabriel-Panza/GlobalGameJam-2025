@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccrc1um0jten6"]
 
 [ext_resource type="Script" path="res://item.gd" id="1_rb1wb"]
-[ext_resource type="Texture2D" uid="uid://d2b4xokobvp2n" path="res://sprites/Acessorios/Soappy_Boots.png" id="2_vmoef"]
+[ext_resource type="Texture2D" uid="uid://d2vh14j4g6ovn" path="res://sprites/Drops/Bubloon.png" id="2_hheqm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qllp8"]
 size = Vector2(114, 116)
@@ -10,7 +10,7 @@ size = Vector2(114, 116)
 script = ExtResource("1_rb1wb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_vmoef")
+texture = ExtResource("2_hheqm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qllp8")
