@@ -23,3 +23,7 @@ func _on_impact_body_entered(body):
 		else:
 			body.take_damage(player.ataque)
 		queue_free()
+
+
+func _on_fuse_timeout() -> void:
+	pass # Replace with function body.

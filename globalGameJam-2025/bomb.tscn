@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cy2nhaekmnsic"]
+[gd_scene load_steps=5 format=3 uid="uid://cy2nhaekmnsic"]
 
 [ext_resource type="Script" path="res://bomb.gd" id="1_jf8w7"]
 [ext_resource type="Texture2D" uid="uid://c58lgucib0q8h" path="res://sprites/Weapons/Explubble_Bomb.png" id="2_mumt1"]
+[ext_resource type="Texture2D" uid="uid://bh1gfqxwab3ep" path="res://sprites/Weapons/Impact_Frame_Placeholder.png" id="3_kr7ui"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jglgo"]
-radius = 289.389
+radius = 156.029
 
 [node name="Bomb" type="CharacterBody2D" groups=["Vivos"]]
 collision_mask = 3
@@ -21,4 +22,13 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Impact"]
 shape = SubResource("CircleShape2D_jglgo")
 
+[node name="ImpactFramePlaceholder" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0.499992, -1.49998)
+scale = Vector2(12.0938, 10.9063)
+texture = ExtResource("3_kr7ui")
+
+[node name="Fuse" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Impact" to="." method="_on_impact_body_entered"]
+[connection signal="timeout" from="Fuse" to="." method="_on_fuse_timeout"]

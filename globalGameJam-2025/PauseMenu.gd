@@ -104,7 +104,7 @@ func _process(delta):
 			shield.position = Vector2.ZERO
 
 func _create_bubblegum_particle() -> void:
-	if itemBublegum:
+	pass
 		#Cria um efeito rosa de chiclete no chão em volta do player e adiciona uma connection pra função on_bubblegum_body_entered(body)
 
 func _on_bubblegum_body_entered(body):
@@ -114,7 +114,7 @@ func _on_bubblegum_body_entered(body):
 		body.speed *= 2.0  # Restaura a velocidade original depois de 2 segundos
 
 func _create_boots_particle() -> void:
-	if itemBoots:
+	pass
 		#Cria um efeito branco de sabão como um rastro no player
 
 func update_status_labels():

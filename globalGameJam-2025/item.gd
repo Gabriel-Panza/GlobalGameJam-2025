@@ -10,6 +10,7 @@ var pause_control: Control
 func _ready():
 	pause_control = get_node_or_null(pause_control_path)
 	connect("body_entered", Callable(self, "_on_body_entered"))
+	add_to_group("Escudo")
 
 func _on_body_entered(body):
 	if body.name == "Player":
