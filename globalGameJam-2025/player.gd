@@ -8,7 +8,7 @@ var pause_control_path: NodePath = "/root/GameScene/Player/Camera2D/CanvasLayer/
 var pause_control: Control
 var arma
 var projetil
-
+@onready var aparencia = $Aparencia
 var new_position
 
 # Variaveis de HUD
@@ -43,6 +43,16 @@ var weapon_data = {
 func _ready() -> void:
 	pause_control = get_node_or_null(pause_control_path)
 
+func animationManager():
+	if velocity_vector.x != 0 or velocity_vector.y != 0:
+		aparencia.play("walk")
+		if velocity_vector.x < 0:
+			aparencia.flip_h = true
+		else:
+			aparencia.flip_h = false
+	else:
+		aparencia.play("idle")
+
 func _process(delta: float) -> void:
 	if speed > 0:
 		velocity_vector.x = 0
@@ -59,6 +69,7 @@ func _process(delta: float) -> void:
 		velocity_vector = velocity_vector.normalized() * speed
 		new_position = position + velocity_vector * delta
 		position = new_position
+		animationManager()
 		move_and_slide()
 
 func gain_xp(amount: int) -> void:
