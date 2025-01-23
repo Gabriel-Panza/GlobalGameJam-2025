@@ -27,7 +27,7 @@ func _ready() -> void:
 	player = get_node_or_null(player_path)
 	game_scene = get_node_or_null(game_scene_path)
 	pause_menu = get_node_or_null(pause_menu_path)
-	options_menu = get_node_or_null(pause_menu_path)
+	options_menu = get_node_or_null(options_menu_path)
 	
 	health_label = get_node_or_null(health_label_path)
 	attack_label = get_node_or_null(attack_label_path)

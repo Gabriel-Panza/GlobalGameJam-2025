@@ -28,6 +28,8 @@ func _process(_delta: float) -> void:
 			velocity = Vector2.ZERO
 		
 		# Move o inimigo
+		if (damage_timer.paused):
+			damage_timer.set_paused(false)
 		var collision = move_and_collide(velocity * _delta)
 		if collision and collision.get_collider() == player:
 			if damage_timer.is_stopped():
@@ -36,6 +38,8 @@ func _process(_delta: float) -> void:
 		else:
 			if not damage_timer.is_stopped():
 				damage_timer.stop()
+	else:
+		damage_timer.set_paused(true)
 
 func take_damage(amount):
 	health -= amount

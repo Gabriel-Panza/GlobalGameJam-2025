@@ -31,20 +31,24 @@ layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Start Game"]
 layout_mode = 0
-offset_top = 15.0
-offset_right = 176.0
-offset_bottom = 65.0
+offset_top = 17.0
+offset_right = 180.0
+offset_bottom = 67.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0, 1, 1)
 theme_override_constants/outline_size = 4
-theme_override_font_sizes/italics_font_size = 29
+theme_override_font_sizes/bold_italics_font_size = 28
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
 bbcode_enabled = true
-text = "[i] Start Game [/i]"
+text = "[b][i] Start Game [/i][/b]"
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 444.0
+offset_left = 446.0
 offset_top = 326.0
-offset_right = 624.0
-offset_bottom = 410.0
+offset_right = 626.0
+offset_bottom = 406.0
 
 [node name="Button2" type="Button" parent="MarginContainer2"]
 layout_mode = 2
@@ -57,14 +61,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -90.0
-offset_top = -27.0
-offset_right = 90.0
-offset_bottom = 57.0
+offset_top = -25.0
+offset_right = 86.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/bold_italics_font_size = 28
 theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
 bbcode_enabled = true
-text = "[i] Quit Game [/i]"
+text = "[b][i] Quit Game [/i][/b]"
 
 [connection signal="pressed" from="MarginContainer/Start Game" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="MarginContainer2/Button2" to="." method="_on_button_2_pressed"]
