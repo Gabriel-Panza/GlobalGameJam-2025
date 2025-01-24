@@ -98,7 +98,16 @@ func _on_atk_speed_timeout():
 	if projetil:
 		var tiro = projetil.instantiate()
 		tiro.position = position
-		if not tiro.is_in_group("Punch"):
+		if tiro.is_in_group("Punch"):
+			tiro.add_to_group("PunchEsquerdo")
+			var tiro2 = projetil.instantiate()
+			tiro2.add_to_group("PunchDireito")
+			tiro2.position = position
+			owner.add_child(tiro2)
+		elif tiro.is_in_group("Bomb"):
+			owner.add_child(tiro)
+			return
+		else:
 			tiro.direction = (position - get_global_mouse_position()).normalized()
 		owner.add_child(tiro)
 
@@ -152,9 +161,9 @@ func selectWeapon():
 		"res://punch.tscn":
 			pause_control.slots[0].texture = load(weapon_data[arma])
 			projetil = preload("res://punch.tscn")
-			ataque = 10
+			ataque = 8
 			original_ataque = 10
-			$AtkSpeed.wait_time = 0.4
+			$AtkSpeed.wait_time = 0.5
 			$AtkSpeed.set_paused(true)
 			if tela_inicial:
 				$"../BubbleGun/BubbleGun2".set_modulate(Color.WHITE)

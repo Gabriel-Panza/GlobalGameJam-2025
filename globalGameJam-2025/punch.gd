@@ -7,47 +7,87 @@ var player
 # Variáveis para o movimento em arco
 var start_position: Vector2 = Vector2.ZERO
 var end_position: Vector2 = Vector2.ZERO
+var start_position2: Vector2 = Vector2.ZERO
+var end_position2: Vector2 = Vector2.ZERO
 var control_point: Vector2 = Vector2.ZERO
-var elapsed_time: float = 0.0  # Tempo acumulado
-var duration: float = 1.0  # Duração do movimento em segundos
-var curve_amplitude: float = 100.0  # Amplitude fixa da curva
+var control_point2: Vector2 = Vector2.ZERO
+var elapsed_time: float = 0.0
+var duration: float = 0.8
+var curve_amplitude: float = 100.0
+
+@onready var sprite = $Sprite2D
 
 func _ready() -> void:
 	player = get_node_or_null(player_path)
 	if player:
 		var mouse_position = get_global_mouse_position()
-		start_position = player.global_position + Vector2(-50, 0).rotated(player.rotation)
-		end_position = player.global_position + Vector2(50, 0).rotated(player.rotation)
-
-		# Direção normalizada do jogador para o mouse
-		var direction_to_mouse = (mouse_position - player.global_position).normalized()
-
-		# Calcula o ponto de controle com uma amplitude fixa
-		control_point = (start_position + end_position) / 2 + direction_to_mouse * curve_amplitude
-
+		_calculate_swing_positions(mouse_position)
 		position = start_position
-
-		# Configurar a rotação inicial do sprite
-		look_at(mouse_position)
-
+		
+	if is_in_group("PunchDireito"):
+		look_at(control_point)
+	
 func _physics_process(delta: float) -> void:
 	if speed > 0:
 		if elapsed_time < duration:
 			elapsed_time += delta
 			var t = elapsed_time / duration
-			# Calcula a posição ao longo de uma curva de Bézier quadrática
-			position = calculate_bezier(t, start_position, control_point, end_position)
-
-			# Atualiza a rotação do sprite para acompanhar o movimento
-			if t < 1.0:
-				var next_position = calculate_bezier(t + delta / duration, start_position, control_point, end_position)
-				look_at(next_position)
+			
+			# Primeiro projétil
+			if is_in_group("PunchEsquerdo"):
+				# Primeiro projétil
+				var current_position = calculate_bezier(t, start_position, control_point, control_point)
+				position = current_position
+			else:
+				# Segundo projétil
+				var current_position2 = calculate_bezier(t, start_position2, control_point2, control_point2)
+				position = current_position2
 		else:
 			queue_free()
 
 func calculate_bezier(t: float, p0: Vector2, p1: Vector2, p2: Vector2) -> Vector2:
 	# Fórmula da curva de Bézier quadrática
-	return (1 - t) * (1 - t) * p0 + 3 * (1 - t) * t * p1 + t * t * p2
+	return (1 - t) * (1 - t) * p0 + 2 * (1 - t) * t * p1 + t * t * p2
+
+func _calculate_swing_positions(mouse_position: Vector2) -> void:
+	var direction = (mouse_position - player.global_position).normalized()
+	var angle = rad_to_deg(direction.angle())
+
+	if angle > 135 or angle <= -135:
+		# Mouse está para a esquerda
+		start_position = player.global_position + Vector2(0, -75)
+		start_position2 = player.global_position + Vector2(0, 75)
+		control_point = player.global_position + Vector2(-200, 0)
+		control_point2 = player.global_position + Vector2(-200, 0)
+		if is_in_group("PunchDireito"):
+			rotation_degrees = 30
+			scale.x *= -1
+	elif angle > 45 and angle <= 135:
+		# Mouse está para baixo
+		start_position = player.global_position + Vector2(-75, 0)
+		start_position2 = player.global_position + Vector2(75, 0)
+		control_point = player.global_position + Vector2(0, 150)
+		control_point2 = player.global_position + Vector2(0, 150)
+		if is_in_group("PunchEsquerdo"):
+			rotation_degrees = -30
+	elif angle >= -45 and angle <= 45:
+		# Mouse está para a direita
+		start_position = player.global_position + Vector2(0, 75)
+		start_position2 = player.global_position + Vector2(0, -75)
+		control_point = player.global_position + Vector2(150, 0)
+		control_point2 = player.global_position + Vector2(150, 0)
+		if is_in_group("PunchEsquerdo"):
+			rotation_degrees = 60
+			scale.y *= -1
+	elif angle > -135 and angle < -45:
+		# Mouse está para cima
+		start_position = player.global_position + Vector2(75, 0)
+		start_position2 = player.global_position + Vector2(-75, 0)
+		control_point = player.global_position + Vector2(0, -150)
+		control_point2 = player.global_position + Vector2(0, -150)
+		if is_in_group("PunchEsquerdo"):
+			rotation_degrees = 135
+			scale.x *= -1
 
 func _on_impact_body_entered(body):
 	if body.is_in_group("Inimigo"):

@@ -35,7 +35,10 @@ Gold=""
 HP=""
 Acessorios=""
 MrBubbles=""
+PunchEsquerdo=""
+PunchDireito=""
 Punch=""
+Bomb=""
 
 [input]
 

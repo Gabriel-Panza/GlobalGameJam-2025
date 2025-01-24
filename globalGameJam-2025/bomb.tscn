@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_jglgo"]
 radius = 156.029
 
-[node name="Bomb" type="CharacterBody2D" groups=["Vivos"]]
+[node name="Bomb" type="CharacterBody2D" groups=["Bomb", "Vivos"]]
 collision_mask = 3
 script = ExtResource("1_jf8w7")
 
