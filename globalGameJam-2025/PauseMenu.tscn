@@ -1,7 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk3qeu16nglea"]
+[gd_scene load_steps=9 format=3 uid="uid://bk3qeu16nglea"]
 
 [ext_resource type="Script" path="res://PauseMenu.gd" id="1_2v82j"]
 [ext_resource type="Texture2D" uid="uid://bovrdh23eh723" path="res://sprites/Weapons/Bubble_Gun.png" id="2_4drt3"]
+[ext_resource type="Texture2D" uid="uid://w3qvj3n8ltk" path="res://Menu/GameOver_Screen.png" id="3_528pr"]
+[ext_resource type="Texture2D" uid="uid://cxcf1xhvbid68" path="res://Menu/Icons/Retry.png" id="4_7tv21"]
+[ext_resource type="Texture2D" uid="uid://bd66rgtqtbepa" path="res://Menu/Icons/Retry_Click.png" id="5_msqgg"]
+[ext_resource type="Texture2D" uid="uid://cjx1hbtabu5s2" path="res://Menu/Icons/Quit_Click.png" id="6_kqq57"]
+[ext_resource type="Texture2D" uid="uid://g6brsy2thjf2" path="res://Menu/Icons/Quit_Default.png" id="7_ir7mm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_428n7"]
 bg_color = Color(0.2, 0.239216, 0.270588, 1)
@@ -206,7 +211,49 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 12
 text = "Back"
 
+[node name="GameOver" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -231.0
+offset_top = -114.0
+offset_right = 921.0
+offset_bottom = 534.0
+
+[node name="Fundo" type="TextureRect" parent="GameOver"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.998
+anchor_bottom = 0.994
+offset_right = 6.30396
+offset_bottom = 9.888
+texture = ExtResource("3_528pr")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver"]
+offset_left = 67.0
+offset_top = 290.0
+offset_right = 259.0
+offset_bottom = 370.0
+
+[node name="TextureButton" type="TextureButton" parent="GameOver/MarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_7tv21")
+texture_hover = ExtResource("5_msqgg")
+
+[node name="MarginContainer2" type="MarginContainer" parent="GameOver"]
+offset_left = 67.0
+offset_top = 380.0
+offset_right = 279.0
+offset_bottom = 480.0
+
+[node name="TextureButton" type="TextureButton" parent="GameOver/MarginContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("6_kqq57")
+texture_hover = ExtResource("7_ir7mm")
+
 [connection signal="pressed" from="PauseMenu/HBoxContainer/VBoxContainer/ResumeButton" to="." method="_unpause_game"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="PauseMenu/OptionsMenu/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="GameOver/MarginContainer/TextureButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="GameOver/MarginContainer2/TextureButton" to="." method="_on_hub_button_pressed"]

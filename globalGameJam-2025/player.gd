@@ -6,6 +6,8 @@ var original_speed: float = 300
 var velocity_vector := Vector2.ZERO
 var pause_control_path: NodePath = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl"
 var pause_control: Control
+var game_over_path: NodePath = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl/GameOver"
+var game_over: Panel
 var arma
 var projetil
 @onready var aparencia = $Aparencia
@@ -44,6 +46,7 @@ var weapon_data = {
 
 func _ready() -> void:
 	pause_control = get_node_or_null(pause_control_path)
+	game_over = get_node_or_null(game_over_path)
 
 func animationManager():
 	if velocity_vector.x != 0 or velocity_vector.y != 0:
@@ -112,7 +115,7 @@ func die():
 	GameState.gold += gold
 	GameState.arma = arma
 	GameState.save_game()
-	get_tree().change_scene_to_file("res://tela_inicial.tscn")
+	game_over.visible = true
 
 func selectWeapon():
 	match arma:
