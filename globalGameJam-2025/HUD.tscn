@@ -14,6 +14,7 @@ bg_color = Color(0.96, 0, 0, 1)
 script = ExtResource("1_esuf2")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = 1093.0
 offset_top = -38.0
 offset_right = 1236.0
@@ -24,6 +25,7 @@ theme_override_font_sizes/font_size = 30
 text = "Level: 1"
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
 offset_top = -37.0001
 offset_right = 84.0
 offset_bottom = -10.0001

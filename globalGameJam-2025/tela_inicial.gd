@@ -10,7 +10,7 @@ func _ready() -> void:
 	GameState.load_game()
 	label3 = get_node_or_null(label3_path)
 	if label3:
-		label3.position.y -= 46
+		label3.position.y -= 82
 	player = get_node_or_null(player_path)
 	if player:
 		player.tela_inicial = true
