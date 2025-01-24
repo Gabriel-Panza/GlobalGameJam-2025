@@ -8,7 +8,12 @@ func _ready() -> void:
 	GameState.load_game()
 	player = get_node_or_null(player_path)
 	if player:
+		player.tela_inicial = true
 		player.gold = GameState.gold
+		player.emit_signal("gold_updated", player.gold)
+		player.arma = GameState.arma
+		player.selectWeapon()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

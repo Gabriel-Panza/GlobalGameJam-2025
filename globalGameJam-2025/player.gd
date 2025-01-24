@@ -34,6 +34,8 @@ signal hp_updated(health, maxHealth)
 signal gold_updated(gold)
 signal stats_updated()
 
+var tela_inicial: bool = false
+
 var weapon_data = {
 	"res://projectile.tscn": "res://sprites/Weapons/Bubble_Gun.png",
 	"res://bomb.tscn": "res://sprites/Weapons/Explubble_Bomb.png",
@@ -97,6 +99,7 @@ func take_damage(amount):
 	var shield = get_node_or_null("/root/GameScene/Player/Shield")
 	if shield:
 		remove_child(shield)
+		pause_control.shield_timer.set_paused(false)
 		pause_control.shield_timer.start()
 		return
 	health -= amount
@@ -107,6 +110,7 @@ func take_damage(amount):
 
 func die():
 	GameState.gold += gold
+	GameState.arma = arma
 	GameState.save_game()
 	get_tree().change_scene_to_file("res://tela_inicial.tscn")
 
@@ -119,6 +123,10 @@ func selectWeapon():
 			original_ataque = 25
 			$AtkSpeed.wait_time = 1
 			$AtkSpeed.set_paused(true)
+			if tela_inicial:
+				$"../BubbleGun/BubbleGun2".set_modulate(Color.TRANSPARENT)
+				$"../ExplubbleBomb/ExplubbleBomb2".set_modulate(Color.WHITE)
+				$"../SoapGauntlet/SoapGauntlet2".set_modulate(Color.WHITE)
 
 		"res://bomb.tscn":
 			pause_control.slots[0].texture = load(weapon_data[arma])
@@ -127,6 +135,10 @@ func selectWeapon():
 			original_ataque = 40
 			$AtkSpeed.wait_time = 3
 			$AtkSpeed.set_paused(true)
+			if tela_inicial:
+				$"../BubbleGun/BubbleGun2".set_modulate(Color.WHITE)
+				$"../ExplubbleBomb/ExplubbleBomb2".set_modulate(Color.TRANSPARENT)
+				$"../SoapGauntlet/SoapGauntlet2".set_modulate(Color.WHITE)
 
 		"res://punch.tscn":
 			pause_control.slots[0].texture = load(weapon_data[arma])
@@ -135,4 +147,8 @@ func selectWeapon():
 			original_ataque = 10
 			$AtkSpeed.wait_time = 0.4
 			$AtkSpeed.set_paused(true)
+			if tela_inicial:
+				$"../BubbleGun/BubbleGun2".set_modulate(Color.WHITE)
+				$"../ExplubbleBomb/ExplubbleBomb2".set_modulate(Color.WHITE)
+				$"../SoapGauntlet/SoapGauntlet2".set_modulate(Color.TRANSPARENT)
 	GameState.arma = arma

@@ -4,7 +4,7 @@ extends Node
 var gold
 var arma
 
-var save_file_path = "user://save_data.json"
+var save_file_path = "res://save_data.json"
 
 # Função para salvar os dados
 func save_game():

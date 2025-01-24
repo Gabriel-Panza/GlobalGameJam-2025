@@ -41,7 +41,8 @@ var slots = []
 
 var bubblegum_timer: Timer
 var boots_timer: Timer
-var shield_timer
+var shield_timer: Timer
+var shield_duration_timer: Timer
 
 func _ready() -> void:
 	slot1 = get_node_or_null(slot1_path)
@@ -73,19 +74,14 @@ func _ready() -> void:
 	shield_timer.set_paused(true)
 	player.add_child(shield_timer)
 	
-	bubblegum_timer = Timer.new()
-	bubblegum_timer.set_wait_time(5.0)
-	bubblegum_timer.set_one_shot(false)
-	bubblegum_timer.connect("timeout", Callable(self, "_create_bubblegum_particle"))
-	bubblegum_timer.set_paused(true)
-	player.add_child(bubblegum_timer)
-	
-	boots_timer = Timer.new()
-	boots_timer.set_wait_time(0.5)
-	boots_timer.set_one_shot(false)
-	boots_timer.connect("timeout", Callable(self, "_create_boots_particle"))
-	boots_timer.set_paused(true)
-	player.add_child(boots_timer)
+	 # Configuração do timer de duração do escudo
+	shield_duration_timer = Timer.new()
+	shield_duration_timer.name = "EscudoDuração"
+	shield_duration_timer.set_wait_time(10.0)  # O escudo dura 10 segundos
+	shield_duration_timer.set_one_shot(true)  # Ele é de uso único por ativação
+	shield_duration_timer.connect("timeout", Callable(self, "_remove_shield"))
+	shield_duration_timer.set_paused(true)
+	player.add_child(shield_duration_timer)
 	
 	player.connect("stats_updated", Callable(self, "update_status_labels"))
 	
@@ -98,12 +94,23 @@ func _process(delta):
 
 func create_shield():
 	if itemShield:
-		shield_timer.set_paused(false)
 		var shield = load("res://itemShield.tscn").instantiate()
 		shield.name = "Shield"
 		shield.z_index = 2
 		shield.position = Vector2.ZERO
+		shield_duration_timer.start()  # Iniciar a contagem de duração do escudo
+		shield_timer.set_paused(true)  # Pausar o intervalo enquanto o escudo está ativo
 		player.add_child(shield)
+
+func _remove_shield() -> void:
+	var shield = get_node_or_null("/root/GameScene/Player/Shield")
+	if shield:
+		player.remove_child(shield)
+	shield_timer.set_paused(false)
+	shield_timer.start()
+
+func on_timeout_shield() -> void:
+	create_shield()
 
 func update_status_labels():
 	if player:
@@ -149,11 +156,3 @@ func _on_back_button_pressed() -> void:
 
 func _on_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://main_menu.tscn")
-
-func on_timeout_shield() -> void:
-	var shield = get_node_or_null("/root/GameScene/Player/Shield")
-	if shield:
-		player.remove_child(shield)
-		shield_timer.start()
-	else:
-		create_shield()

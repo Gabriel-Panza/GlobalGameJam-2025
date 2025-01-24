@@ -111,8 +111,8 @@ func is_within_map_bounds(position: Vector2) -> bool:
 
 func clamp_position_to_bounds(position: Vector2) -> Vector2:
 	# Ajusta a posição para ficar dentro dos limites do mapa
-	position.x = clamp(position.x, map_left+300, map_right-300)
-	position.y = clamp(position.y, map_top+300, map_bottom-300)
+	position.x = clamp(position.x, map_left+333, map_right-333)
+	position.y = clamp(position.y, map_top+225, map_bottom-225)
 	return position
 
 func spawn_enemy():

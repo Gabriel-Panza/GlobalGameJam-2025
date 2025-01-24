@@ -28,12 +28,12 @@ func _process(_delta: float) -> void:
 		if player:
 			# Atualizar a posição do alvo no NavigationAgent2D
 			navigation_agent.target_position = player.global_position
-
+			
 			# Obter a próxima posição no caminho e calcular direção
 			var next_position = navigation_agent.get_next_path_position()
 			var direction = (next_position - global_position).normalized()
 			velocity = direction * speed
-
+		
 		move_and_slide()
 		animationManager()
 		
