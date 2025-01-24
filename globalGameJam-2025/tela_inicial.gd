@@ -2,10 +2,15 @@ extends Node2D
 
 var player_path: NodePath = "/root/GameScene/Player"
 var player
+var label3_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/Label3"
+var label3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameState.load_game()
+	label3 = get_node_or_null(label3_path)
+	if label3:
+		label3.position.y -= 46
 	player = get_node_or_null(player_path)
 	if player:
 		player.tela_inicial = true

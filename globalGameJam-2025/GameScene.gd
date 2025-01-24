@@ -43,11 +43,14 @@ var cronometro_timer_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/Cro
 var cronometro_timer
 var cronometro_label_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/Cronometro"
 var cronometro_label
+var label2_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/Label2"
+var label2
+var label2_progress_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/ProgressBar2"
+var label2_progress
 
 func _ready() -> void:
-	cronometro_label = get_node_or_null(cronometro_label_path)
-	if cronometro_label:
-		cronometro_label.visible  = true
+	adaptHUD()
+	
 	cronometro_timer = get_node_or_null(cronometro_timer_path)
 	cronometro_timer.set_wait_time(1.0)
 	cronometro_timer.set_one_shot(false)
@@ -84,6 +87,17 @@ func _ready() -> void:
 	drop_timer.autostart = true
 	drop_timer.connect("timeout", Callable(self, "spawn_drop"))
 	add_child(drop_timer)
+
+func adaptHUD() -> void:
+	cronometro_label = get_node_or_null(cronometro_label_path)
+	if cronometro_label:
+		cronometro_label.visible = true
+	label2 = get_node_or_null(label2_path)
+	if label2:
+		label2.visible  = true
+	label2_progress = get_node_or_null(label2_progress_path)
+	if label2_progress:
+		label2_progress.visible = true
 
 func _update_cronometro_display(time_text: String) -> void:
 	if cronometro_label:
