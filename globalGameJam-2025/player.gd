@@ -17,8 +17,8 @@ var original_health = 200
 var maxHealth = 200
 var original_maxHealth = 200
 var gold = 0
-var ataque = 20
-var original_ataque = 20
+var ataque = 25
+var original_ataque = 25
 var critico = 0
 var original_critico = 0
 var atkSpeed = 1
@@ -77,7 +77,7 @@ func gain_xp(amount: int) -> void:
 	emit_signal("xp_updated", current_xp, xp_to_next_level)
 
 	# Verifica se o jogador subiu de nível
-	while current_xp >= xp_to_next_level:
+	if current_xp >= xp_to_next_level:
 		current_xp -= xp_to_next_level
 		level_up()
 
@@ -93,24 +93,11 @@ func _on_atk_speed_timeout():
 		tiro.direction = (position - get_global_mouse_position()).normalized()
 		owner.add_child(tiro)
 
-func collect_item(value, type):
-	if type == "itemGold":
-		gold += value
-		emit_signal("gold_updated", gold)
-	if type == "itemXP":
-		gain_xp(value)
-	if type == "itemHP":
-		if health+value <= maxHealth:
-			health += value
-		else:
-			health = maxHealth
-		emit_signal("hp_updated", health, maxHealth)
-	emit_signal("stats_updated")
-
 func take_damage(amount):
-	var shield = get_node_or_null("/root/GameScene/Player/itemShield")
+	var shield = get_node_or_null("/root/GameScene/Player/Shield")
 	if shield:
-		shield.queue_free()
+		remove_child(shield)
+		pause_control.shield_timer.start()
 		return
 	health -= amount
 	emit_signal("hp_updated", health, maxHealth)
@@ -119,15 +106,17 @@ func take_damage(amount):
 		die()
 
 func die():
-	print("Player died")
+	GameState.gold += gold
+	GameState.save_game()
+	get_tree().change_scene_to_file("res://tela_inicial.tscn")
 
 func selectWeapon():
 	match arma:
 		"res://projectile.tscn":
 			pause_control.slots[0].texture = load(weapon_data[arma])
 			projetil = preload("res://projectile.tscn")
-			ataque = 20
-			original_ataque = 20
+			ataque = 25
+			original_ataque = 25
 			$AtkSpeed.wait_time = 1
 			$AtkSpeed.set_paused(true)
 
@@ -146,4 +135,4 @@ func selectWeapon():
 			original_ataque = 10
 			$AtkSpeed.wait_time = 0.4
 			$AtkSpeed.set_paused(true)
-	get_tree().set_meta("arma", arma)
+	GameState.arma = arma

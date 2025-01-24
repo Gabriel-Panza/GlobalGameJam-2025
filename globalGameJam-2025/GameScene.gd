@@ -5,6 +5,7 @@ var limite_esquerdo_path: NodePath = "Limites/LimiteEsquerdo"
 var limite_direito_path: NodePath = "Limites/LimiteDireito"
 var limite_cima_path: NodePath = "Limites/LimiteCima"
 var limite_baixo_path: NodePath = "Limites/LimiteBaixo"
+
 # Variáveis para armazenar os limites
 var map_left: float
 var map_right: float
@@ -26,6 +27,8 @@ var player
 var timer_path: NodePath = "/root/GameScene/Player/AtkSpeed"
 var player_path: NodePath = "/root/GameScene/Player"
 
+var spawn_position
+
 @export var item_scenes: Array[String] = [
 	"res://itemHP.tscn",
 	"res://itemGold.tscn",
@@ -34,10 +37,27 @@ var player_path: NodePath = "/root/GameScene/Player"
 	"res://itemBoots.tscn"
 ]
 
+# Tempo total em segundos (30 minutos)
+var total_time: int = 30 * 60
+var cronometro_timer_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/Cronometro/Timer"
+var cronometro_timer
+var cronometro_label_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/Cronometro"
+var cronometro_label
+
 func _ready() -> void:
+	cronometro_label = get_node_or_null(cronometro_label_path)
+	if cronometro_label:
+		cronometro_label.visible  = true
+	cronometro_timer = get_node_or_null(cronometro_timer_path)
+	cronometro_timer.set_wait_time(1.0)
+	cronometro_timer.set_one_shot(false)
+	cronometro_timer.connect("timeout", Callable(self, "_update_cronometro"))
+	cronometro_timer.start()
+	add_child(cronometro_timer)
+	
 	player = get_node_or_null(player_path)
 	if player:
-		player.arma = get_tree().get_meta("arma")
+		player.arma = GameState.arma
 		player.selectWeapon()
 	atkSpeed_timer = get_node_or_null(timer_path)
 	if atkSpeed_timer:
@@ -57,7 +77,6 @@ func _ready() -> void:
 	enemy_timer.connect("timeout", Callable(self, "spawn_enemy"))
 	add_child(enemy_timer)
 
-	
 	# Cria e configura o Timer para drops de itens
 	drop_timer = Timer.new()
 	drop_timer.wait_time = drop_interval
@@ -66,25 +85,47 @@ func _ready() -> void:
 	drop_timer.connect("timeout", Callable(self, "spawn_drop"))
 	add_child(drop_timer)
 
+func _update_cronometro_display(time_text: String) -> void:
+	if cronometro_label:
+		cronometro_label.text = "Time: " + time_text
+
+func _update_cronometro() -> void:
+	total_time -= 1
+
+	# Verifica se é o momento de disparar um evento
+	# if total_time % (5 * 60) == 0:
+		#trigger_event()
+
+	var minutes = total_time / 60
+	var seconds = total_time % 60
+	var formatted_time = "%02d:%02d" % [minutes, seconds]
+	_update_cronometro_display(formatted_time)
+
+	# Verifica se o tempo acabou
+	if total_time <= 0:
+		cronometro_timer.stop()
+		player.die()
 
 func is_within_map_bounds(position: Vector2) -> bool:
 	return position.x >= map_left and position.x <= map_right and position.y >= map_top and position.y <= map_bottom
 
 func clamp_position_to_bounds(position: Vector2) -> Vector2:
 	# Ajusta a posição para ficar dentro dos limites do mapa
-	position.x = clamp(position.x, map_left+150, map_right-150)
-	position.y = clamp(position.y, map_top+150, map_bottom-150)
+	position.x = clamp(position.x, map_left+300, map_right-300)
+	position.y = clamp(position.y, map_top+300, map_bottom-300)
 	return position
 
 func spawn_enemy():
-	_spawn_entity("res://enemy.tscn")
+	_spawn_entity("res://enemy.tscn", Vector2.ZERO)
 
-func spawn_drop():
+func spawn_drop(position: Vector2 = Vector2.ZERO):
 	var random_index = randi() % item_scenes.size()
 	var resource = item_scenes[random_index]
-	_spawn_entity(resource)
+	if resource in ["res://itemShield.tscn", "res://itemBubblegum.tscn", "res://itemBoots.tscn"]:
+		item_scenes.erase(resource)
+	_spawn_entity(resource, position)
 
-func _spawn_entity(resource_path: String):
+func _spawn_entity(resource_path: String, positionLoc):
 	var camera = get_tree().get_current_scene().get_node("Player/Camera2D")
 	if camera:
 		# Obtenha o centro e o tamanho da área visível da câmera
@@ -96,24 +137,27 @@ func _spawn_entity(resource_path: String):
 		var right = camera_pos.x + viewport_size.x + spawn_offset
 		var top = camera_pos.y - viewport_size.y - spawn_offset
 		var bottom = camera_pos.y + viewport_size.y + spawn_offset
-
-		var spawn_position = Vector2()
-		var side = randi() % 4  # 0 = top, 1 = bottom, 2 = left, 3 = right
 		
-		match side:
-			0:  # Top
-				spawn_position.x = randf_range(left, right)
-				spawn_position.y = top
-			1:  # Bottom
-				spawn_position.x = randf_range(left, right)
-				spawn_position.y = bottom
-			2:  # Left
-				spawn_position.x = left
-				spawn_position.y = randf_range(top, bottom)
-			3:  # Right
-				spawn_position.x = right
-				spawn_position.y = randf_range(top, bottom)
-
+		if positionLoc == Vector2.ZERO:
+			spawn_position = Vector2()
+			var side = randi() % 4  # 0 = top, 1 = bottom, 2 = left, 3 = right
+			
+			match side:
+				0:  # Top
+					spawn_position.x = randf_range(left, right)
+					spawn_position.y = top
+				1:  # Bottom
+					spawn_position.x = randf_range(left, right)
+					spawn_position.y = bottom
+				2:  # Left
+					spawn_position.x = left
+					spawn_position.y = randf_range(top, bottom)
+				3:  # Right
+					spawn_position.x = right
+					spawn_position.y = randf_range(top, bottom)
+		else:
+			spawn_position = positionLoc
+		
 		if not is_within_map_bounds(spawn_position):
 			spawn_position = clamp_position_to_bounds(spawn_position)
 		

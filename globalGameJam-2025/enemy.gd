@@ -26,12 +26,16 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if speed > 0:
 		if player:
-			var direction = (player.global_position - global_position).normalized()
+			# Atualizar a posição do alvo no NavigationAgent2D
+			navigation_agent.target_position = player.global_position
+
+			# Obter a próxima posição no caminho e calcular direção
+			var next_position = navigation_agent.get_next_path_position()
+			var direction = (next_position - global_position).normalized()
 			velocity = direction * speed
-		else:
-			velocity = Vector2.ZERO
-		animationManager()
+
 		move_and_slide()
+		animationManager()
 		
 		# Verifica collisão do inimigo
 		if (damage_timer.paused):
@@ -47,7 +51,7 @@ func take_damage(amount):
 func die() -> void:
 	var random = randf_range(0,1)
 	if random <= 0.1:
-		gamescene.spawn_drop()
+		gamescene.spawn_drop(position)
 	if player:
 		gamescene._spawn_xp("res://itemXP.tscn", position)
 	queue_free()

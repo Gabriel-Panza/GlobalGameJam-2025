@@ -41,7 +41,7 @@ var slots = []
 
 var bubblegum_timer: Timer
 var boots_timer: Timer
-var shield: Node2D
+var shield_timer
 
 func _ready() -> void:
 	slot1 = get_node_or_null(slot1_path)
@@ -65,19 +65,26 @@ func _ready() -> void:
 	itemBoots = false
 	itemShield = false
 	
-	# Conecta o sinal do temporizador para criar a partícula rosa a cada 5 segundos
+	shield_timer = Timer.new()
+	shield_timer.name = "Escudo"
+	shield_timer.set_wait_time(20.0)
+	shield_timer.set_one_shot(false)
+	shield_timer.connect("timeout", Callable(self, "on_timeout_shield"))
+	shield_timer.set_paused(true)
+	player.add_child(shield_timer)
+	
 	bubblegum_timer = Timer.new()
 	bubblegum_timer.set_wait_time(5.0)
 	bubblegum_timer.set_one_shot(false)
 	bubblegum_timer.connect("timeout", Callable(self, "_create_bubblegum_particle"))
-	bubblegum_timer.start()
+	bubblegum_timer.set_paused(true)
 	player.add_child(bubblegum_timer)
 	
 	boots_timer = Timer.new()
 	boots_timer.set_wait_time(0.5)
 	boots_timer.set_one_shot(false)
 	boots_timer.connect("timeout", Callable(self, "_create_boots_particle"))
-	boots_timer.start()
+	boots_timer.set_paused(true)
 	player.add_child(boots_timer)
 	
 	player.connect("stats_updated", Callable(self, "update_status_labels"))
@@ -89,84 +96,14 @@ func _process(delta):
 		else:
 			_pause_game()
 
-	# Lógica do item Shield
+func create_shield():
 	if itemShield:
-		if not is_instance_valid(shield):
-			shield = preload("res://itemShield.tscn").instantiate()
-			shield.name = "Shield"
-			shield.z_index = 2
-			shield.position = Vector2.ZERO
-			player.add_child(shield)
-			await get_tree().create_timer(20.0).timeout
-			if shield:
-				shield.queue_free()
-		else:
-			shield.position = Vector2.ZERO
-
-func _on_bubblegum_body_entered(body):
-	if body.is_in_group("Inimigo"):
-		body.speed *= 0.5  # Reduz a velocidade dos inimigos em 50%
-		await get_tree().create_timer(2.0).timeout
-		body.speed *= 2.0  # Restaura a velocidade original depois de 2 segundos
-
-func _on_bubblegum_particle_timeout(bubblegum: Sprite2D):
-	if bubblegum and bubblegum.is_instance_valid():
-		bubblegum.queue_free()
-
-func _create_bubblegum_particle() -> void:
-	if itemBublegum:
-		# Cria o sprite representando o efeito de chiclete
-		var bubblegum = Sprite2D.new()
-		#bubblegum.texture = preload("res://path_to_bubblegum_texture.png")  # Substitua pelo caminho da textura do chiclete
-		bubblegum.position = position  # Define a posição inicial como a do jogador
-		bubblegum.scale = Vector2(1, 1)  # Tamanho inicial
-		bubblegum.modulate = Color(1, 0, 1, 0.7)  # Define uma cor rosa semitransparente
-
-		# Adiciona uma área de colisão para detectar inimigos
-		var collision_area = Area2D.new()
-		var collision_shape = CollisionShape2D.new()
-		collision_shape.shape = CircleShape2D.new()
-		collision_shape.shape.radius = 32  # Ajuste o raio conforme necessário
-		collision_area.add_child(collision_shape)
-		bubblegum.add_child(collision_area)
-
-		# Conecta o sinal para reduzir a velocidade dos inimigos
-		collision_area.connect("body_entered", Callable(self, "_on_bubblegum_body_entered"))
-
-		# Adiciona o efeito ao jogo
-		get_tree().root.add_child(bubblegum)
-
-		# Animação simples para desaparecer
-		var timer = Timer.new()
-		timer.wait_time = 2.0
-		timer.one_shot = true
-		timer.connect("timeout", Callable(self, "_on_bubblegum_particle_timeout"), bubblegum)
-		bubblegum.add_child(timer)
-		timer.start()
-
-func _on_soap_particle_timeout(soap: Sprite2D):
-	if soap and soap.is_instance_valid():
-		soap.queue_free()
-
-func _create_boots_particle() -> void:
-	if itemBoots:
-		# Cria o sprite representando o efeito de sabão
-		var soap = Sprite2D.new()
-		#soap.texture = preload("res://path_to_soap_texture.png")  # Substitua pelo caminho da textura do sabão
-		soap.position = position - Vector2(0, 10)  # Posição inicial (ajuste conforme necessário)
-		soap.scale = Vector2(0.5, 0.5)  # Tamanho inicial
-		soap.modulate = Color(1, 1, 1, 0.8)  # Cor branca semitransparente
-
-		# Adiciona o efeito ao jogo
-		get_tree().root.add_child(soap)
-
-		# Animação de fade e desaparecimento
-		var fade_timer = Timer.new()
-		fade_timer.wait_time = 0.5
-		fade_timer.one_shot = true
-		fade_timer.connect("timeout", Callable(self, "_on_soap_particle_timeout"), soap)
-		soap.add_child(fade_timer)
-		fade_timer.start()
+		shield_timer.set_paused(false)
+		var shield = load("res://itemShield.tscn").instantiate()
+		shield.name = "Shield"
+		shield.z_index = 2
+		shield.position = Vector2.ZERO
+		player.add_child(shield)
 
 func update_status_labels():
 	if player:
@@ -204,24 +141,6 @@ func _unpause_game():
 	if game_scene:
 		game_scene.resume_timers()
 
-func add_item_to_slot(item_sprite: Texture, name: String):
-	for slot in slots:
-		if not slot.texture:
-			if name == "itemBublegum":
-				game_scene.item_scenes.erase("res://itemBubblegum.tscn")
-				itemBublegum = true
-			if name == "itemShield":
-				game_scene.item_scenes.erase("res://itemShield.tscn")
-				itemShield = true
-			if name == "itemBoots":
-				game_scene.item_scenes.erase("res://itemBoots.tscn")
-				itemBoots = true
-				player.speed *= 1.25
-				player.original_speed *= 1.25
-			slot.texture = item_sprite
-			return
-	print("Todos os slots estão cheios!")
-
 func _on_options_button_pressed() -> void:
 	options_menu.show()
 
@@ -230,3 +149,11 @@ func _on_back_button_pressed() -> void:
 
 func _on_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://main_menu.tscn")
+
+func on_timeout_shield() -> void:
+	var shield = get_node_or_null("/root/GameScene/Player/Shield")
+	if shield:
+		player.remove_child(shield)
+		shield_timer.start()
+	else:
+		create_shield()

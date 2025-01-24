@@ -15,6 +15,14 @@ run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameState="*res://GameState.gd"
+
+[display]
+
+window/size/resizable=false
+
 [global_group]
 
 Inimigo=""
@@ -22,6 +30,10 @@ Itens=""
 Vivos=""
 Player=""
 Escudo=""
+XP=""
+Gold=""
+HP=""
+Acessorios=""
 
 [input]
 
