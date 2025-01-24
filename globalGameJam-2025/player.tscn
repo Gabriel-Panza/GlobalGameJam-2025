@@ -5,6 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://cewpjl4mdtdp4" path="res://sprites/Personagens/BubblemanWalk.png" id="3_vk6oi"]
 [ext_resource type="PackedScene" uid="uid://dy77dt25sj2ey" path="res://Camera2D.tscn" id="3_yunjf"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nqnr"]
+radius = 25.0
+height = 86.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ae2fc"]
 atlas = ExtResource("2_d1d1q")
 region = Rect2(0, 0, 32, 32)
@@ -137,10 +141,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mwiyp"]
-radius = 27.0
-height = 78.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yk0ca"]
 radius = 27.8065
 height = 82.3897
@@ -149,15 +149,15 @@ height = 82.3897
 position = Vector2(0, 330)
 script = ExtResource("1_sp03d")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_1nqnr")
+
 [node name="Aparencia" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -1)
 scale = Vector2(3.204, 2.78125)
 sprite_frames = SubResource("SpriteFrames_wrcr4")
 animation = &"walk"
 frame_progress = 0.381544
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_mwiyp")
 
 [node name="Corpo" type="Area2D" parent="."]
 scale = Vector2(0.970995, 0.970995)

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://do8ctu0sfqqgf"]
+
+[ext_resource type="Script" path="res://shield_effect.gd" id="1_8lvda"]
+[ext_resource type="Texture2D" uid="uid://db1frkbprh142" path="res://sprites/Acessorios/Pop_Shield_Effect.png" id="1_1116x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t4cbo"]
+radius = 93.0
+
+[node name="shield_effect" type="Area2D"]
+script = ExtResource("1_8lvda")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_t4cbo")
+disabled = true
+
+[node name="PopShieldEffect" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, -0.500008)
+scale = Vector2(5.75, 5.65625)
+texture = ExtResource("1_1116x")
+
+[node name="turn_on" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="turn_on" to="." method="_on_turn_on_timeout"]

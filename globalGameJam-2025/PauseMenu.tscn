@@ -230,6 +230,7 @@ texture = ExtResource("3_528pr")
 expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="GameOver"]
+layout_mode = 0
 offset_left = 67.0
 offset_top = 290.0
 offset_right = 259.0
@@ -241,6 +242,7 @@ texture_normal = ExtResource("4_7tv21")
 texture_hover = ExtResource("5_msqgg")
 
 [node name="MarginContainer2" type="MarginContainer" parent="GameOver"]
+layout_mode = 0
 offset_left = 67.0
 offset_top = 380.0
 offset_right = 279.0
@@ -251,9 +253,13 @@ layout_mode = 2
 texture_normal = ExtResource("6_n8moq")
 texture_hover = ExtResource("7_1wgaj")
 
+[node name="shield_timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="pressed" from="PauseMenu/HBoxContainer/VBoxContainer/ResumeButton" to="." method="_unpause_game"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="PauseMenu/OptionsMenu/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="GameOver/MarginContainer/TextureButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="GameOver/MarginContainer2/TextureButton" to="." method="_on_hub_button_pressed"]
+[connection signal="timeout" from="shield_timer" to="." method="on_timeout_shield"]

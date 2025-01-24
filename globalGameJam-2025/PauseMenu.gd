@@ -42,7 +42,7 @@ var slots = []
 var bubblegum_timer: Timer
 var boots_timer: Timer
 var shield_timer: Timer
-var shield_duration_timer: Timer
+
 
 func _ready() -> void:
 	slot1 = get_node_or_null(slot1_path)
@@ -64,24 +64,12 @@ func _ready() -> void:
 	slots = [slot1, slot2, slot3, slot4]
 	itemBublegum = false
 	itemBoots = false
-	itemShield = false
+	itemShield = true
 	
-	shield_timer = Timer.new()
+	shield_timer = $shield_timer
 	shield_timer.name = "Escudo"
-	shield_timer.set_wait_time(20.0)
-	shield_timer.set_one_shot(false)
 	shield_timer.connect("timeout", Callable(self, "on_timeout_shield"))
-	shield_timer.set_paused(true)
-	player.add_child(shield_timer)
-	
-	 # Configuração do timer de duração do escudo
-	shield_duration_timer = Timer.new()
-	shield_duration_timer.name = "EscudoDuração"
-	shield_duration_timer.set_wait_time(10.0)  # O escudo dura 10 segundos
-	shield_duration_timer.set_one_shot(true)  # Ele é de uso único por ativação
-	shield_duration_timer.connect("timeout", Callable(self, "_remove_shield"))
-	shield_duration_timer.set_paused(true)
-	player.add_child(shield_duration_timer)
+	#shield_timer.set_paused(true)
 	
 	player.connect("stats_updated", Callable(self, "update_status_labels"))
 	
@@ -94,11 +82,11 @@ func _process(delta):
 
 func create_shield():
 	if itemShield:
-		var shield = load("res://itemShield.tscn").instantiate()
+		print("entrou2")
+		var shield = load("res://shield_effect.tscn").instantiate()
 		shield.name = "Shield"
 		shield.z_index = 2
 		shield.position = Vector2.ZERO
-		shield_duration_timer.start()  # Iniciar a contagem de duração do escudo
 		shield_timer.set_paused(true)  # Pausar o intervalo enquanto o escudo está ativo
 		player.add_child(shield)
 
@@ -110,6 +98,7 @@ func _remove_shield() -> void:
 	shield_timer.start()
 
 func on_timeout_shield() -> void:
+	print("entrou1")
 	create_shield()
 
 func update_status_labels():

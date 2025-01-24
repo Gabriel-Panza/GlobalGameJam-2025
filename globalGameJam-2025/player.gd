@@ -104,16 +104,14 @@ func _on_atk_speed_timeout():
 
 func take_damage(amount):
 	var shield = get_node_or_null("/root/GameScene/Player/Shield")
-	if shield:
-		remove_child(shield)
-		pause_control.shield_timer.set_paused(false)
-		pause_control.shield_timer.start()
-		return
-	health -= amount
-	emit_signal("hp_updated", health, maxHealth)
-	emit_signal("stats_updated")
-	if health <= 0:
-		die()
+	if !shield.visible:
+		health -= amount
+		emit_signal("hp_updated", health, maxHealth)
+		emit_signal("stats_updated")
+		if health <= 0:
+			die()
+	else:
+		shield.visible = false
 
 func die():
 	if game_scene:

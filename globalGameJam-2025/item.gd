@@ -51,8 +51,9 @@ func _process_equipment_item():
 				pause_control.game_scene.item_scenes.erase("res://itemBubblegum.tscn")
 				pause_control.itemBublegum = true
 			elif name == "itemShield":
-				pause_control.game_scene.item_scenes.erase("res://itemShield.tscn")
+				#pause_control.game_scene.item_scenes.erase("res://itemShield.tscn")
 				pause_control.itemShield = true
+				pause_control.shield_timer.set_paused(false)
 			elif name == "itemBoots":
 				pause_control.game_scene.item_scenes.erase("res://itemBoots.tscn")
 				pause_control.itemBoots = true
