@@ -98,7 +98,8 @@ func _on_atk_speed_timeout():
 	if projetil:
 		var tiro = projetil.instantiate()
 		tiro.position = position
-		tiro.direction = (position - get_global_mouse_position()).normalized()
+		if not tiro.is_in_group("Punch"):
+			tiro.direction = (position - get_global_mouse_position()).normalized()
 		owner.add_child(tiro)
 
 func take_damage(amount):

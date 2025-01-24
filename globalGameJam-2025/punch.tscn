@@ -1,20 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://bi6tgcdjjifuj"]
 
 [ext_resource type="Script" path="res://punch.gd" id="1_gpdie"]
-[ext_resource type="Texture2D" uid="uid://bb3gij4pbvyyp" path="res://sprites/Weapons/Soap_Gauntlet.png" id="1_rg5py"]
+[ext_resource type="Texture2D" uid="uid://ddc1lkraa6l30" path="res://sprites/Projectiles/Soap_Gauntlet_Projectile.png" id="2_e4pnj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2vrnw"]
 radius = 33.0
 height = 96.0
 
-[node name="Punch" type="CharacterBody2D" groups=["Vivos"]]
+[node name="Punch" type="CharacterBody2D" groups=["Punch", "Vivos"]]
 collision_mask = 3
 script = ExtResource("1_gpdie")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(22, 18.5)
 scale = Vector2(2.375, 2.15625)
-texture = ExtResource("1_rg5py")
+texture = ExtResource("2_e4pnj")
 
 [node name="Impact" type="Area2D" parent="."]
 collision_mask = 3
