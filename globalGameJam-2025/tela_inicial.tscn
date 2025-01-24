@@ -225,7 +225,6 @@ scale = Vector2(1.75, 1.78125)
 script = ExtResource("5_k88aj")
 
 [node name="BubbleGun2" type="Sprite2D" parent="BubbleGun"]
-scale = Vector2(0.982, 1)
 texture = ExtResource("3_q40a2")
 
 [node name="BubbleGun" type="Area2D" parent="BubbleGun"]
@@ -243,7 +242,6 @@ scale = Vector2(1.6875, 1.8125)
 script = ExtResource("5_k88aj")
 
 [node name="ExplubbleBomb2" type="Sprite2D" parent="ExplubbleBomb"]
-scale = Vector2(0.931, 1)
 texture = ExtResource("4_0x5hn")
 
 [node name="ExplubbleBomb" type="Area2D" parent="ExplubbleBomb"]

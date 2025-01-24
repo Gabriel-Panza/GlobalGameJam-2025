@@ -8,6 +8,8 @@ var pause_control_path: NodePath = "/root/GameScene/Player/Camera2D/CanvasLayer/
 var pause_control: Control
 var game_over_path: NodePath = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl/GameOver"
 var game_over: Panel
+var game_scene_path: NodePath = "/root/GameScene"
+var game_scene: Node
 var arma
 var projetil
 @onready var aparencia = $Aparencia
@@ -47,6 +49,7 @@ var weapon_data = {
 func _ready() -> void:
 	pause_control = get_node_or_null(pause_control_path)
 	game_over = get_node_or_null(game_over_path)
+	game_scene = get_node_or_null(game_scene_path)
 
 func animationManager():
 	if velocity_vector.x != 0 or velocity_vector.y != 0:
@@ -112,6 +115,10 @@ func take_damage(amount):
 		die()
 
 func die():
+	if game_scene:
+		game_scene.pause_timers()
+	for obj in get_tree().get_nodes_in_group("Vivos"):
+		obj.speed = 0
 	GameState.gold += gold
 	GameState.arma = arma
 	GameState.save_game()
