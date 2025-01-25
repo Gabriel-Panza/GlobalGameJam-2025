@@ -64,7 +64,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_meemp")
 }],
 "loop": true,
-"name": &"default",
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -81,7 +81,7 @@ script = ExtResource("1_cma0k")
 position = Vector2(4.5, -3)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_t0v14")
-frame_progress = 0.278332
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, -4)
