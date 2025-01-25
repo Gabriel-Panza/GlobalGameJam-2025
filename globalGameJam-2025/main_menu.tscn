@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://do7fbjct0axmq"]
+[gd_scene load_steps=11 format=3 uid="uid://do7fbjct0axmq"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_8f1ow"]
 [ext_resource type="Texture2D" uid="uid://bsauybu8g4q5a" path="res://Menu/Icons/Play_Default.png" id="2_gavoa"]
 [ext_resource type="Texture2D" uid="uid://dpc42hm5cbqa0" path="res://Menu/Background_Main_Menu.png" id="2_j42eu"]
 [ext_resource type="Texture2D" uid="uid://duupu2bl248bx" path="res://Menu/Icons/Play_Click.png" id="3_14epx"]
+[ext_resource type="Texture2D" uid="uid://bn3hsx5qxeulu" path="res://Menu/Title.png" id="3_46adi"]
+[ext_resource type="Texture2D" uid="uid://sp6mfbku71by" path="res://Menu/Subtitle.png" id="4_rarxe"]
 [ext_resource type="Texture2D" uid="uid://g6brsy2thjf2" path="res://Menu/Icons/Quit_Default.png" id="4_shbha"]
 [ext_resource type="Texture2D" uid="uid://cjx1hbtabu5s2" path="res://Menu/Icons/Quit_Click.png" id="5_36p6i"]
 [ext_resource type="Texture2D" uid="uid://doiykcwu0qsnl" path="res://Menu/Icons/Options_Default.png" id="7_duqna"]
@@ -27,6 +29,21 @@ offset_right = 6.30396
 offset_bottom = 9.888
 texture = ExtResource("2_j42eu")
 expand_mode = 1
+
+[node name="Titulo+Subtitulo" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 722.0
+offset_top = 99.0
+offset_right = 762.0
+offset_bottom = 139.0
+scale = Vector2(0.62, 0.62)
+
+[node name="Titulo" type="Sprite2D" parent="Titulo+Subtitulo"]
+texture = ExtResource("3_46adi")
+
+[node name="Subtitulo" type="Sprite2D" parent="Titulo+Subtitulo"]
+position = Vector2(0, 154.839)
+texture = ExtResource("4_rarxe")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0

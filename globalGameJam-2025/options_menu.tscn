@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://qmyoe8q6c30b"]
+[gd_scene load_steps=5 format=3 uid="uid://qmyoe8q6c30b"]
 
 [ext_resource type="Texture2D" uid="uid://dpc42hm5cbqa0" path="res://Menu/Background_Main_Menu.png" id="1_rjmyw"]
 [ext_resource type="Script" path="res://h_slider.gd" id="2_5h2ah"]
+[ext_resource type="Texture2D" uid="uid://d4nmvdtabq6l1" path="res://Menu/Icons/Leave.png" id="3_rdgis"]
+[ext_resource type="Texture2D" uid="uid://qhonqeoww158" path="res://Menu/Icons/Leave_Click.png" id="4_lvl4i"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -89,14 +91,13 @@ theme_override_constants/outline_size = 4
 text = "text"
 horizontal_alignment = 1
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 668.0
+offset_left = 598.0
 offset_top = 499.0
-offset_right = 729.0
-offset_bottom = 530.0
-theme_override_constants/outline_size = 4
-text = "Back
-"
+offset_right = 790.0
+offset_bottom = 579.0
+texture_normal = ExtResource("3_rdgis")
+texture_hover = ExtResource("4_lvl4i")
 
 [connection signal="pressed" from="BackButton" to="HSlider" method="_on_return_pressed"]

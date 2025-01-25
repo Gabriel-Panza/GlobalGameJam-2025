@@ -52,7 +52,7 @@ func _process(_delta: float) -> void:
 
 func _shoot_projectile() -> void:
 	if player:
-		var projectile = projectile_scene.instance() as Node2D
+		var projectile = projectile_scene.instantiate()
 		get_tree().root.add_child(projectile)
 		projectile.global_position = global_position
 		

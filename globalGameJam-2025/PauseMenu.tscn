@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bk3qeu16nglea"]
+[gd_scene load_steps=24 format=3 uid="uid://bk3qeu16nglea"]
 
 [ext_resource type="Script" path="res://PauseMenu.gd" id="1_2v82j"]
 [ext_resource type="Texture2D" uid="uid://bovrdh23eh723" path="res://sprites/Weapons/Bubble_Gun.png" id="2_4drt3"]
@@ -19,7 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://cc1lxt8ce4h0a" path="res://Menu/Icons/Shop/SpeedUp.png" id="11_n7gld"]
 [ext_resource type="Texture2D" uid="uid://bp4wgf7n0cr32" path="res://Menu/Icons/Shop/AtkSpeed.png" id="13_do6oq"]
 [ext_resource type="Texture2D" uid="uid://c20lgxrb3skjv" path="res://Menu/Icons/Shop/CritUp.png" id="14_30rwr"]
+[ext_resource type="Texture2D" uid="uid://d4nmvdtabq6l1" path="res://Menu/Icons/Leave.png" id="15_l8ddk"]
 [ext_resource type="Texture2D" uid="uid://sbvkel55x8vd" path="res://Menu/Icons/Shop/MrBubbles_Slot.png" id="15_pwnys"]
+[ext_resource type="Texture2D" uid="uid://qhonqeoww158" path="res://Menu/Icons/Leave_Click.png" id="16_0oxis"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_428n7"]
 bg_color = Color(0.2, 0.239216, 0.270588, 1)
@@ -323,8 +325,8 @@ offset_bottom = 639.0
 
 [node name="TextureButton" type="TextureButton" parent="MrBubbleInterface/MarginContainer2"]
 layout_mode = 2
-texture_normal = ExtResource("6_n8moq")
-texture_hover = ExtResource("7_1wgaj")
+texture_normal = ExtResource("15_l8ddk")
+texture_hover = ExtResource("16_0oxis")
 
 [node name="MarginContainer3" type="MarginContainer" parent="MrBubbleInterface"]
 layout_mode = 0

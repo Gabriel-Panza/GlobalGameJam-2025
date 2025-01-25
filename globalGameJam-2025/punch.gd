@@ -60,7 +60,7 @@ func _calculate_swing_positions(mouse_position: Vector2) -> void:
 		control_point = player.global_position + Vector2(-200, 0)
 		control_point2 = player.global_position + Vector2(-200, 0)
 		if is_in_group("PunchDireito"):
-			rotation_degrees = 30
+			rotation_degrees = 45
 			scale.x *= -1
 	elif angle > 45 and angle <= 135:
 		# Mouse está para baixo

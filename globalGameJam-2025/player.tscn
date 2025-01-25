@@ -1,9 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://cc1g3ofhfukk7"]
+[gd_scene load_steps=41 format=3 uid="uid://cc1g3ofhfukk7"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_sp03d"]
 [ext_resource type="Texture2D" uid="uid://0pibtj0q264t" path="res://sprites/Personagens/BubblemanIdle.png" id="2_d1d1q"]
 [ext_resource type="Texture2D" uid="uid://cewpjl4mdtdp4" path="res://sprites/Personagens/BubblemanWalk.png" id="3_vk6oi"]
 [ext_resource type="PackedScene" uid="uid://dy77dt25sj2ey" path="res://Camera2D.tscn" id="3_yunjf"]
+[ext_resource type="Texture2D" uid="uid://c53aku86exmbm" path="res://sprites/Personagens/mr bubbles/mr bubbles idle normal.png" id="5_f87ec"]
+[ext_resource type="Texture2D" uid="uid://b2jkdtmld1jxu" path="res://sprites/Personagens/mr bubbles/mr bubbles andando normal.png" id="6_mua1u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nqnr"]
 radius = 25.0
@@ -145,6 +147,110 @@ animations = [{
 radius = 27.8065
 height = 82.3897
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fu0jd"]
+atlas = ExtResource("5_f87ec")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyolm"]
+atlas = ExtResource("5_f87ec")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t23np"]
+atlas = ExtResource("5_f87ec")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au23k"]
+atlas = ExtResource("5_f87ec")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr506"]
+atlas = ExtResource("5_f87ec")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7thsb"]
+atlas = ExtResource("5_f87ec")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uf6i"]
+atlas = ExtResource("5_f87ec")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_204a3"]
+atlas = ExtResource("5_f87ec")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n4tq"]
+atlas = ExtResource("5_f87ec")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qttca"]
+atlas = ExtResource("6_mua1u")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhdoq"]
+atlas = ExtResource("6_mua1u")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmkbv"]
+atlas = ExtResource("6_mua1u")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mps48"]
+atlas = ExtResource("6_mua1u")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0dgjj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fu0jd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyolm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t23np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au23k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr506")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7thsb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uf6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_204a3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4n4tq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qttca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhdoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmkbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mps48")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["Player", "Vivos"]]
 position = Vector2(0, 330)
 script = ExtResource("1_sp03d")
@@ -174,5 +280,11 @@ limit_bottom = 1600
 
 [node name="AtkSpeed" type="Timer" parent="."]
 autostart = true
+
+[node name="MrBubbles" type="AnimatedSprite2D" parent="."]
+position = Vector2(-38, 33)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_0dgjj")
+animation = &"walk"
 
 [connection signal="timeout" from="AtkSpeed" to="." method="_on_atk_speed_timeout"]
