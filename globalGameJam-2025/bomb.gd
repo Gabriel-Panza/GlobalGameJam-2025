@@ -10,11 +10,16 @@ var exploded: bool = false
 var player_path: NodePath = "/root/GameScene/Player"
 var player
 
+# ColorRect
+var flash
+
 func _ready() -> void:
 	player = get_node_or_null(player_path)
 	var mouse_position = get_global_mouse_position()
 	var direction = (mouse_position - global_position).normalized()
 	velocity = direction * speed/1.25
+	$fade_out_timer.one_shot = true
+	$fade_out_timer.wait_time = 0.3
 	explode_after_timeout()
 
 func _physics_process(delta: float) -> void:
@@ -31,6 +36,7 @@ func _on_impact_body_entered(body):
 
 func explode() -> void:
 	exploded = true
+	show_flash()
 	apply_area_damage()
 	queue_free()
 
@@ -44,3 +50,28 @@ func apply_area_damage() -> void:
 func explode_after_timeout() -> void:
 	await get_tree().create_timer(fuse_time).timeout
 	explode()
+	
+func show_flash() -> void:
+	var area = get_node_or_null("Impact/CollisionShape2D")
+	if area:
+		flash = ColorRect.new()
+		flash.color = Color(1, 1, 1, 0.5)  # Branco semitransparente
+		
+		# Configura o tamanho e a posição do flash
+		if area.shape is CircleShape2D:
+			var radius = area.shape.radius
+			flash.set_size(Vector2(radius * 2, radius * 2))
+		else:
+			flash.set_size(Vector2(100, 100))  # Tamanho padrão
+
+		flash.position = area.global_position - flash.size / 2
+		get_parent().add_child(flash)
+
+		# Cria animação de desaparecimento manualmente
+		$fade_out_timer.start()
+
+func _remove_flash() -> void:
+	var flash_timer = $fade_out_timer
+	if flash_timer and flash is ColorRect:
+		flash.queue_free()
+		$fade_out_timer.stop()

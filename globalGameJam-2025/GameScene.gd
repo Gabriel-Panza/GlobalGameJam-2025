@@ -38,7 +38,7 @@ var spawn_position
 ]
 
 # Tempo total em segundos (20 minutos)
-var total_time: int = 20 * 60
+var total_time: int = 15 * 60
 var cont = 0
 
 var pause_control_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl"
@@ -127,16 +127,21 @@ func _update_cronometro_display(time_text: String) -> void:
 func _update_cronometro() -> void:
 	total_time -= 1
 
-	if total_time % (5 * 60) == 0:
+	if total_time % (150) == 0:
 		if cont==0:
 			cont+=1
 			enemies_list.append("res://enemy_cultist.tscn")
-		if cont==1:
+		elif cont==1:
 			cont+=1
 			# Instancio o miniboss
-		if cont==2:
+		elif cont==2:
+			cont+=1
+			# Instancio o miniboss dnv
+		elif cont==3:
 			cont+=1
 			# Instancio o boss
+		else:
+			cont+=1
 
 	var minutes = total_time / 60
 	var seconds = total_time % 60
