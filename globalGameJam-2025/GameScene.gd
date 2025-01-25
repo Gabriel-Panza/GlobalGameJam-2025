@@ -15,14 +15,15 @@ var map_bottom: float
 # Intervalo de spawn de inimigos
 var spawn_interval: float = 1.5
 var spawn_offset: float = 50.0
+var enemy_timer: Timer
+var enemies_list = ["res://enemy.tscn"]
 
 # Intervalo de drop de itens
 var drop_interval: float = 45.0
-
-var enemy_timer: Timer
 var drop_timer: Timer
-var atkSpeed_timer: Timer
+
 var player
+var atkSpeed_timer: Timer
 
 var timer_path: NodePath = "/root/GameScene/Player/AtkSpeed"
 var player_path: NodePath = "/root/GameScene/Player"
@@ -37,8 +38,10 @@ var spawn_position
 	"res://itemBoots.tscn"
 ]
 
-# Tempo total em segundos (30 minutos)
-var total_time: int = 30 * 60
+# Tempo total em segundos (20 minutos)
+var total_time: int = 20 * 60
+var cont = 0
+
 var cronometro_timer_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/Cronometro/Timer"
 var cronometro_timer
 var cronometro_label_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/Cronometro"
@@ -116,9 +119,16 @@ func _update_cronometro_display(time_text: String) -> void:
 func _update_cronometro() -> void:
 	total_time -= 1
 
-	# Verifica se é o momento de disparar um evento
-	# if total_time % (5 * 60) == 0:
-		#trigger_event()
+	if total_time % (5 * 60) == 0:
+		if cont==0:
+			cont+=1
+			enemies_list.append("res://enemy_cultist.tscn")
+		if cont==1:
+			cont+=1
+			# Instancio o miniboss
+		if cont==2:
+			cont+=1
+			# Instancio o boss
 
 	var minutes = total_time / 60
 	var seconds = total_time % 60
@@ -140,7 +150,8 @@ func clamp_position_to_bounds(position: Vector2) -> Vector2:
 	return position
 
 func spawn_enemy():
-	_spawn_entity("res://enemy.tscn", Vector2.ZERO)
+	for enemy in enemies_list:
+		_spawn_entity(enemy, Vector2.ZERO)
 
 func spawn_drop(position: Vector2 = Vector2.ZERO):
 	var random_index = randi() % item_scenes.size()

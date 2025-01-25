@@ -30,9 +30,9 @@ expand_mode = 1
 
 [node name="Titulo" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 360.0
+offset_left = 374.0
 offset_top = 120.0
-offset_right = 770.0
+offset_right = 784.0
 offset_bottom = 160.0
 theme_override_colors/default_color = Color(0.701961, 0.556863, 0.960784, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 1, 1)
@@ -42,9 +42,9 @@ text = "[b] Bubbleman and the Popcalypse! [/b]"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 450.0
+offset_left = 464.0
 offset_top = 210.0
-offset_right = 642.0
+offset_right = 656.0
 offset_bottom = 290.0
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer"]
@@ -54,9 +54,9 @@ texture_hover = ExtResource("3_14epx")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 450.0
+offset_left = 464.0
 offset_top = 300.0
-offset_right = 662.0
+offset_right = 676.0
 offset_bottom = 400.0
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer2"]
@@ -66,9 +66,9 @@ texture_hover = ExtResource("8_pafmj")
 
 [node name="MarginContainer3" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 450.0
+offset_left = 464.0
 offset_top = 390.0
-offset_right = 642.0
+offset_right = 656.0
 offset_bottom = 470.0
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer3"]

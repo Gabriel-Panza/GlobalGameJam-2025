@@ -1,6 +1,6 @@
 extends Area2D
 
-# Referência ao Player e ao Gold do jogo
+# Referência ao Player
 var player_path: NodePath = "/root/GameScene/Player"
 var player
 
@@ -19,6 +19,8 @@ const ITEM_PRICES = {
 }
 
 func _ready():
+	connect("body_entered", Callable(self, "_on_Area2D_body_entered"))
+	connect("body_exited", Callable(self, "_on_Area2D_body_exited"))
 	player = get_node_or_null(player_path)
 
 # Função chamada quando o jogador interage com a loja
@@ -39,10 +41,10 @@ func give_item_to_player(item_name: String):
 
 # Detecta a entrada do jogador na loja
 func _on_Area2D_body_entered(body):
-	if body.is_in_group("Player"):
+	if body == player:
 		print("Bem-vindo à loja do Mr. Bubbles! Selecione um item para comprar.")
 
 # Detecta a saída do jogador da loja
 func _on_Area2D_body_exited(body):
-	if body.is_in_group("Player"):
+	if body == player:
 		print("Volte sempre!")
