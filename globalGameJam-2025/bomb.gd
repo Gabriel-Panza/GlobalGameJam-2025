@@ -36,6 +36,7 @@ func explode() -> void:
 	exploded = true
 	show_flash()
 	apply_area_damage()
+	await get_tree().create_timer(0.05).timeout
 	queue_free()
 
 func apply_area_damage() -> void:
@@ -52,26 +53,5 @@ func explode_after_timeout() -> void:
 func show_flash() -> void:
 	var area = get_node_or_null("Impact/CollisionShape2D")
 	if area:
-		flash = ColorRect.new()
-		flash.name = "Flash"
-		flash.color = Color(1, 1, 1, 0.5)  # Branco semitransparente
-		
-		# Configura o tamanho e a posição do flash
-		if area.shape is CircleShape2D:
-			var radius = area.shape.radius
-			flash.set_size(Vector2(radius * 2, radius * 2))
-		else:
-			flash.set_size(Vector2(100, 100))  # Tamanho padrão
-
-		flash.position = area.global_position - flash.size / 2
-		get_parent().add_child(flash)
-
-		# Cria animação de desaparecimento manualmente
-		if $fade_out_timer.is_stopped():
-			$fade_out_timer.start()
-
-func _remove_flash() -> void:
-	flash = get_parent().get_node_or_null("Flash")
-	if flash:
-		flash.queue_free()
-		$fade_out_timer.stop()
+		flash = $ImpactFramePlaceholder
+		flash.visible = true
