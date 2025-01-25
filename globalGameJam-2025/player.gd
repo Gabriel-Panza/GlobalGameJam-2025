@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # Variáveis de Velocidade
 var speed: float = 250
-var original_speed: float = 200
+var original_speed: float = 250
 var velocity_vector := Vector2.ZERO
 var pause_control_path: NodePath = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl"
 var pause_control: Control
@@ -16,10 +16,10 @@ var projetil
 var new_position
 
 # Variaveis de HUD
-var health = 200
-var original_health = 200
-var maxHealth = 200
-var original_maxHealth = 200
+var health = 300
+var original_health = 300
+var maxHealth = 300
+var original_maxHealth = 300
 var gold = 0
 var ataque = 25
 var original_ataque = 25
@@ -54,20 +54,14 @@ func _ready() -> void:
 func animationManager():
 	if velocity_vector.x != 0 or velocity_vector.y != 0:
 		aparencia.play("walk")
-		$MrBubbles.play("walk")
 		if velocity_vector.x < 0:
 			aparencia.flip_h = true
-			$MrBubbles.flip_h = false
 		else:
 			aparencia.flip_h = false
-			$MrBubbles.flip_h = true
 	else:
 		aparencia.play("idle")
-		$MrBubbles.play("idle")
 
 func _process(delta: float) -> void:
-	if tela_inicial:
-		$MrBubbles.visible = false
 	if speed > 0:
 		velocity_vector.x = 0
 		velocity_vector.y = 0
@@ -81,8 +75,7 @@ func _process(delta: float) -> void:
 			velocity_vector.y -= 300
 
 		velocity_vector = velocity_vector.normalized() * speed
-		new_position = position + velocity_vector * delta
-		position = new_position
+		position += velocity_vector * delta
 		animationManager()
 		move_and_slide()
 

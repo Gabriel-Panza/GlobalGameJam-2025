@@ -243,13 +243,10 @@ func resume_timers():
 func SpawnGum():
 	if pause_control.itemBublegum:
 		var bolha = load("res://bubblegum.tscn").instantiate()
-		var eixo_x = randi_range(-1785, 1807)
-		var eixo_y = randi_range(-913, 1418)
+		var eixo_x = randi_range(-1700, 1700)
+		var eixo_y = randi_range(-800, 1300)
 		bolha.position = Vector2(eixo_x, eixo_y)
 		add_child(bolha)
-	else:
-		pass
-		
 
 func _on_bubblegum_timer_timeout() -> void:
 	SpawnGum()

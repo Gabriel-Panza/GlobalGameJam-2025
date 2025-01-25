@@ -21,10 +21,10 @@ func _ready() -> void:
 func update_status() -> void:
 	player.arma = GameState.arma
 	player.selectWeapon()
-	player.maxHealth += (player.maxHealth * 0.10) * GameState.maxHp
-	player.health += (player.health * 0.10) * GameState.maxHp
-	player.speed += (player.speed * 0.10) * GameState.movespeed
-	player.critico += 0.10 * GameState.critico
+	player.maxHealth = player.original_maxHealth + (player.original_maxHealth * 0.10) * GameState.maxHp
+	player.health = player.original_health + (player.original_health * 0.10) * GameState.maxHp
+	player.speed = player.original_speed + (player.original_speed * 0.10) * GameState.movespeed
+	player.critico = player.original_critico + (0.10) * GameState.critico
 	player.emit_signal("stats_updated")
 
 func pause_timers():

@@ -50,7 +50,7 @@ func _ready():
 # Função chamada quando o jogador interage com a loja
 func interact_with_shop(item_name: String):
 	if item_name in ITEM_PRICES:
-		if (item_name == "item1" and GameState.maxHp<5) or (item_name == "item2" and GameState.ataque<5) or (item_name == "item3" and GameState.movespeed<5) or (item_name == "item4" and GameState.atkSpeed<5) or (item_name == "item5" and GameState.critico<5) or (item_name == "item6" and GameState.mrBubbles<1):
+		if (item_name == "item1" and GameState.maxHp<5) or (item_name == "item2" and GameState.ataque<5) or (item_name == "item3" and GameState.movespeed<3) or (item_name == "item4" and GameState.atkSpeed<5) or (item_name == "item5" and GameState.critico<5) or (item_name == "item6" and GameState.mrBubbles<1):
 			if player.gold >= ITEM_PRICES[item_name]:
 				player.gold -= ITEM_PRICES[item_name]
 				GameState.gold = player.gold
@@ -74,7 +74,7 @@ func give_buff_to_player(item_name: String):
 		item2.text = "              Quant.: %d" % (5-GameState.ataque)
 	elif item_name == "item3":
 		GameState.movespeed += 1
-		item3.text = "              Quant.: %d" % (5-GameState.movespeed)
+		item3.text = "              Quant.: %d" % (3-GameState.movespeed)
 	elif item_name == "item4":
 		GameState.atkSpeed += 1
 		item4.text = "              Quant.: %d" % (5-GameState.atkSpeed)
@@ -84,6 +84,8 @@ func give_buff_to_player(item_name: String):
 	elif item_name == "item6":
 		GameState.mrBubbles += 1
 		item6.text = "              Quant.: %d" % (1-GameState.mrBubbles)
+	player.emit_signal("stats_updated")
+
 
 # Detecta a entrada do jogador na loja
 func _on_Area2D_body_entered(body):

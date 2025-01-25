@@ -62,7 +62,7 @@ func _ready() -> void:
 	speed_label = get_node_or_null(speed_label_path)
 	
 	slots = [slot1, slot2, slot3, slot4]
-	itemBublegum = true
+	itemBublegum = false
 	itemShield = false
 	itemBoots = false
 	
