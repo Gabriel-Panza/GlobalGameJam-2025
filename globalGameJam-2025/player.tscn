@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dy77dt25sj2ey" path="res://Camera2D.tscn" id="3_yunjf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nqnr"]
-radius = 25.0
-height = 86.0
+radius = 27.0
+height = 80.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ae2fc"]
 atlas = ExtResource("2_d1d1q")

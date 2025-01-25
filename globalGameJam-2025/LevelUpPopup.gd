@@ -1,4 +1,4 @@
-extends Popup
+extends Panel
 
 var game_scene_path: NodePath = "/root/GameScene"
 var game_scene
@@ -32,7 +32,6 @@ func show_popup():
 		button.disconnect("pressed", Callable(self, "_on_option_pressed"))
 		button.connect("pressed", Callable(self, "_on_option_pressed").bind(randomized_options[i]["id"]))
 
-	popup_centered()
 	if game_scene:
 		game_scene.pause_timers()
 	for obj in get_tree().get_nodes_in_group("Vivos"):

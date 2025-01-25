@@ -38,6 +38,11 @@ region = Rect2(224, 0, 32, 33)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t0v14"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m2wpn")
@@ -81,7 +86,7 @@ script = ExtResource("1_cma0k")
 position = Vector2(4.5, -3)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_t0v14")
-animation = &"walk"
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, -4)

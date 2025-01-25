@@ -2,24 +2,28 @@
 
 [ext_resource type="Script" path="res://LevelUpPopup.gd" id="1_n24re"]
 
-[node name="LevelUpPopup" type="Popup"]
-handle_input_locally = false
-initial_position = 2
-size = Vector2i(800, 400)
-visible = true
-unresizable = false
-always_on_top = true
+[node name="LevelUpPopup" type="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 181.0
+offset_top = 161.0
+offset_right = 181.0
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_n24re")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 4.0
-offset_top = 4.0
-offset_right = 454.0
-offset_bottom = 304.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.8, 1.8)
+offset_top = -7.0
+offset_right = 796.0
+offset_bottom = 385.0
 size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 10
 
 [node name="Button1" type="Button" parent="VBoxContainer"]
 layout_direction = 1

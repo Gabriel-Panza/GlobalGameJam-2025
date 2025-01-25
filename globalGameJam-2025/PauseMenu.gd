@@ -64,7 +64,7 @@ func _ready() -> void:
 	slots = [slot1, slot2, slot3, slot4]
 	itemBublegum = false
 	itemShield = false
-	itemBoots = true
+	itemBoots = false
 	
 	shield_timer = $shield_timer
 	shield_timer.name = "Escudo"

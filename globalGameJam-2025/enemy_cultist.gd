@@ -53,12 +53,12 @@ func _process(_delta: float) -> void:
 func _shoot_projectile() -> void:
 	if player:
 		var projectile = projectile_scene.instantiate()
-		get_tree().root.add_child(projectile)
-		projectile.global_position = global_position
-		
+		projectile.position = position
 		# Configurar a direção do projétil
 		var direction = (player.global_position - global_position).normalized()
 		projectile.set("direction", direction)
+		add_child(projectile)
+		
 
 func take_damage(amount):
 	health -= amount

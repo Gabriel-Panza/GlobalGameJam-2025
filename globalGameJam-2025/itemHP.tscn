@@ -14,3 +14,10 @@ texture = ExtResource("2_6ylbi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["HP"]]
 shape = SubResource("RectangleShape2D_qllp8")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["HP"]]
+shape = SubResource("RectangleShape2D_qllp8")

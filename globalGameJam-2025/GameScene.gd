@@ -127,7 +127,7 @@ func _update_cronometro_display(time_text: String) -> void:
 func _update_cronometro() -> void:
 	total_time -= 1
 
-	if total_time % (150) == 0:
+	if total_time % (120) == 0:
 		if cont==0:
 			cont+=1
 			enemies_list.append("res://enemy_cultist.tscn")
@@ -140,6 +140,9 @@ func _update_cronometro() -> void:
 		elif cont==3:
 			cont+=1
 			# Instancio o boss
+		elif cont==3:
+			cont+=1
+			# Instancio o boss dnv
 		else:
 			cont+=1
 
