@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://b6dxk82l08c5d"]
+[gd_scene load_steps=12 format=4 uid="uid://b6dxk82l08c5d"]
 
 [ext_resource type="Script" path="res://GameScene.gd" id="1_8uqw1"]
 [ext_resource type="TileSet" uid="uid://dgclrcnucqxj7" path="res://sprites/Tilesets/Chao_Parede.tres" id="2_sgk41"]
@@ -6,18 +6,24 @@
 [ext_resource type="TileSet" uid="uid://dqpgo1qlrbc0b" path="res://sprites/Tilesets/Foreground.tres" id="3_c7aac"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_snjid"]
-vertices = PackedVector2Array(-1644.08, -872.977, 1650, -869.008, 1087.12, -786, 963.813, -786, -388.938, 53, -1085.96, -215.758, 970.18, -447.242, 1082.88, -444.406, 1647.65, -403.367, 957, 497.102, 837.953, 495.898, -503.039, 53, 957, 893, 1632.09, 1274.06, 761.742, 1279.91, 766.117, 1261.95, -898.078, 1026.1, 840.039, 893, -587.398, 1262.66, -1011.22, 1261.18, -391.063, 385.102, -893.922, 491, -501.672, 384.008, 1650, -403.109, -587.859, 1266.95, -1088.04, -785, -1215, -785, -1662.9, 1259.87, -1215, -218.781, -1289.84, 1255.27, -1011.16, 1264.65, -1015.19, 1024.93, -1024.17, 491)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8, 9, 10), PackedInt32Array(5, 4, 11), PackedInt32Array(12, 8, 13, 14, 15), PackedInt32Array(8, 12, 9), PackedInt32Array(16, 17, 12, 15, 18, 19), PackedInt32Array(20, 4, 10), PackedInt32Array(16, 21, 22, 20, 10, 17), PackedInt32Array(2, 1, 23, 8), PackedInt32Array(7, 2, 8), PackedInt32Array(15, 24, 18), PackedInt32Array(6, 5, 25, 3), PackedInt32Array(0, 3, 25, 26), PackedInt32Array(27, 0, 26, 28, 29), PackedInt32Array(19, 30, 29, 28, 5), PackedInt32Array(31, 16, 19), PackedInt32Array(31, 19, 5, 32), PackedInt32Array(21, 32, 5, 11, 22)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(1660, -879, -1654, -883, -1673, 1270, -1268, 1265, -1205, -228, -1205, -775, -1098, -775, -1096, -226, -1224, -229, -1298, 1265, -1001, 1275, -1014, 501, -904, 501, -908, 1016, -1009, 1015, -1066, 1271, -488, 1273, -493, 63, -399, 63, -401, 375, -503, 374, -599, 1277, 755, 1272, 850, 885, 848, 506, 947, 507, 947, 883, 848, 883, 749, 1290, 1642, 1284, 1658, -440, 980, -457, 974, -776, 1077, -776, 1073, -454, 1660, -392)])
+vertices = PackedVector2Array(-1644.08, -872.977, 1649.95, -869.008, 1099.24, -792.758, 952.656, -796.25, -388.938, 53, -1085.96, -215.828, 964.32, -442.172, 1090.76, -439.953, 1647.65, -395.273, 961.922, 491, 834.047, 491, -503.039, 53, 831.953, 900, 965.078, 900, 1635.07, 1272.87, 740.563, 1262.15, -898.078, 1026.1, -391.063, 385.102, -893.922, 491, -501.672, 384.008, 1648.04, -395.219, -587.859, 1266.95, -587.398, 1262.66, -1088.04, -785, -1215, -785, -1662.91, 1259.92, -1215, -218.008, -1275.23, 1257.18, -1011.22, 1261.18, -1011.16, 1264.7, -1015.19, 1024.93, -1024.17, 491)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8, 9, 10), PackedInt32Array(5, 4, 11), PackedInt32Array(12, 13, 14, 15, 16), PackedInt32Array(8, 14, 13, 9), PackedInt32Array(17, 4, 10), PackedInt32Array(18, 19, 17, 10, 12, 16), PackedInt32Array(2, 1, 20, 8), PackedInt32Array(7, 2, 8), PackedInt32Array(15, 21, 22), PackedInt32Array(6, 5, 23, 3), PackedInt32Array(0, 3, 23, 24), PackedInt32Array(25, 0, 24, 26, 27), PackedInt32Array(28, 29, 27, 26, 5), PackedInt32Array(16, 15, 22, 28, 30), PackedInt32Array(30, 28, 5, 31), PackedInt32Array(18, 31, 5, 11, 19)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1660, -879, -1654, -883, -1673, 1270, -1249, 1267, -1205, -228, -1205, -775, -1098, -775, -1096, -226, -1214, -228, -1317, 1266, -1001, 1275, -1014, 501, -904, 501, -908, 1016, -1009, 1015, -1066, 1271, -488, 1273, -493, 63, -399, 63, -401, 375, -503, 374, -599, 1277, 782, 1272, 842, 890, 844, 501, 952, 501, 955, 890, 842, 890, 728, 1272, 1645, 1283, 1658, -440, 974, -452, 963, -786, 1089, -783, 1081, -450, 1658, -384)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mb347"]
 size = Vector2(7.51779, 105.708)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1flx"]
+size = Vector2(115, 587)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cmgnj"]
 size = Vector2(109, 520)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ph16s"]
 size = Vector2(106, 328)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ankcr"]
+size = Vector2(111, 323)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gy05"]
 size = Vector2(111, 390)
@@ -73,7 +79,7 @@ scale = Vector2(16.8173, 20.7936)
 shape = SubResource("RectangleShape2D_mb347")
 
 [node name="LimiteCima" type="StaticBody2D" parent="Limites"]
-position = Vector2(384, -931)
+position = Vector2(384, -913)
 rotation = 1.5708
 scale = Vector2(1.15315, 1.6)
 disable_mode = 1
@@ -106,8 +112,8 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Esteira1"]
-position = Vector2(8, 52)
-shape = SubResource("RectangleShape2D_cmgnj")
+position = Vector2(7.5, 59.5)
+shape = SubResource("RectangleShape2D_y1flx")
 
 [node name="Esteira2" type="StaticBody2D" parent="Limites/Objetos"]
 position = Vector2(-960, 685)
@@ -131,8 +137,8 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Esteira4"]
-position = Vector2(-445, 220)
-shape = SubResource("RectangleShape2D_ph16s")
+position = Vector2(-443.5, 211.5)
+shape = SubResource("RectangleShape2D_ankcr")
 
 [node name="Esteira5" type="StaticBody2D" parent="Limites/Objetos"]
 position = Vector2(900, 666)
