@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_8f1ow"]
 [ext_resource type="Texture2D" uid="uid://bsauybu8g4q5a" path="res://Menu/Icons/Play_Default.png" id="2_gavoa"]
-[ext_resource type="Texture2D" uid="uid://g4x5vjxonalu" path="res://Menu/91689.jpg" id="2_hxvpa"]
+[ext_resource type="Texture2D" uid="uid://dpc42hm5cbqa0" path="res://Menu/Background_Main_Menu.png" id="2_j42eu"]
 [ext_resource type="Texture2D" uid="uid://duupu2bl248bx" path="res://Menu/Icons/Play_Click.png" id="3_14epx"]
 [ext_resource type="Texture2D" uid="uid://g6brsy2thjf2" path="res://Menu/Icons/Quit_Default.png" id="4_shbha"]
 [ext_resource type="Texture2D" uid="uid://cjx1hbtabu5s2" path="res://Menu/Icons/Quit_Click.png" id="5_36p6i"]
@@ -25,27 +25,15 @@ anchor_right = 0.998
 anchor_bottom = 0.994
 offset_right = 6.30396
 offset_bottom = 9.888
-texture = ExtResource("2_hxvpa")
+texture = ExtResource("2_j42eu")
 expand_mode = 1
-
-[node name="Titulo" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 374.0
-offset_top = 120.0
-offset_right = 784.0
-offset_bottom = 160.0
-theme_override_colors/default_color = Color(0.701961, 0.556863, 0.960784, 1)
-theme_override_colors/font_outline_color = Color(1, 0, 1, 1)
-theme_override_font_sizes/bold_font_size = 24
-bbcode_enabled = true
-text = "[b] Bubbleman and the Popcalypse! [/b]"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 464.0
-offset_top = 210.0
-offset_right = 656.0
-offset_bottom = 290.0
+offset_left = 634.0
+offset_top = 308.0
+offset_right = 826.0
+offset_bottom = 388.0
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer"]
 layout_mode = 2
@@ -54,10 +42,10 @@ texture_hover = ExtResource("3_14epx")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 464.0
-offset_top = 300.0
-offset_right = 676.0
-offset_bottom = 400.0
+offset_left = 634.0
+offset_top = 398.0
+offset_right = 846.0
+offset_bottom = 498.0
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer2"]
 layout_mode = 2
@@ -66,10 +54,10 @@ texture_hover = ExtResource("8_pafmj")
 
 [node name="MarginContainer3" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 464.0
-offset_top = 390.0
-offset_right = 656.0
-offset_bottom = 470.0
+offset_left = 634.0
+offset_top = 488.0
+offset_right = 826.0
+offset_bottom = 568.0
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer3"]
 layout_mode = 2

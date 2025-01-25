@@ -57,6 +57,7 @@ value = 200.0
 show_percentage = false
 
 [node name="Label3" type="Label" parent="."]
+z_index = 2
 offset_top = 38.0
 offset_right = 108.0
 offset_bottom = 80.0

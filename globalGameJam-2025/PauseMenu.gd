@@ -63,8 +63,8 @@ func _ready() -> void:
 	
 	slots = [slot1, slot2, slot3, slot4]
 	itemBublegum = false
-	itemBoots = false
 	itemShield = false
+	itemBoots = false
 	
 	shield_timer = $shield_timer
 	shield_timer.name = "Escudo"
@@ -74,11 +74,10 @@ func _ready() -> void:
 	player.connect("stats_updated", Callable(self, "update_status_labels"))
 	
 func _process(delta):
-	if Input.is_action_just_pressed("ui_cancel"):
-		if pause_menu.is_visible():
-			_unpause_game()
-		else:
-			_pause_game()
+	if player.speed > 0:
+		if Input.is_action_just_pressed("ui_cancel"):
+			if not pause_menu.is_visible():
+				_pause_game()
 
 func create_shield():
 	if itemShield:
@@ -88,13 +87,6 @@ func create_shield():
 		shield.position = Vector2.ZERO
 		shield_timer.set_paused(true)  # Pausar o intervalo enquanto o escudo está ativo
 		player.add_child(shield)
-
-func _remove_shield() -> void:
-	var shield = get_node_or_null("/root/GameScene/Player/Shield")
-	if shield:
-		player.remove_child(shield)
-	shield_timer.set_paused(false)
-	shield_timer.start()
 
 func on_timeout_shield() -> void:
 	create_shield()

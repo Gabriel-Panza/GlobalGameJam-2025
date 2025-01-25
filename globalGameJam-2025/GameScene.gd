@@ -22,11 +22,10 @@ var enemies_list = ["res://enemy.tscn"]
 var drop_interval: float = 45.0
 var drop_timer: Timer
 
-var player
-var atkSpeed_timer: Timer
-
-var timer_path: NodePath = "/root/GameScene/Player/AtkSpeed"
 var player_path: NodePath = "/root/GameScene/Player"
+var player
+var timer_path: NodePath = "/root/GameScene/Player/AtkSpeed"
+var atkSpeed_timer: Timer
 
 var spawn_position
 
@@ -42,6 +41,8 @@ var spawn_position
 var total_time: int = 20 * 60
 var cont = 0
 
+var pause_control_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl"
+var pause_control
 var cronometro_timer_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/Cronometro/Timer"
 var cronometro_timer
 var cronometro_label_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/Cronometro"
@@ -69,10 +70,17 @@ func _ready() -> void:
 	if player:
 		player.arma = GameState.arma
 		player.selectWeapon()
+		player.maxHealth += (player.maxHealth * 0.10) * GameState.maxHp
+		player.health += (player.health * 0.10) * GameState.maxHp
+		player.speed += (player.speed * 0.10) * GameState.movespeed
+		player.critico += 0.10 * GameState.critico
+		player.emit_signal("stats_updated")
 	atkSpeed_timer = get_node_or_null(timer_path)
 	if atkSpeed_timer:
 		atkSpeed_timer.set_paused(false)
-		
+		atkSpeed_timer.wait_time -= GameState.atkSpeed
+		player.atkSpeed += (player.atkSpeed * 0.10) * GameState.atkSpeed
+
 	# Obtenha as posições globais dos nós dos limites
 	map_left = get_node(limite_esquerdo_path).global_position.x
 	map_right = get_node(limite_direito_path).global_position.x
@@ -154,7 +162,11 @@ func spawn_enemy():
 		_spawn_entity(enemy, Vector2.ZERO)
 
 func spawn_drop(position: Vector2 = Vector2.ZERO):
-	var random_index = randi() % item_scenes.size()
+	var random_index
+	if position != Vector2.ZERO:
+		random_index = randi() % 2
+	else:
+		random_index = randi() % item_scenes.size()
 	var resource = item_scenes[random_index]
 	if resource in ["res://itemShield.tscn", "res://itemBubblegum.tscn", "res://itemBoots.tscn"]:
 		item_scenes.erase(resource)

@@ -16,13 +16,16 @@ func _ready() -> void:
 		player.tela_inicial = true
 		player.gold = GameState.gold
 		player.emit_signal("gold_updated", player.gold)
-		player.arma = GameState.arma
-		player.selectWeapon()
+		update_status()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func update_status() -> void:
+	player.arma = GameState.arma
+	player.selectWeapon()
+	player.maxHealth += (player.maxHealth * 0.10) * GameState.maxHp
+	player.health += (player.health * 0.10) * GameState.maxHp
+	player.speed += (player.speed * 0.10) * GameState.movespeed
+	player.critico += 0.10 * GameState.critico
+	player.emit_signal("stats_updated")
 
 func pause_timers():
 	pass

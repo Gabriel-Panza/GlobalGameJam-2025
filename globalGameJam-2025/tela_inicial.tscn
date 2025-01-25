@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://c5nrissuxu3tu"]
+[gd_scene load_steps=26 format=4 uid="uid://c5nrissuxu3tu"]
 
 [ext_resource type="Script" path="res://tela_inicial.gd" id="1_3717t"]
 [ext_resource type="Texture2D" uid="uid://bao12i0hfsea" path="res://sprites/Tilesets/tileset chao area tranquila inicial.png" id="1_hkxae"]
@@ -673,10 +673,16 @@ size = Vector2(80, 33)
 size = Vector2(21.8519, 28.8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ckojd"]
-size = Vector2(49.5, 62.25)
+size = Vector2(10, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0idni"]
 size = Vector2(7.51779, 36.6959)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdcc4"]
+size = Vector2(220, 205)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8o58q"]
+size = Vector2(192, 88)
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_3717t")
@@ -764,7 +770,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("8_f8qkt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MrBubbles"]
-position = Vector2(-17.5, 45.5)
+position = Vector2(-13, 74.5)
 shape = SubResource("RectangleShape2D_ckojd")
 
 [node name="Casa" type="Area2D" parent="." groups=["MrBubbles"]]
@@ -830,10 +836,23 @@ position = Vector2(-34.151, 246.781)
 scale = Vector2(16.8173, 19.9936)
 shape = SubResource("RectangleShape2D_0idni")
 
+[node name="CasaBubbleman" type="StaticBody2D" parent="Limites"]
+position = Vector2(176, 331)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/CasaBubbleman"]
+position = Vector2(-1, -31.5)
+shape = SubResource("RectangleShape2D_fdcc4")
+
+[node name="MrBubblesShop" type="StaticBody2D" parent="Limites"]
+position = Vector2(891, 357)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/MrBubblesShop"]
+position = Vector2(18, 19)
+shape = SubResource("RectangleShape2D_8o58q")
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="BubbleGun/BubbleGun" to="BubbleGun" method="_on_weapon_area_body_entered"]
 [connection signal="body_entered" from="ExplubbleBomb/ExplubbleBomb" to="ExplubbleBomb" method="_on_weapon_area_body_entered"]
 [connection signal="body_entered" from="SoapGauntlet/SoapGauntlet" to="SoapGauntlet" method="_on_weapon_area_body_entered"]
 [connection signal="area_entered" from="MrBubbles" to="MrBubbles" method="_on_Area2D_body_entered"]
-[connection signal="area_exited" from="MrBubbles" to="MrBubbles" method="_on_Area2D_body_exited"]
 [connection signal="area_entered" from="Casa" to="Casa" method="_on_Area2D_body_entered"]

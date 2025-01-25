@@ -12,4 +12,7 @@ func _ready():
 # Detecta a entrada do jogador na casa
 func _on_Area2D_body_entered(body):
 	if body == player:
+		GameState.arma = player.arma
+		GameState.gold = player.gold
+		GameState.save_game()
 		get_tree().change_scene_to_file("res://main_menu.tscn")

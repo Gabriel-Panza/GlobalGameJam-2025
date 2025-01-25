@@ -113,14 +113,14 @@ func _on_atk_speed_timeout():
 
 func take_damage(amount):
 	var shield = get_node_or_null("/root/GameScene/Player/Shield")
-	if !shield.visible:
+	if shield and shield.visible:
+		shield.visible = false
+	else:
 		health -= amount
 		emit_signal("hp_updated", health, maxHealth)
 		emit_signal("stats_updated")
 		if health <= 0:
 			die()
-	else:
-		shield.visible = false
 
 func die():
 	if game_scene:
@@ -170,3 +170,5 @@ func selectWeapon():
 				$"../ExplubbleBomb/ExplubbleBomb2".set_modulate(Color.WHITE)
 				$"../SoapGauntlet/SoapGauntlet2".set_modulate(Color.TRANSPARENT)
 	GameState.arma = arma
+	ataque += (original_ataque * 0.20) * GameState.ataque
+	$AtkSpeed.wait_time -= ($AtkSpeed.wait_time * 0.10) * GameState.atkSpeed

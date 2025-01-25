@@ -1,12 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://bk3qeu16nglea"]
+[gd_scene load_steps=22 format=3 uid="uid://bk3qeu16nglea"]
 
 [ext_resource type="Script" path="res://PauseMenu.gd" id="1_2v82j"]
 [ext_resource type="Texture2D" uid="uid://bovrdh23eh723" path="res://sprites/Weapons/Bubble_Gun.png" id="2_4drt3"]
+[ext_resource type="Texture2D" uid="uid://x75fkqnpcgaj" path="res://sprites/StatsUp/MaxHP_UP.png" id="2_qfmuk"]
 [ext_resource type="Texture2D" uid="uid://w3qvj3n8ltk" path="res://Menu/GameOver_Screen.png" id="3_528pr"]
+[ext_resource type="Texture2D" uid="uid://br8h2clgaiycl" path="res://sprites/StatsUp/ATK_UP.png" id="3_g4rqw"]
 [ext_resource type="Texture2D" uid="uid://cxcf1xhvbid68" path="res://Menu/Icons/Retry.png" id="4_7tv21"]
+[ext_resource type="Texture2D" uid="uid://cwncfuxobs8l3" path="res://sprites/StatsUp/ATK_Speed_UP.png" id="4_umck3"]
+[ext_resource type="Texture2D" uid="uid://djm2syara6cuo" path="res://sprites/StatsUp/Crit_Rate_UP.png" id="5_g1eut"]
 [ext_resource type="Texture2D" uid="uid://bd66rgtqtbepa" path="res://Menu/Icons/Retry_Click.png" id="5_msqgg"]
 [ext_resource type="Texture2D" uid="uid://c66swkget06kc" path="res://Menu/Icons/HUB.png" id="6_n8moq"]
+[ext_resource type="Texture2D" uid="uid://v8oujw8igst4" path="res://sprites/StatsUp/Move_Speed_UP.png" id="6_u5mse"]
 [ext_resource type="Texture2D" uid="uid://d24t48odoxou6" path="res://Menu/Icons/HUB_ Click.png" id="7_1wgaj"]
+[ext_resource type="Script" path="res://mr_bubbles.gd" id="8_lo40n"]
+[ext_resource type="Texture2D" uid="uid://dkchjr1mcavpt" path="res://Menu/Icons/Shop/cenario fundo lojinha Mr Bubbles.png" id="9_l61pr"]
+[ext_resource type="Texture2D" uid="uid://cwhqwvogbdpi8" path="res://Menu/Icons/Shop/HpUp.png" id="9_nxd5u"]
+[ext_resource type="Texture2D" uid="uid://bhgbvgh8bc6sx" path="res://Menu/Icons/Shop/AtaqueUp.png" id="10_n2ran"]
+[ext_resource type="Texture2D" uid="uid://cc1lxt8ce4h0a" path="res://Menu/Icons/Shop/SpeedUp.png" id="11_n7gld"]
+[ext_resource type="Texture2D" uid="uid://bp4wgf7n0cr32" path="res://Menu/Icons/Shop/AtkSpeed.png" id="13_do6oq"]
+[ext_resource type="Texture2D" uid="uid://c20lgxrb3skjv" path="res://Menu/Icons/Shop/CritUp.png" id="14_30rwr"]
+[ext_resource type="Texture2D" uid="uid://sbvkel55x8vd" path="res://Menu/Icons/Shop/MrBubbles_Slot.png" id="15_pwnys"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_428n7"]
 bg_color = Color(0.2, 0.239216, 0.270588, 1)
@@ -91,6 +104,11 @@ theme_override_font_sizes/font_size = 20
 text = "Health: 200/200"
 horizontal_alignment = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/HBoxContainer/VBoxContainer2/HP_MaxHealth"]
+position = Vector2(16.1928, 15.1713)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_qfmuk")
+
 [node name="Ataque" type="Label" parent="PauseMenu/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 tooltip_text = "This represents how much damage you can deal"
@@ -100,6 +118,11 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 20
 text = "Attack: 20"
 horizontal_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/HBoxContainer/VBoxContainer2/Ataque"]
+position = Vector2(67.991, 14.1735)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_g4rqw")
 
 [node name="Atk_Speed" type="Label" parent="PauseMenu/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -111,6 +134,11 @@ theme_override_font_sizes/font_size = 20
 text = "Atk-Speed: 100%"
 horizontal_alignment = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/HBoxContainer/VBoxContainer2/Atk_Speed"]
+position = Vector2(-19.4904, 15.1545)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_umck3")
+
 [node name="Critico" type="Label" parent="PauseMenu/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 tooltip_text = "This represents the odds of dealing double damage"
@@ -121,6 +149,11 @@ theme_override_font_sizes/font_size = 20
 text = "Crit-Rate: 0%"
 horizontal_alignment = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/HBoxContainer/VBoxContainer2/Critico"]
+position = Vector2(9.28644, 13.4971)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_g1eut")
+
 [node name="Speed" type="Label" parent="PauseMenu/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 tooltip_text = "This represents how fast you can move"
@@ -130,6 +163,11 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 20
 text = "Speed: 300"
 horizontal_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/HBoxContainer/VBoxContainer2/Speed"]
+position = Vector2(31.7323, 15.7974)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_u5mse")
 
 [node name="Label" type="Label" parent="PauseMenu/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -253,6 +291,215 @@ layout_mode = 2
 texture_normal = ExtResource("6_n8moq")
 texture_hover = ExtResource("7_1wgaj")
 
+[node name="MrBubbleInterface" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -231.0
+offset_top = -119.0
+offset_right = 921.0
+offset_bottom = 529.0
+
+[node name="Area2D" type="Area2D" parent="MrBubbleInterface"]
+monitoring = false
+monitorable = false
+script = ExtResource("8_lo40n")
+
+[node name="Fundo" type="TextureRect" parent="MrBubbleInterface"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.998
+anchor_bottom = 0.994
+offset_right = 6.30396
+offset_bottom = 9.888
+texture = ExtResource("9_l61pr")
+expand_mode = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MrBubbleInterface"]
+layout_mode = 0
+offset_left = 916.0
+offset_top = 559.0
+offset_right = 1128.0
+offset_bottom = 639.0
+
+[node name="TextureButton" type="TextureButton" parent="MrBubbleInterface/MarginContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("6_n8moq")
+texture_hover = ExtResource("7_1wgaj")
+
+[node name="MarginContainer3" type="MarginContainer" parent="MrBubbleInterface"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 420.0
+offset_right = 836.0
+offset_bottom = 660.0
+scale = Vector2(0.916604, 0.81862)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MrBubbleInterface/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MrBubbleInterface/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="item1" type="TextureButton" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "This will grow your health in 10% of the original value"
+texture_normal = ExtResource("9_nxd5u")
+
+[node name="item1" type="Label" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer/item1"]
+layout_mode = 2
+offset_top = 83.6647
+offset_right = 142.0
+offset_bottom = 106.665
+theme_override_constants/outline_size = 4
+text = "              Price: 500"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item1_1" type="Label" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer/item1"]
+layout_mode = 2
+offset_top = -19.5451
+offset_right = 142.0
+offset_bottom = 3.45518
+theme_override_constants/outline_size = 4
+text = "              Quant.: 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item2" type="TextureButton" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "This will grow your attack in 10% of the original value"
+texture_normal = ExtResource("10_n2ran")
+
+[node name="item2" type="Label" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer/item2"]
+layout_mode = 2
+offset_top = 83.6647
+offset_right = 138.0
+offset_bottom = 106.665
+theme_override_constants/outline_size = 4
+text = "             Price: 1.000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item2_1" type="Label" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer/item2"]
+layout_mode = 2
+offset_top = -19.5451
+offset_right = 138.0
+offset_bottom = 3.45518
+theme_override_constants/outline_size = 4
+text = "              Quant.: 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item3" type="TextureButton" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "This will grow your movespeed in 10% of the original value"
+texture_normal = ExtResource("11_n7gld")
+
+[node name="item3" type="Label" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer/item3"]
+layout_mode = 2
+offset_top = 83.067
+offset_right = 142.0
+offset_bottom = 106.067
+theme_override_constants/outline_size = 4
+text = "             Price: 1.000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item3_1" type="Label" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer/item3"]
+layout_mode = 2
+offset_top = -19.5451
+offset_right = 142.0
+offset_bottom = 3.45492
+theme_override_constants/outline_size = 4
+text = "              Quant.: 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MrBubbleInterface/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="item4" type="TextureButton" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+tooltip_text = "This will grow your crit-rate in 10%"
+texture_normal = ExtResource("13_do6oq")
+
+[node name="item1" type="Label" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2/item4"]
+layout_mode = 2
+offset_left = -2.18197
+offset_top = 83.0077
+offset_right = 139.818
+offset_bottom = 106.008
+theme_override_constants/outline_size = 4
+text = "              Price: 1.000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item1_2" type="Label" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2/item4"]
+layout_mode = 2
+offset_top = -20.2981
+offset_right = 142.0
+offset_bottom = 2.70217
+theme_override_constants/outline_size = 4
+text = "              Quant.: 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item5" type="TextureButton" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+tooltip_text = "This will grow your atk-speed in 10% of the original value"
+texture_normal = ExtResource("14_30rwr")
+
+[node name="item2" type="Label" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2/item5"]
+layout_mode = 2
+offset_top = 83.008
+offset_right = 84.0
+offset_bottom = 106.008
+theme_override_constants/outline_size = 4
+text = "              Price: 500"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item2_2" type="Label" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2/item5"]
+layout_mode = 2
+offset_left = 0.560669
+offset_top = -20.298
+offset_right = 142.561
+offset_bottom = 2.70226
+theme_override_constants/outline_size = 4
+text = "              Quant.: 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item6" type="TextureButton" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+tooltip_text = "This unlocks 2 new skins to Mr.Bubbles that will 
+appear on him randomly each run"
+texture_normal = ExtResource("15_pwnys")
+
+[node name="item3" type="Label" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2/item6"]
+layout_mode = 2
+offset_top = 84.229
+offset_right = 151.0
+offset_bottom = 107.229
+theme_override_constants/outline_size = 4
+text = "            Price: 100.000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item3_2" type="Label" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2/item6"]
+layout_mode = 2
+offset_left = -1.06062
+offset_top = -20.298
+offset_right = 140.939
+offset_bottom = 2.70226
+theme_override_constants/outline_size = 4
+text = "              Quant.: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="shield_timer" type="Timer" parent="."]
 autostart = true
 
@@ -262,4 +509,8 @@ autostart = true
 [connection signal="pressed" from="PauseMenu/OptionsMenu/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="GameOver/MarginContainer/TextureButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="GameOver/MarginContainer2/TextureButton" to="." method="_on_hub_button_pressed"]
+[connection signal="pressed" from="MrBubbleInterface/MarginContainer2/TextureButton" to="MrBubbleInterface/Area2D" method="_on_leave_button_pressed"]
+[connection signal="pressed" from="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer/item1" to="MrBubbleInterface/Area2D" method="_on_item1_button_pressed"]
+[connection signal="pressed" from="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer/item2" to="MrBubbleInterface/Area2D" method="_on_item2_button_pressed"]
+[connection signal="pressed" from="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer/item3" to="MrBubbleInterface/Area2D" method="_on_item3_button_pressed"]
 [connection signal="timeout" from="shield_timer" to="." method="on_timeout_shield"]
