@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://re04ruowaqpk"
-path="res://.godot/imported/Bubble_Gum_Puddle.png-97ec44e8fb40accec949d846ffa57022.ctex"
+path="res://.godot/imported/Bubble_Gum_Puddle.png-511d70d3f51175136b2937642b1c041d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bubble_Gum_Puddle.png"
-dest_files=["res://.godot/imported/Bubble_Gum_Puddle.png-97ec44e8fb40accec949d846ffa57022.ctex"]
+source_file="res://sprites/Acessorios/Bubble_Gum_Puddle.png"
+dest_files=["res://.godot/imported/Bubble_Gum_Puddle.png-511d70d3f51175136b2937642b1c041d.ctex"]
 
 [params]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://0iroymmiwgc4" path="res://sprites/Projectiles/Bubble_Gum_Pop.png" id="1_8cpci"]
 [ext_resource type="Script" path="res://bubblegum.gd" id="1_d1f26"]
-[ext_resource type="Texture2D" uid="uid://re04ruowaqpk" path="res://Bubble_Gum_Puddle.png" id="3_l08nc"]
+[ext_resource type="Texture2D" uid="uid://re04ruowaqpk" path="res://sprites/Acessorios/Bubble_Gum_Puddle.png" id="3_l08nc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fkun0"]
 

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://26sjvn260hbg"]
+
+[ext_resource type="Texture2D" uid="uid://bkj2hn1wp7c5e" path="res://sprites/Acessorios/Soapy_Boots_Trail.png" id="1_2wgyj"]
+
+[node name="trail" type="Sprite2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_2wgyj")

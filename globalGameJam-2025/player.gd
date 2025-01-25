@@ -77,6 +77,7 @@ func _process(delta: float) -> void:
 		velocity_vector = velocity_vector.normalized() * speed
 		position += velocity_vector * delta
 		animationManager()
+		trail()
 		move_and_slide()
 
 func gain_xp(amount: int) -> void:
@@ -130,6 +131,15 @@ func die():
 	GameState.arma = arma
 	GameState.save_game()
 	game_over.visible = true
+
+func trail():
+	if pause_control.itemBoots:
+		var trail = load("res://trail.tscn").instantiate()
+		trail.position.y = position.y + 50
+		trail.position.x = position.x
+		get_parent().add_child(trail)
+		await get_tree().create_timer(0.2).timeout
+		trail.queue_free()
 
 func selectWeapon():
 	match arma:
