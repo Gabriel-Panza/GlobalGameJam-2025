@@ -18,8 +18,6 @@ func _ready() -> void:
 	var mouse_position = get_global_mouse_position()
 	var direction = (mouse_position - global_position).normalized()
 	velocity = direction * speed/1.25
-	$fade_out_timer.one_shot = true
-	$fade_out_timer.wait_time = 0.3
 	explode_after_timeout()
 
 func _physics_process(delta: float) -> void:
@@ -55,6 +53,7 @@ func show_flash() -> void:
 	var area = get_node_or_null("Impact/CollisionShape2D")
 	if area:
 		flash = ColorRect.new()
+		flash.name = "Flash"
 		flash.color = Color(1, 1, 1, 0.5)  # Branco semitransparente
 		
 		# Configura o tamanho e a posição do flash
@@ -68,10 +67,11 @@ func show_flash() -> void:
 		get_parent().add_child(flash)
 
 		# Cria animação de desaparecimento manualmente
-		$fade_out_timer.start()
+		if $fade_out_timer.is_stopped():
+			$fade_out_timer.start()
 
 func _remove_flash() -> void:
-	var flash_timer = $fade_out_timer
-	if flash_timer and flash is ColorRect:
+	flash = get_parent().get_node_or_null("Flash")
+	if flash:
 		flash.queue_free()
 		$fade_out_timer.stop()
