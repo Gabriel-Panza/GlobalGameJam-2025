@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://c5nrissuxu3tu"]
+[gd_scene load_steps=27 format=4 uid="uid://c5nrissuxu3tu"]
 
 [ext_resource type="Script" path="res://tela_inicial.gd" id="1_3717t"]
 [ext_resource type="Texture2D" uid="uid://bao12i0hfsea" path="res://sprites/Tilesets/tileset chao area tranquila inicial.png" id="1_hkxae"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://byjca4j2s6iuh" path="res://sprites/Personagens/mr bubbles/shop do mr bubbles.png" id="8_f8qkt"]
 [ext_resource type="Script" path="res://casa.gd" id="10_1mqwt"]
 [ext_resource type="Texture2D" uid="uid://tdd1ltw1s5eb" path="res://sprites/Tilesets/casa bubbleman.png" id="11_l2drk"]
+[ext_resource type="AudioStream" uid="uid://c7uylfyb8a8l4" path="res://music/musica tela inicial.mp3" id="14_fb1lv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ladf8"]
 texture = ExtResource("1_hkxae")
@@ -849,6 +850,10 @@ position = Vector2(891, 357)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/MrBubblesShop"]
 position = Vector2(18, 19)
 shape = SubResource("RectangleShape2D_8o58q")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_fb1lv")
+volume_db = 6.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="BubbleGun/BubbleGun" to="BubbleGun" method="_on_weapon_area_body_entered"]

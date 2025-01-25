@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var navigation_agent = $NavigationAgent2D
 
 var speed: float = 100.0
+var original_speed: float = 100.0
 @onready var aparencia = $aparencia
 var gamescene_path: NodePath = "/root/GameScene"
 var gamescene

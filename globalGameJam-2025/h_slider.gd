@@ -1,7 +1,7 @@
 extends HSlider
 
 func _on_return_pressed() -> void:
-	get_tree().change_scene_to_file("res://main_menu.tscn")
+	$"..".visible = false
 
 func _process(delta: float) -> void:
 	var texto1 = $"../Volume1"

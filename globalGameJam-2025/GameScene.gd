@@ -28,6 +28,7 @@ var timer_path: NodePath = "/root/GameScene/Player/AtkSpeed"
 var atkSpeed_timer: Timer
 
 var spawn_position
+var mudou: bool = true
 
 @export var item_scenes: Array[String] = [
 	"res://itemHP.tscn",
@@ -38,7 +39,7 @@ var spawn_position
 ]
 
 # Tempo total em segundos (20 minutos)
-var total_time: int = 15 * 60
+var total_time: int = 10 * 60
 var cont = 0
 
 var pause_control_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl"
@@ -125,47 +126,47 @@ func _update_cronometro_display(time_text: String) -> void:
 		cronometro_label.text = "Time: " + time_text
 
 func _update_cronometro() -> void:
-	total_time -= 1
+	if player.speed>0:
+		total_time -= 1
 
-	if total_time % (120) == 0:
-		if cont==0:
-			cont+=1
-			enemies_list.append("res://enemy_cultist.tscn")
-		elif cont==1:
-			cont+=1
-			# Instancio o miniboss
-		elif cont==2:
-			cont+=1
-			# Instancio o miniboss dnv
-		elif cont==3:
-			cont+=1
-			# Instancio o boss
-		elif cont==3:
-			cont+=1
-			# Instancio o boss dnv
-		else:
-			cont+=1
+		if total_time % (120) == 0:
+			if cont==0:
+				cont+=1
+				enemies_list.append("res://enemy_cultist.tscn")
+			elif cont==1:
+				cont+=1
+				# Instancio o miniboss
+			elif cont==2:
+				cont+=1
+				# Instancio o boss
+			elif cont==3:
+				cont+=1
+			else:
+				cont+=1
 
-	var minutes = total_time / 60
-	var seconds = total_time % 60
-	var formatted_time = "%02d:%02d" % [minutes, seconds]
-	_update_cronometro_display(formatted_time)
+		var minutes = total_time / 60
+		var seconds = total_time % 60
+		var formatted_time = "%02d:%02d" % [minutes, seconds]
+		_update_cronometro_display(formatted_time)
 
-	# Verifica se o tempo acabou
-	if total_time <= 0:
-		cronometro_timer.stop()
-		player.die()
+		# Verifica se o tempo acabou
+		if total_time <= 0:
+			cronometro_timer.stop()
+			player.win()
 
 func is_within_map_bounds(position: Vector2) -> bool:
 	return position.x >= map_left and position.x <= map_right and position.y >= map_top and position.y <= map_bottom
 
 func clamp_position_to_bounds(position: Vector2) -> Vector2:
 	# Ajusta a posição para ficar dentro dos limites do mapa
-	position.x = clamp(position.x, map_left+333, map_right-333)
+	position.x = clamp(position.x, map_left+275, map_right-275)
 	position.y = clamp(position.y, map_top+225, map_bottom-225)
 	return position
 
 func spawn_enemy():
+	if (mudou and enemies_list.size()>1):
+		enemy_timer.wait_time = spawn_interval*2
+		mudou = false
 	for enemy in enemies_list:
 		_spawn_entity(enemy, Vector2.ZERO)
 

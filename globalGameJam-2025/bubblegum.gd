@@ -39,6 +39,6 @@ func _on_impact_body_entered(body: Node2D) -> void:
 func _on_timer_timeout() -> void:
 	for target in inimigos_afetados:
 		if target and is_instance_valid(target):
-			target.speed = target.speed * 2
+			target.speed = target.original_speed
 			target.get_node_or_null("bubble_effect").visible = false
 	queue_free()

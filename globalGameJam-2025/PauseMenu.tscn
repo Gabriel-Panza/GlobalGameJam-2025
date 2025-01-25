@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bk3qeu16nglea"]
+[gd_scene load_steps=25 format=3 uid="uid://bk3qeu16nglea"]
 
 [ext_resource type="Script" path="res://PauseMenu.gd" id="1_2v82j"]
 [ext_resource type="Texture2D" uid="uid://bovrdh23eh723" path="res://sprites/Weapons/Bubble_Gun.png" id="2_4drt3"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bhgbvgh8bc6sx" path="res://Menu/Icons/Shop/AtaqueUp.png" id="10_n2ran"]
 [ext_resource type="Texture2D" uid="uid://cc1lxt8ce4h0a" path="res://Menu/Icons/Shop/SpeedUp.png" id="11_n7gld"]
 [ext_resource type="Texture2D" uid="uid://bp4wgf7n0cr32" path="res://Menu/Icons/Shop/AtkSpeed.png" id="13_do6oq"]
+[ext_resource type="Texture2D" uid="uid://bqvr5pl1a2t6k" path="res://Menu/Victory_Screen.png" id="13_oqm2e"]
 [ext_resource type="Texture2D" uid="uid://c20lgxrb3skjv" path="res://Menu/Icons/Shop/CritUp.png" id="14_30rwr"]
 [ext_resource type="Texture2D" uid="uid://d4nmvdtabq6l1" path="res://Menu/Icons/Leave.png" id="15_l8ddk"]
 [ext_resource type="Texture2D" uid="uid://sbvkel55x8vd" path="res://Menu/Icons/Shop/MrBubbles_Slot.png" id="15_pwnys"]
@@ -253,6 +254,7 @@ text = "Back"
 
 [node name="GameOver" type="Panel" parent="."]
 visible = false
+z_index = 2
 layout_mode = 0
 offset_left = -231.0
 offset_top = -114.0
@@ -289,6 +291,49 @@ offset_right = 279.0
 offset_bottom = 480.0
 
 [node name="TextureButton" type="TextureButton" parent="GameOver/MarginContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("6_n8moq")
+texture_hover = ExtResource("7_1wgaj")
+
+[node name="GameWin" type="Panel" parent="."]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = -231.0
+offset_top = -114.0
+offset_right = 921.0
+offset_bottom = 534.0
+
+[node name="Fundo" type="TextureRect" parent="GameWin"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.998
+anchor_bottom = 0.994
+offset_right = 6.30396
+offset_bottom = 9.888
+texture = ExtResource("13_oqm2e")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GameWin"]
+layout_mode = 0
+offset_left = 846.0
+offset_top = 388.0
+offset_right = 1038.0
+offset_bottom = 468.0
+
+[node name="TextureButton" type="TextureButton" parent="GameWin/MarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_7tv21")
+texture_hover = ExtResource("5_msqgg")
+
+[node name="MarginContainer2" type="MarginContainer" parent="GameWin"]
+layout_mode = 0
+offset_left = 846.0
+offset_top = 478.0
+offset_right = 1058.0
+offset_bottom = 578.0
+
+[node name="TextureButton" type="TextureButton" parent="GameWin/MarginContainer2"]
 layout_mode = 2
 texture_normal = ExtResource("6_n8moq")
 texture_hover = ExtResource("7_1wgaj")
@@ -511,6 +556,8 @@ autostart = true
 [connection signal="pressed" from="PauseMenu/OptionsMenu/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="GameOver/MarginContainer/TextureButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="GameOver/MarginContainer2/TextureButton" to="." method="_on_hub_button_pressed"]
+[connection signal="pressed" from="GameWin/MarginContainer/TextureButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="GameWin/MarginContainer2/TextureButton" to="." method="_on_hub_button_pressed"]
 [connection signal="pressed" from="MrBubbleInterface/MarginContainer2/TextureButton" to="MrBubbleInterface/Area2D" method="_on_leave_button_pressed"]
 [connection signal="pressed" from="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer/item1" to="MrBubbleInterface/Area2D" method="_on_item1_button_pressed"]
 [connection signal="pressed" from="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer/item2" to="MrBubbleInterface/Area2D" method="_on_item2_button_pressed"]
