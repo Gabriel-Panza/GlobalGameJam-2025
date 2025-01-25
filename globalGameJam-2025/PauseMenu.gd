@@ -64,7 +64,7 @@ func _ready() -> void:
 	slots = [slot1, slot2, slot3, slot4]
 	itemBublegum = false
 	itemBoots = false
-	itemShield = true
+	itemShield = false
 	
 	shield_timer = $shield_timer
 	shield_timer.name = "Escudo"
@@ -82,7 +82,6 @@ func _process(delta):
 
 func create_shield():
 	if itemShield:
-		print("entrou2")
 		var shield = load("res://shield_effect.tscn").instantiate()
 		shield.name = "Shield"
 		shield.z_index = 2
@@ -98,7 +97,6 @@ func _remove_shield() -> void:
 	shield_timer.start()
 
 func on_timeout_shield() -> void:
-	print("entrou1")
 	create_shield()
 
 func update_status_labels():
