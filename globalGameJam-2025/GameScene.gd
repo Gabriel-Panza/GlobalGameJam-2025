@@ -58,7 +58,7 @@ var label2_progress
 
 func _ready() -> void:
 	adaptHUD()
-	
+	pause_control = get_node_or_null("Player/Camera2D/CanvasLayer/HUD/PauseControl")
 	cronometro_timer = get_node_or_null(cronometro_timer_path)
 	cronometro_timer.set_wait_time(1.0)
 	cronometro_timer.set_one_shot(false)
@@ -239,3 +239,17 @@ func resume_timers():
 	enemy_timer.set_paused(false)
 	drop_timer.set_paused(false)
 	atkSpeed_timer.set_paused(false)
+
+func SpawnGum():
+	if pause_control.itemBublegum:
+		var bolha = load("res://bubblegum.tscn").instantiate()
+		var eixo_x = randi_range(-1785, 1807)
+		var eixo_y = randi_range(-913, 1418)
+		bolha.position = Vector2(eixo_x, eixo_y)
+		add_child(bolha)
+	else:
+		pass
+		
+
+func _on_bubblegum_timer_timeout() -> void:
+	SpawnGum()

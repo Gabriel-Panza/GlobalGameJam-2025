@@ -148,3 +148,9 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Esteira5"]
 position = Vector2(-1.5, 29)
 shape = SubResource("RectangleShape2D_4gy05")
+
+[node name="Bubblegum_timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Bubblegum_timer" to="." method="_on_bubblegum_timer_timeout"]

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Variáveis de Velocidade
-var speed: float = 200
+var speed: float = 250
 var original_speed: float = 200
 var velocity_vector := Vector2.ZERO
 var pause_control_path: NodePath = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl"
