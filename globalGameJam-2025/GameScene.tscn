@@ -296,6 +296,7 @@ autostart = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_qdt4j")
+volume_db = -10.0
 autoplay = true
 
 [connection signal="timeout" from="Bubblegum_timer" to="." method="_on_bubblegum_timer_timeout"]

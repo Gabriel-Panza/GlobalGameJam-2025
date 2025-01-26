@@ -1222,7 +1222,6 @@ shape = SubResource("RectangleShape2D_8o58q")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_fb1lv")
-volume_db = 6.0
 autoplay = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

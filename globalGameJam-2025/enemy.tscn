@@ -1,7 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dtte5xn6jofhd"]
 
 [ext_resource type="Texture2D" uid="uid://2niwdvlf2ciw" path="res://sprites/Personagens/inimigos/TarEnemyWalk.png" id="2_hbd8s"]
-[ext_resource type="Texture2D" uid="uid://b88mm11vnaq75" path="res://sprites/Projectiles/Bubble_Gum_Icon1.png" id="3_61dbq"]
 [ext_resource type="FontFile" uid="uid://cu6t5r07fskv5" path="res://Bangers/Bangers-Regular.ttf" id="4_ri3ia"]
 
 [sub_resource type="GDScript" id="GDScript_ss34j"]
@@ -158,6 +157,9 @@ animations = [{
 radius = 29.0
 height = 64.0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_186c8"]
+load_path = "res://.godot/imported/Bubble_Gum_Icon1.png-20aa8ef95cdda8ad32077419906f7eda.ctex"
+
 [node name="Enemy" type="CharacterBody2D" groups=["Inimigo", "Vivos"]]
 z_index = 1
 collision_layer = 2
@@ -194,7 +196,7 @@ avoidance_mask = 3
 visible = false
 position = Vector2(0, -76)
 scale = Vector2(2.78125, 2.90625)
-texture = ExtResource("3_61dbq")
+texture = SubResource("CompressedTexture2D_186c8")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 visible = false

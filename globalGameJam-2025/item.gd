@@ -19,6 +19,9 @@ func _on_body_entered(body):
 	if body.name == "Player":
 		if is_in_group("XP"):
 			_process_xp_item()
+		elif is_in_group("bigXP"):
+			_process_big_xp_item()
+			
 		elif is_in_group("HP"):
 			_process_hp_item()
 		elif is_in_group("Gold"):
@@ -35,13 +38,22 @@ func _process_xp_item():
 		som.play()
 		player.gain_xp(value)
 
+func _process_big_xp_item():
+	if player:
+		var som = player.get_node_or_null("Collectable_Sound")
+		som.stream = load("res://SFX/XP_Pickup.mp3")
+		som.volume_db = 24
+		som.play()
+		player.gain_xp(value * 3)
+		
 func _process_hp_item():
 	if player:
 		var som = player.get_node_or_null("Collectable_Sound")
 		som.stream = load("res://SFX/POP_Soda_Gulp.mp3")
+		som.volume_db = -1	
 		som.play()
 		if player.health + value <= player.maxHealth:
-			player.health += value
+			player.health += (value + 5)
 		else:
 			player.health = player.maxHealth
 		player.emit_signal("hp_updated", player.health, player.maxHealth)
@@ -51,6 +63,7 @@ func _process_gold_item():
 	if player:
 		var som = player.get_node_or_null("Collectable_Sound")
 		som.stream = load("res://SFX/Gold_Pickup.mp3")
+		som.volume_db = -1
 		som.play()
 		player.gold += value*2
 		player.emit_signal("gold_updated", player.gold)
