@@ -28,7 +28,6 @@
 bg_color = Color(0.2, 0.239216, 0.270588, 1)
 
 [node name="PauseControl" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -44,6 +43,7 @@ grow_vertical = 2
 script = ExtResource("1_2v82j")
 
 [node name="PauseMenu" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -233,7 +233,6 @@ horizontal_alignment = 1
 layout_mode = 2
 min_value = -80.0
 max_value = 24.0
-value = 24.0
 
 [node name="Label3" type="Label" parent="PauseMenu/OptionsMenu/VBoxContainer"]
 layout_mode = 2

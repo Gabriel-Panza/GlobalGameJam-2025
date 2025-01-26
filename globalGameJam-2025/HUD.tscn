@@ -71,6 +71,7 @@ text = "Gold: 0"
 visible = false
 
 [node name="PauseControl" parent="." instance=ExtResource("3_4wqrd")]
+visible = true
 
 [node name="Cronometro" type="Label" parent="."]
 visible = false
