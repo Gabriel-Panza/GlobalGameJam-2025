@@ -75,7 +75,7 @@ func take_damage(amount):
 		
 func die() -> void:
 	var random = randf_range(0, 1)
-	if random <= 0.1:
+	if random <= 0.15:
 		gamescene.spawn_drop(position)
 	if player:
 		gamescene._spawn_xp("res://itemBigXP.tscn", position)

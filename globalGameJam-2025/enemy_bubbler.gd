@@ -19,7 +19,7 @@ var max_distance: float = 600.0
 var distance_to_player
 
 var damage: int = 25
-var health: int = 800
+var health: int = 1200
 
 func _ready() -> void:
 	gamescene = get_node_or_null(gamescene_path)

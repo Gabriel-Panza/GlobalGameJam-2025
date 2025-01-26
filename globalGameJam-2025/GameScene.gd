@@ -13,13 +13,13 @@ var map_top: float
 var map_bottom: float
 
 # Intervalo de spawn de inimigos
-var spawn_interval: float = 1.5
+var spawn_interval: float = 1.25
 var spawn_offset: float = 25.0
 var enemy_timer: Timer
 var enemies_list = ["res://enemy.tscn"]
 
 # Intervalo de drop de itens
-var drop_interval: float = 45.0
+var drop_interval: float = 30.0
 var drop_timer: Timer
 
 var player_path: NodePath = "/root/GameScene/Player"
@@ -145,9 +145,12 @@ func _update_cronometro() -> void:
 		var formatted_time = "%02d:%02d" % [minutes, seconds]
 		_update_cronometro_display(formatted_time)
 
-		# Verifica se o tempo acabou
-		if total_time <= 0:
-			cronometro_timer.stop()
+		# Verifica se o player venceu
+		if total_time<= 300:
+			if total_time <= 0:
+				cronometro_timer.stop()
+				if not is_instance_valid($EnemyBubbler):
+					player.win()
 			if not is_instance_valid($EnemyBubbler):
 				player.win()
 
