@@ -35,7 +35,8 @@ func _ready():
 	connect("body_exited", Callable(self, "_on_Area2D_body_exited"))
 	game_scene = get_node_or_null(game_scene_path)
 	player = get_node_or_null(player_path)
-	player_speed = player.speed
+	if player:
+		player_speed = player.speed
 	pause_control = get_node_or_null(pause_control_path)
 	mrBubblesShop = get_node_or_null(mrBubblesShop_path)
 	mrBubblesContainer = get_node_or_null(mrBubblesContainer_path)

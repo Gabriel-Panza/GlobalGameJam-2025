@@ -14,7 +14,7 @@ var map_bottom: float
 
 # Intervalo de spawn de inimigos
 var spawn_interval: float = 1.5
-var spawn_offset: float = 50.0
+var spawn_offset: float = 25.0
 var enemy_timer: Timer
 var enemies_list = ["res://enemy.tscn"]
 
@@ -56,7 +56,7 @@ var label2
 var label2_progress_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/ProgressBar2"
 var label2_progress
 
-func _ready() -> void:
+func _ready() -> void:	
 	adaptHUD()
 	pause_control = get_node_or_null("Player/Camera2D/CanvasLayer/HUD/PauseControl")
 	cronometro_timer = get_node_or_null(cronometro_timer_path)

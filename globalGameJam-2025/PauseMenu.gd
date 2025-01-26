@@ -62,19 +62,18 @@ func _ready() -> void:
 	speed_label = get_node_or_null(speed_label_path)
 	
 	slots = [slot1, slot2, slot3, slot4]
-	itemBublegum = true
+	itemBublegum = false
 	itemShield = false
 	itemBoots = false
 	
 	shield_timer = get_node_or_null("shield_timer")
 	shield_timer.name = "Escudo"
-	shield_timer.connect("timeout", Callable(self, "on_timeout_shield"))
-	#shield_timer.set_paused(true)
 	
-	player.connect("stats_updated", Callable(self, "update_status_labels"))
+	if player:
+		player.connect("stats_updated", Callable(self, "update_status_labels"))
 	
 func _process(delta):
-	if player.speed > 0:
+	if player and player.speed > 0:
 		if Input.is_action_just_pressed("ui_cancel"):
 			if not pause_menu.is_visible():
 				_pause_game()
