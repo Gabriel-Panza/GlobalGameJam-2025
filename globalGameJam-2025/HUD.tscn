@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbnwiodw2fqfp"]
+[gd_scene load_steps=6 format=3 uid="uid://cqimjgvjf1le5"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_esuf2"]
-[ext_resource type="PackedScene" uid="uid://njuy4b4rglov" path="res://LevelUpPopup.tscn" id="2_jet5o"]
-[ext_resource type="PackedScene" uid="uid://bk3qeu16nglea" path="res://PauseMenu.tscn" id="3_4wqrd"]
+[ext_resource type="PackedScene" uid="uid://72d6vlngrfmv" path="res://LevelUpPopup.tscn" id="2_jet5o"]
+[ext_resource type="PackedScene" uid="uid://cxkyc58pgy43i" path="res://PauseMenu.tscn" id="3_4wqrd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tafyd"]
 bg_color = Color(1, 0, 1, 1)
@@ -71,7 +71,6 @@ text = "Gold: 0"
 visible = false
 
 [node name="PauseControl" parent="." instance=ExtResource("3_4wqrd")]
-visible = true
 
 [node name="Cronometro" type="Label" parent="."]
 visible = false

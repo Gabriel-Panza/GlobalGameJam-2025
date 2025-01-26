@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3jcocryx62hx"]
+[gd_scene load_steps=14 format=3 uid="uid://b3jcocryx62hx"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_8f1ow"]
 [ext_resource type="Texture2D" uid="uid://bsauybu8g4q5a" path="res://Menu/Icons/Play_Default.png" id="2_gavoa"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bm780yvyvsmk5" path="res://Menu/Icons/Options_Click.png" id="8_pafmj"]
 [ext_resource type="PackedScene" uid="uid://b7q5t2nux781h" path="res://options_menu.tscn" id="11_yyxd5"]
 [ext_resource type="AudioStream" uid="uid://c257snirak1ty" path="res://music/Musica Menu - Bubbleman is Here.mp3" id="12_snkdm"]
+[ext_resource type="PackedScene" uid="uid://m2qqrdff3gkt" path="res://sprites/StatsUp/menu_click.tscn" id="13_wiicy"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -91,6 +92,8 @@ layout_mode = 1
 stream = ExtResource("12_snkdm")
 volume_db = 6.0
 autoplay = true
+
+[node name="menu_click" parent="." instance=ExtResource("13_wiicy")]
 
 [connection signal="pressed" from="MarginContainer/TextureButton" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="MarginContainer2/TextureButton" to="." method="_on_options_button_pressed"]

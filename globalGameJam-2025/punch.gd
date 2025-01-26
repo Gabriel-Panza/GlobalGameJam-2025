@@ -94,6 +94,10 @@ func _on_impact_body_entered(body):
 	if body.is_in_group("Inimigo"):
 		if randf_range(0, 1) <= player.critico:
 			body.take_damage(player.ataque * 2)
+			var impacto = preload("res://crit_text.tscn").instantiate()
+			impacto.text = impacto.text % "BAM!"
+			impacto.position = body.position
+			get_parent().add_child(impacto)
 		else:
 			body.take_damage(player.ataque)
 		queue_free()

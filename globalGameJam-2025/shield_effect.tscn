@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqj8g72qwyouu"]
+[gd_scene load_steps=5 format=3 uid="uid://dqj8g72qwyouu"]
 
 [ext_resource type="Script" path="res://shield_effect.gd" id="1_8lvda"]
 [ext_resource type="Texture2D" uid="uid://db1frkbprh142" path="res://sprites/Acessorios/Pop_Shield_Effect.png" id="1_1116x"]
+[ext_resource type="AudioStream" uid="uid://dghtshs7jue4t" path="res://SFX/Shield_Recharged.mp3" id="3_v6xgh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t4cbo"]
 radius = 93.0
@@ -20,5 +21,8 @@ texture = ExtResource("1_1116x")
 
 [node name="turn_on" type="Timer" parent="."]
 wait_time = 10.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_v6xgh")
 
 [connection signal="timeout" from="turn_on" to="." method="_on_turn_on_timeout"]

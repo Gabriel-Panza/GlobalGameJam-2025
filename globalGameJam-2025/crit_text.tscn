@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cminq8862buut"]
+
+[ext_resource type="FontFile" uid="uid://cu6t5r07fskv5" path="res://Bangers/Bangers-Regular.ttf" id="1_y7tim"]
+[ext_resource type="Script" path="res://crit_text.gd" id="2_63djs"]
+
+[node name="Crit_Text" type="RichTextLabel"]
+offset_left = 34.0
+offset_top = -9.0
+offset_right = 148.0
+offset_bottom = 51.0
+theme_override_colors/default_color = Color(0.985495, 0.873795, 0.347872, 1)
+theme_override_fonts/normal_font = ExtResource("1_y7tim")
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[shake rate=30]%s[/shake]"
+scroll_active = false
+script = ExtResource("2_63djs")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

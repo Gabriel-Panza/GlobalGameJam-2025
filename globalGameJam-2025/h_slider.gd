@@ -1,6 +1,7 @@
 extends HSlider
 
 func _on_return_pressed() -> void:
+	$"../menu_click".play()
 	$"..".visible = false
 
 func _process(delta: float) -> void:

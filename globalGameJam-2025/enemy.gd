@@ -50,9 +50,14 @@ func _process(_delta: float) -> void:
 
 func take_damage(amount):
 	health -= amount
+	$RichTextLabel.visible = true
+	if $RichTextLabel.text == "[wave amp=100 freq=9] [fade] - %s [/fade] [/wave]":
+		$RichTextLabel.text = $RichTextLabel.text % amount
 	if health <= 0:
 		die()
-		
+	await get_tree().create_timer(1).timeout
+	$RichTextLabel.visible = false
+	$RichTextLabel.text = "[tornado radius = 10 freq = 2.2] - %s [/tornado]"
 func die() -> void:
 	var random = randf_range(0,1)
 	if random <= 0.1:

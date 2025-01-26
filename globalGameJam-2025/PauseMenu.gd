@@ -62,7 +62,7 @@ func _ready() -> void:
 	speed_label = get_node_or_null(speed_label_path)
 	
 	slots = [slot1, slot2, slot3, slot4]
-	itemBublegum = false
+	itemBublegum = true
 	itemShield = false
 	itemBoots = false
 	
@@ -115,6 +115,7 @@ func _pause_game():
 		obj.speed = 0
 
 func _unpause_game():
+	$menu_click.play()
 	options_menu.hide()
 	pause_menu.hide()
 	for obj in get_tree().get_nodes_in_group("Vivos"):
@@ -128,18 +129,24 @@ func _unpause_game():
 		game_scene.resume_timers()
 
 func _on_options_button_pressed() -> void:
+	$menu_click.play()
 	options_menu.show()
 
 func _on_back_button_pressed() -> void:
+	$menu_click.play()
 	options_menu.hide()
 
 func _on_menu_button_pressed() -> void:
+	$menu_click.play()
+	await get_tree().create_timer(0.1).timeout
 	get_tree().change_scene_to_file("res://main_menu.tscn")
 
 func _on_retry_button_pressed() -> void:
+	$menu_click.play()
 	get_tree().reload_current_scene()
 
 func _on_hub_button_pressed() -> void:
+	$menu_click.play()
 	get_tree().change_scene_to_file("res://tela_inicial.tscn")
 
 

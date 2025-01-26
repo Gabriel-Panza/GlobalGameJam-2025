@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dtte5xn6jofhd"]
+[gd_scene load_steps=15 format=3 uid="uid://dtte5xn6jofhd"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_r8fao"]
 [ext_resource type="Texture2D" uid="uid://2niwdvlf2ciw" path="res://sprites/Personagens/inimigos/TarEnemyWalk.png" id="2_hbd8s"]
 [ext_resource type="Texture2D" uid="uid://b88mm11vnaq75" path="res://sprites/Projectiles/Bubble_Gum_Icon1.png" id="3_61dbq"]
+[ext_resource type="FontFile" uid="uid://cu6t5r07fskv5" path="res://Bangers/Bangers-Regular.ttf" id="4_ri3ia"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ggxt3"]
 atlas = ExtResource("2_hbd8s")
@@ -109,6 +110,21 @@ visible = false
 position = Vector2(0, -76)
 scale = Vector2(2.78125, 2.90625)
 texture = ExtResource("3_61dbq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 29.0
+offset_top = -96.0
+offset_right = 341.0
+offset_bottom = 39.0
+theme_override_colors/default_color = Color(0.768627, 0.12549, 0.160784, 1)
+theme_override_fonts/normal_font = ExtResource("4_ri3ia")
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[wave amp=100 freq=9] [fade] - %s [/fade] [/wave]"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

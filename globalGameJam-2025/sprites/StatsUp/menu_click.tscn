@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://m2qqrdff3gkt"]
+
+[ext_resource type="AudioStream" uid="uid://81dte0ahl42s" path="res://SFX/Menu_Click_Sound.mp3" id="1_wq01a"]
+
+[node name="menu_click" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_wq01a")

@@ -10,6 +10,9 @@ var exploded: bool = false
 var player_path: NodePath = "/root/GameScene/Player"
 var player
 
+# ColorRect
+var flash
+
 func _ready() -> void:
 	player = get_node_or_null(player_path)
 	var mouse_position = get_global_mouse_position()
@@ -33,8 +36,10 @@ func explode() -> void:
 	exploded = true
 	show_flash()
 	apply_area_damage()
-	await get_tree().create_timer(0.05).timeout
-	queue_free()
+	$AudioStreamPlayer2D.play()
+	await get_tree().create_timer(0.1).timeout
+	$ImpactFramePlaceholder.queue_free()
+	$Sprite2D.queue_free()
 
 func apply_area_damage() -> void:
 	var area = get_node_or_null("Impact")
@@ -49,6 +54,10 @@ func explode_after_timeout() -> void:
 	
 func show_flash() -> void:
 	var area = get_node_or_null("Impact/CollisionShape2D")
-	var effect = get_node_or_null("ImpactFramePlaceholder")
 	if area:
-		effect.visible = true
+		flash = $ImpactFramePlaceholder
+		flash.visible = true
+
+
+func _on_audio_stream_player_2d_finished() -> void:
+	queue_free()
