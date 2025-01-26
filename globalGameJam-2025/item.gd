@@ -41,7 +41,7 @@ func _process_hp_item():
 	
 func _process_gold_item():
 	if player:
-		player.gold += value
+		player.gold += value*2
 		player.emit_signal("gold_updated", player.gold)
 
 func _process_equipment_item():

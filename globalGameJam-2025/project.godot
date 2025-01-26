@@ -19,12 +19,27 @@ config/icon="res://icon.svg"
 
 GameState="*res://GameState.gd"
 
+[display]
+
+window/size/resizable=false
+window/stretch/mode="viewport"
+
 [global_group]
 
 Inimigo=""
 Itens=""
 Vivos=""
 Player=""
+Escudo=""
+XP=""
+Gold=""
+HP=""
+Acessorios=""
+MrBubbles=""
+PunchEsquerdo=""
+PunchDireito=""
+Punch=""
+Bomb=""
 
 [input]
 

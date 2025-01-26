@@ -183,9 +183,9 @@ func selectWeapon():
 		"res://punch.tscn":
 			pause_control.slots[0].texture = load(weapon_data[arma])
 			projetil = preload("res://punch.tscn")
-			ataque = 8
+			ataque = 12
 			original_ataque = 10
-			$AtkSpeed.wait_time = 0.5
+			$AtkSpeed.wait_time = 0.4
 			$AtkSpeed.set_paused(true)
 			if tela_inicial:
 				$"../BubbleGun/BubbleGun2".set_modulate(Color.WHITE)
