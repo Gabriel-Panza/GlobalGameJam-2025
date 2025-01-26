@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bdmsykmbmia1r"]
+[gd_scene load_steps=14 format=3 uid="uid://dtte5xn6jofhd"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_r8fao"]
 [ext_resource type="Texture2D" uid="uid://2niwdvlf2ciw" path="res://sprites/Personagens/inimigos/TarEnemyWalk.png" id="2_hbd8s"]

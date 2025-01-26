@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cy2nhaekmnsic"]
+[gd_scene load_steps=5 format=3 uid="uid://cwdd2vwife42i"]
 
 [ext_resource type="Script" path="res://bomb.gd" id="1_jf8w7"]
 [ext_resource type="Texture2D" uid="uid://jjfs2y8bxxab" path="res://sprites/Projectiles/Explubble_Bomb_Projectile.png" id="2_4uckv"]

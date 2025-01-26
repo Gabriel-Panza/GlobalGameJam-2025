@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cw3oyei3rcexs"]
+[gd_scene load_steps=13 format=3 uid="uid://dfoxv60v3og0b"]
 
 [ext_resource type="Texture2D" uid="uid://0iroymmiwgc4" path="res://sprites/Projectiles/Bubble_Gum_Pop.png" id="1_8cpci"]
 [ext_resource type="Script" path="res://bubblegum.gd" id="1_d1f26"]

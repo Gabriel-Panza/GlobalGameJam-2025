@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://do7fbjct0axmq"]
+[gd_scene load_steps=13 format=3 uid="uid://b3jcocryx62hx"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_8f1ow"]
 [ext_resource type="Texture2D" uid="uid://bsauybu8g4q5a" path="res://Menu/Icons/Play_Default.png" id="2_gavoa"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cjx1hbtabu5s2" path="res://Menu/Icons/Quit_Click.png" id="5_36p6i"]
 [ext_resource type="Texture2D" uid="uid://doiykcwu0qsnl" path="res://Menu/Icons/Options_Default.png" id="7_duqna"]
 [ext_resource type="Texture2D" uid="uid://bm780yvyvsmk5" path="res://Menu/Icons/Options_Click.png" id="8_pafmj"]
-[ext_resource type="PackedScene" uid="uid://qmyoe8q6c30b" path="res://options_menu.tscn" id="11_yyxd5"]
+[ext_resource type="PackedScene" uid="uid://b7q5t2nux781h" path="res://options_menu.tscn" id="11_yyxd5"]
 [ext_resource type="AudioStream" uid="uid://c257snirak1ty" path="res://music/Musica Menu - Bubbleman is Here.mp3" id="12_snkdm"]
 
 [node name="MainMenu" type="Control"]

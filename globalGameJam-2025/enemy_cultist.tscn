@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dvxhoj7k26h2a"]
+[gd_scene load_steps=24 format=3 uid="uid://dxrgpl5ldc65o"]
 
 [ext_resource type="Script" path="res://enemy_cultist.gd" id="1_cma0k"]
 [ext_resource type="Texture2D" uid="uid://k2ryr0wwvusa" path="res://sprites/Personagens/inimigos/CultistAttack.png" id="2_pgf37"]

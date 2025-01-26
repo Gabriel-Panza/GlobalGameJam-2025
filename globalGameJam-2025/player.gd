@@ -61,6 +61,11 @@ func animationManager():
 			aparencia.flip_h = true
 		else:
 			aparencia.flip_h = false
+	elif health <=0:
+		aparencia.play("death")
+		speed = 0
+		await get_tree().create_timer(2.5).timeout
+		die()
 	else:
 		aparencia.play("idle")
 
@@ -122,8 +127,8 @@ func take_damage(amount):
 		health -= amount
 		emit_signal("hp_updated", health, maxHealth)
 		emit_signal("stats_updated")
-		if health <= 0:
-			die()
+		#if health <= 0:
+		#	die()
 
 func die():
 	if game_scene:

@@ -1,8 +1,8 @@
-[gd_scene load_steps=27 format=4 uid="uid://c5nrissuxu3tu"]
+[gd_scene load_steps=27 format=4 uid="uid://4uyr6wirn77o"]
 
 [ext_resource type="Script" path="res://tela_inicial.gd" id="1_3717t"]
 [ext_resource type="Texture2D" uid="uid://bao12i0hfsea" path="res://sprites/Tilesets/tileset chao area tranquila inicial.png" id="1_hkxae"]
-[ext_resource type="PackedScene" uid="uid://cc1g3ofhfukk7" path="res://player.tscn" id="2_ek31v"]
+[ext_resource type="PackedScene" uid="uid://b4iryf56vfhmk" path="res://player.tscn" id="2_ek31v"]
 [ext_resource type="Texture2D" uid="uid://bt11lm5sckay1" path="res://sprites/Tilesets/arvores tela inicial.png" id="3_ia77x"]
 [ext_resource type="Texture2D" uid="uid://bovrdh23eh723" path="res://sprites/Weapons/Bubble_Gun.png" id="3_q40a2"]
 [ext_resource type="Texture2D" uid="uid://c58lgucib0q8h" path="res://sprites/Weapons/Explubble_Bomb.png" id="4_0x5hn"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://blqqoudwv65hp"]
+[gd_scene load_steps=4 format=3 uid="uid://8w0wxygunrxx"]
 
 [ext_resource type="Texture2D" uid="uid://bhlkosuxo33hi" path="res://sprites/Projectiles/Bubble_Gun_Projectile.png" id="1_c6pcf"]
 [ext_resource type="Script" path="res://projectile.gd" id="1_xt63k"]

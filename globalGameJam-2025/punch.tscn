@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi6tgcdjjifuj"]
+[gd_scene load_steps=4 format=3 uid="uid://bkejhp434qc03"]
 
 [ext_resource type="Script" path="res://punch.gd" id="1_gpdie"]
 [ext_resource type="Texture2D" uid="uid://ddc1lkraa6l30" path="res://sprites/Projectiles/Soap_Gauntlet_Projectile.png" id="2_e4pnj"]

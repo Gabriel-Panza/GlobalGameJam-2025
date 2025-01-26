@@ -10,6 +10,8 @@ var decision_time: float = 1.0
 var time_since_last_decision: float = 0.0
 
 func _ready() -> void:
+	if GameState.mrBubbles >= 1:
+		$MrBubbles.frames = load("res://sprites/Personagens/mr bubbles/agent_bubbles.tres")
 	player = get_node_or_null(player_path)
 
 func _process(delta: float) -> void:

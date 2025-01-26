@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://do8ctu0sfqqgf"]
+[gd_scene load_steps=4 format=3 uid="uid://dqj8g72qwyouu"]
 
 [ext_resource type="Script" path="res://shield_effect.gd" id="1_8lvda"]
 [ext_resource type="Texture2D" uid="uid://db1frkbprh142" path="res://sprites/Acessorios/Pop_Shield_Effect.png" id="1_1116x"]

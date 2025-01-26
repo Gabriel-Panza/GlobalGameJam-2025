@@ -1,112 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://b0nufv2vq22rm"]
+[gd_scene load_steps=3 format=3 uid="uid://cy71b3ixrl8fo"]
 
-[ext_resource type="Texture2D" uid="uid://c53aku86exmbm" path="res://sprites/Personagens/mr bubbles/mr bubbles idle normal.png" id="1_nb53m"]
 [ext_resource type="Script" path="res://mr_bubbles_ingame.gd" id="1_x3rsf"]
-[ext_resource type="Texture2D" uid="uid://b2jkdtmld1jxu" path="res://sprites/Personagens/mr bubbles/mr bubbles andando normal.png" id="2_mcuql"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fu0jd"]
-atlas = ExtResource("1_nb53m")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lyolm"]
-atlas = ExtResource("1_nb53m")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t23np"]
-atlas = ExtResource("1_nb53m")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_au23k"]
-atlas = ExtResource("1_nb53m")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gr506"]
-atlas = ExtResource("1_nb53m")
-region = Rect2(192, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7thsb"]
-atlas = ExtResource("1_nb53m")
-region = Rect2(240, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6uf6i"]
-atlas = ExtResource("1_nb53m")
-region = Rect2(288, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_204a3"]
-atlas = ExtResource("1_nb53m")
-region = Rect2(336, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4n4tq"]
-atlas = ExtResource("1_nb53m")
-region = Rect2(384, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qttca"]
-atlas = ExtResource("2_mcuql")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bhdoq"]
-atlas = ExtResource("2_mcuql")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rmkbv"]
-atlas = ExtResource("2_mcuql")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mps48"]
-atlas = ExtResource("2_mcuql")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_45g64"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fu0jd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lyolm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t23np")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_au23k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gr506")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7thsb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6uf6i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_204a3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4n4tq")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qttca")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bhdoq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rmkbv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mps48")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://bm82gywqi57py" path="res://sprites/Personagens/mr bubbles/mrBubbles_ingame.tres" id="2_qg31a"]
 
 [node name="MrBubblesIngame" type="CharacterBody2D"]
 script = ExtResource("1_x3rsf")
@@ -114,5 +9,5 @@ script = ExtResource("1_x3rsf")
 [node name="MrBubbles" type="AnimatedSprite2D" parent="."]
 position = Vector2(-38, 33)
 scale = Vector2(2.5, 2.5)
-sprite_frames = SubResource("SpriteFrames_45g64")
+sprite_frames = ExtResource("2_qg31a")
 animation = &"walk"

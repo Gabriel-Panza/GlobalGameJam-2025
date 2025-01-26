@@ -1,10 +1,10 @@
-[gd_scene load_steps=18 format=4 uid="uid://b6dxk82l08c5d"]
+[gd_scene load_steps=18 format=4 uid="uid://drjk52efmaic8"]
 
 [ext_resource type="Script" path="res://GameScene.gd" id="1_8uqw1"]
 [ext_resource type="TileSet" uid="uid://dgclrcnucqxj7" path="res://sprites/Tilesets/Chao_Parede.tres" id="2_sgk41"]
-[ext_resource type="PackedScene" uid="uid://cc1g3ofhfukk7" path="res://player.tscn" id="3_3x3mf"]
+[ext_resource type="PackedScene" uid="uid://b4iryf56vfhmk" path="res://player.tscn" id="3_3x3mf"]
 [ext_resource type="TileSet" uid="uid://dqpgo1qlrbc0b" path="res://sprites/Tilesets/Foreground.tres" id="3_c7aac"]
-[ext_resource type="PackedScene" uid="uid://b0nufv2vq22rm" path="res://mrBubbles_ingame.tscn" id="5_ajis8"]
+[ext_resource type="PackedScene" uid="uid://cy71b3ixrl8fo" path="res://mrBubbles_ingame.tscn" id="5_ajis8"]
 [ext_resource type="AudioStream" uid="uid://dt6pyvommj80c" path="res://music/Battle music.mp3" id="6_qdt4j"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_snjid"]
