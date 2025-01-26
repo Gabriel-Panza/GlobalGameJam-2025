@@ -37,8 +37,8 @@ var spawn_position
 	"res://itemBoots.tscn"
 ]
 
-# Tempo total em segundos (20 minutos)
-var total_time: int = 10 * 60
+# Tempo total em segundos (10 minutos)
+var total_time: int = 5 * 60 + 1
 
 var pause_control_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl"
 var pause_control
@@ -125,7 +125,8 @@ func _update_cronometro_display(time_text: String) -> void:
 
 func _update_cronometro() -> void:
 	if player.speed>0:
-		total_time -= 1
+		if total_time>0:
+			total_time -= 1
 
 		if total_time % (120) == 0:
 			enemies_list.append("res://enemy_cultist.tscn")
@@ -142,7 +143,8 @@ func _update_cronometro() -> void:
 		# Verifica se o tempo acabou
 		if total_time <= 0:
 			cronometro_timer.stop()
-			player.win()
+			if not is_instance_valid($EnemyBubbler):
+				player.win()
 
 func is_within_map_bounds(position: Vector2) -> bool:
 	return position.x >= map_left and position.x <= map_right and position.y >= map_top and position.y <= map_bottom

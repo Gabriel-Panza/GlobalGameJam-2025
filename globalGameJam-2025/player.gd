@@ -25,7 +25,7 @@ var original_maxHealth = 300
 var gold = 0
 var ataque = 25
 var original_ataque = 25
-var critico = 1
+var critico = 0
 var original_critico = 0
 var atkSpeed = 1
 var atkSpeed_timer

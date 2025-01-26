@@ -10,6 +10,7 @@ var gamescene
 var player_path: NodePath = "/root/GameScene/Player"
 var player
 
+var damage_timer
 var shoot_timer
 var projectile_scene: PackedScene
 
@@ -26,6 +27,8 @@ func _ready() -> void:
 	player = get_node_or_null(player_path)
 	aparencia = get_node_or_null("aparencia")
 	projectile_scene = preload("res://projectile_boss.tscn")
+	damage_timer = get_node_or_null("DamageTimer")
+	damage_timer.stop()
 	shoot_timer = get_node_or_null("Timer")
 	shoot_timer.connect("timeout", Callable(self, "_shoot_projectile"))
 	add_to_group("Inimigo")
@@ -99,11 +102,8 @@ func _apply_damage() -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "Area2D":
 		_apply_damage()
-		$Timer.start()
+		$DamageTimer.start()
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.name == "Area2D":
-		$Timer.stop()
-	for body in area.get_overlapping_bodies():
-		if body.is_in_group("Player"):
-			body.take_damage(damage)
+		$DamageTimer.stop()
