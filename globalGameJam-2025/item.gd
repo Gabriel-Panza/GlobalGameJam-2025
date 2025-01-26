@@ -54,7 +54,6 @@ func _process_equipment_item():
 			elif name == "itemShield":
 				pause_control.game_scene.item_scenes.erase("res://itemShield.tscn")
 				pause_control.itemShield = true
-				#$AudioStreamPlayer2D.play()
 				pause_control.shield_timer.set_paused(false)
 			elif name == "itemBoots":
 				pause_control.game_scene.item_scenes.erase("res://itemBoots.tscn")

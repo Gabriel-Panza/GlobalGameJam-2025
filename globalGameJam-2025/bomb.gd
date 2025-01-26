@@ -5,15 +5,18 @@ var speed: float = 600.0 # Velocidade inicial
 var gravity: float = 900.0 # Força gravitacional
 var fuse_time: float = 0.5 # Tempo de fusão antes de explodir
 var exploded: bool = false
+var impact_flash
+var sprite
+var sound
 
 # Player
 var player_path: NodePath = "/root/GameScene/Player"
 var player
 
-# ColorRect
-var flash
-
 func _ready() -> void:
+	impact_flash = get_node_or_null("ImpactFramePlaceholder")
+	sprite = get_node_or_null("Sprite2D")
+	sound = get_node_or_null("AudioStreamPlayer2D")
 	player = get_node_or_null(player_path)
 	var mouse_position = get_global_mouse_position()
 	var direction = (mouse_position - global_position).normalized()
@@ -36,10 +39,10 @@ func explode() -> void:
 	exploded = true
 	show_flash()
 	apply_area_damage()
-	$AudioStreamPlayer2D.play()
+	sound.play()
 	await get_tree().create_timer(0.1).timeout
-	$ImpactFramePlaceholder.queue_free()
-	$Sprite2D.queue_free()
+	impact_flash.queue_free()
+	sprite.queue_free()
 
 func apply_area_damage() -> void:
 	var area = get_node_or_null("Impact")
@@ -55,8 +58,7 @@ func explode_after_timeout() -> void:
 func show_flash() -> void:
 	var area = get_node_or_null("Impact/CollisionShape2D")
 	if area:
-		flash = $ImpactFramePlaceholder
-		flash.visible = true
+		impact_flash.visible = true
 
 
 func _on_audio_stream_player_2d_finished() -> void:

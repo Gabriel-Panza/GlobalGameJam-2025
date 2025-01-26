@@ -28,6 +28,7 @@ var original_ataque = 25
 var critico = 0
 var original_critico = 0
 var atkSpeed = 1
+var atkSpeed_timer
 
 # Variáveis de XP e Nível
 @export var level: int = 1
@@ -41,6 +42,7 @@ signal gold_updated(gold)
 signal stats_updated()
 
 var tela_inicial: bool = false
+var shield_sound
 
 var weapon_data = {
 	"res://projectile.tscn": "res://sprites/Weapons/Bubble_Gun.png",
@@ -54,6 +56,8 @@ func _ready() -> void:
 	game_win = get_node_or_null(game_win_path)
 	game_scene = get_node_or_null(game_scene_path)
 	aparencia = get_node_or_null("Aparencia")
+	shield_sound = get_node_or_null("Shield_Sound")
+	atkSpeed_timer = get_node_or_null("AtkSpeed")
 
 func animationManager():
 	if velocity_vector.x != 0 or velocity_vector.y != 0:
@@ -123,7 +127,7 @@ func _on_atk_speed_timeout():
 func take_damage(amount):
 	var shield = get_node_or_null("/root/GameScene/Player/Shield")
 	if shield and shield.visible:
-		$Shield_Sound.play()
+		shield_sound.play()
 		shield.visible = false
 	else:
 		health -= amount
@@ -168,8 +172,8 @@ func selectWeapon():
 			projetil = preload("res://projectile.tscn")
 			ataque = 25
 			original_ataque = 25
-			$AtkSpeed.wait_time = 1
-			$AtkSpeed.set_paused(true)
+			atkSpeed_timer.wait_time = 1
+			atkSpeed_timer.set_paused(true)
 			if tela_inicial:
 				$"../BubbleGun/BubbleGun2".set_modulate(Color.TRANSPARENT)
 				$"../ExplubbleBomb/ExplubbleBomb2".set_modulate(Color.WHITE)
@@ -180,8 +184,8 @@ func selectWeapon():
 			projetil = preload("res://bomb.tscn")
 			ataque = 40
 			original_ataque = 40
-			$AtkSpeed.wait_time = 3
-			$AtkSpeed.set_paused(true)
+			atkSpeed_timer.wait_time = 3
+			atkSpeed_timer.set_paused(true)
 			if tela_inicial:
 				$"../BubbleGun/BubbleGun2".set_modulate(Color.WHITE)
 				$"../ExplubbleBomb/ExplubbleBomb2".set_modulate(Color.TRANSPARENT)
@@ -192,12 +196,12 @@ func selectWeapon():
 			projetil = preload("res://punch.tscn")
 			ataque = 12
 			original_ataque = 10
-			$AtkSpeed.wait_time = 0.4
-			$AtkSpeed.set_paused(true)
+			atkSpeed_timer.wait_time = 0.4
+			atkSpeed_timer.set_paused(true)
 			if tela_inicial:
 				$"../BubbleGun/BubbleGun2".set_modulate(Color.WHITE)
 				$"../ExplubbleBomb/ExplubbleBomb2".set_modulate(Color.WHITE)
 				$"../SoapGauntlet/SoapGauntlet2".set_modulate(Color.TRANSPARENT)
 	GameState.arma = arma
 	ataque += (original_ataque * 0.20) * GameState.ataque
-	$AtkSpeed.wait_time -= ($AtkSpeed.wait_time * 0.10) * GameState.atkSpeed
+	atkSpeed_timer.wait_time -= (atkSpeed_timer.wait_time * 0.10) * GameState.atkSpeed

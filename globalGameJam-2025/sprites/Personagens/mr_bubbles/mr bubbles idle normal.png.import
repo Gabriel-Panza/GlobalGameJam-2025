@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3j21qn0xstu1"
-path="res://.godot/imported/mr bubbles idle gravata.png-c57739b59bae7a461e4025661233ec58.ctex"
+uid="uid://c53aku86exmbm"
+path="res://.godot/imported/mr bubbles idle normal.png-b959f6231d65bcc0b77971405ae86371.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Personagens/mr bubbles/mr bubbles idle gravata.png"
-dest_files=["res://.godot/imported/mr bubbles idle gravata.png-c57739b59bae7a461e4025661233ec58.ctex"]
+source_file="res://sprites/Personagens/mr_bubbles/mr bubbles idle normal.png"
+dest_files=["res://.godot/imported/mr bubbles idle normal.png-b959f6231d65bcc0b77971405ae86371.ctex"]
 
 [params]
 

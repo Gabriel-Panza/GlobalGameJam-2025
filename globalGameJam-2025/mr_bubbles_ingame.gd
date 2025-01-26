@@ -5,17 +5,20 @@ var velocity_vector := Vector2.ZERO
 var player_path: NodePath = "/root/GameScene/Player"
 var player
 
+var sprite
+
 # Tempo para decidir nova direção
 var decision_time: float = 1.0
 var time_since_last_decision: float = 0.0
 
 func _ready() -> void:
+	sprite = get_node_or_null("MrBubbles")
 	if GameState.mrBubbles >= 1:
-		var skin = randi_range(1,2)
-		if skin == 1:
-			$MrBubbles.frames = load("res://sprites/Personagens/mr bubbles/agent_bubbles.tres")
+		var skin = randi_range(0,2)
+		if skin == 0:
+			sprite.frames = load("res://sprites/Personagens/mr_bubbles/agent_bubbles.tres")
 		else:
-			$MrBubbles.frames = load("res://sprites/Personagens/mr bubbles/bubble_bubbles.tres")
+			sprite.frames = load("res://sprites/Personagens/mr_bubbles/bubble_bubbles.tres")
 	player = get_node_or_null(player_path)
 
 func _process(delta: float) -> void:
@@ -39,13 +42,13 @@ func choose_random_direction():
 
 func animationManager():
 	if velocity_vector.x != 0 or velocity_vector.y != 0:
-		$MrBubbles.play("walk")
+		sprite.play("walk")
 		if velocity_vector.x < 0:
-			$MrBubbles.flip_h = true
+			sprite.flip_h = true
 		else:
-			$MrBubbles.flip_h = false
+			sprite.flip_h = false
 	else:
-		$MrBubbles.play("idle")
+		sprite.play("idle")
 
 # Função auxiliar para gerar números inteiros aleatórios em um intervalo
 func randi_range(min: int, max: int) -> int:

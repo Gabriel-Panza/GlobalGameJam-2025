@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://swap_weapon.gd" id="5_k88aj"]
 [ext_resource type="Texture2D" uid="uid://bb3gij4pbvyyp" path="res://sprites/Weapons/Soap_Gauntlet.png" id="5_oe04i"]
 [ext_resource type="Script" path="res://mr_bubbles.gd" id="8_8v3ya"]
-[ext_resource type="Texture2D" uid="uid://byjca4j2s6iuh" path="res://sprites/Personagens/mr bubbles/shop do mr bubbles.png" id="8_f8qkt"]
+[ext_resource type="Texture2D" uid="uid://byjca4j2s6iuh" path="res://sprites/Personagens/mr_bubbles/shop do mr bubbles.png" id="8_f8qkt"]
 [ext_resource type="Script" path="res://casa.gd" id="10_1mqwt"]
 [ext_resource type="Texture2D" uid="uid://tdd1ltw1s5eb" path="res://sprites/Tilesets/casa bubbleman.png" id="11_l2drk"]
 [ext_resource type="AudioStream" uid="uid://c7uylfyb8a8l4" path="res://music/musica tela inicial.mp3" id="14_fb1lv"]

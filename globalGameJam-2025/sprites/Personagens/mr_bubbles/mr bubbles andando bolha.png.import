@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2jkdtmld1jxu"
-path="res://.godot/imported/mr bubbles andando normal.png-fd51d4c144dfca28f7a6105cc80dbe5f.ctex"
+uid="uid://caa5o2na4vnw7"
+path="res://.godot/imported/mr bubbles andando bolha.png-26e133b79aefed9044115e344ba79431.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Personagens/mr bubbles/mr bubbles andando normal.png"
-dest_files=["res://.godot/imported/mr bubbles andando normal.png-fd51d4c144dfca28f7a6105cc80dbe5f.ctex"]
+source_file="res://sprites/Personagens/mr_bubbles/mr bubbles andando bolha.png"
+dest_files=["res://.godot/imported/mr bubbles andando bolha.png-26e133b79aefed9044115e344ba79431.ctex"]
 
 [params]
 

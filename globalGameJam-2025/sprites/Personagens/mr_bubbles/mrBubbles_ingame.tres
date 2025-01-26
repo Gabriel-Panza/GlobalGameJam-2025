@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://bm82gywqi57py"]
 
-[ext_resource type="Texture2D" uid="uid://c53aku86exmbm" path="res://sprites/Personagens/mr bubbles/mr bubbles idle normal.png" id="1_ikfjy"]
-[ext_resource type="Texture2D" uid="uid://b2jkdtmld1jxu" path="res://sprites/Personagens/mr bubbles/mr bubbles andando normal.png" id="2_vnf3h"]
+[ext_resource type="Texture2D" uid="uid://c53aku86exmbm" path="res://sprites/Personagens/mr_bubbles/mr bubbles idle normal.png" id="1_ikfjy"]
+[ext_resource type="Texture2D" uid="uid://b2jkdtmld1jxu" path="res://sprites/Personagens/mr_bubbles/mr bubbles andando normal.png" id="2_vnf3h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_egp8x"]
 atlas = ExtResource("1_ikfjy")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cy71b3ixrl8fo"]
 
 [ext_resource type="Script" path="res://mr_bubbles_ingame.gd" id="1_x3rsf"]
-[ext_resource type="SpriteFrames" uid="uid://58tt136xvdhg" path="res://sprites/Personagens/mr bubbles/bubble_bubbles.tres" id="2_xqssi"]
+[ext_resource type="SpriteFrames" uid="uid://bm82gywqi57py" path="res://sprites/Personagens/mr_bubbles/mrBubbles_ingame.tres" id="2_xc411"]
 
 [node name="MrBubblesIngame" type="CharacterBody2D"]
 script = ExtResource("1_x3rsf")
@@ -9,5 +9,5 @@ script = ExtResource("1_x3rsf")
 [node name="MrBubbles" type="AnimatedSprite2D" parent="."]
 position = Vector2(-38, 33)
 scale = Vector2(2.5, 2.5)
-sprite_frames = ExtResource("2_xqssi")
-animation = &"walk"
+sprite_frames = ExtResource("2_xc411")
+animation = &"idle"

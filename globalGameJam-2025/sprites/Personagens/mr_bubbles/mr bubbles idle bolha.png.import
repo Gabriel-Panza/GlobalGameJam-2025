@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btfhuyx07it8v"
-path="res://.godot/imported/mr bubbles andando gravata.png-7671ff7a1b757c78c71cb4ef8eff31cd.ctex"
+uid="uid://driqq47lkpm2c"
+path="res://.godot/imported/mr bubbles idle bolha.png-dbff92f088c8e1c3a5d81b83a1771b5a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Personagens/mr bubbles/mr bubbles andando gravata.png"
-dest_files=["res://.godot/imported/mr bubbles andando gravata.png-7671ff7a1b757c78c71cb4ef8eff31cd.ctex"]
+source_file="res://sprites/Personagens/mr_bubbles/mr bubbles idle bolha.png"
+dest_files=["res://.godot/imported/mr bubbles idle bolha.png-dbff92f088c8e1c3a5d81b83a1771b5a.ctex"]
 
 [params]
 
