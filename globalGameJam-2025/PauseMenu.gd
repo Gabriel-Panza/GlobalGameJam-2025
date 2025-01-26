@@ -62,8 +62,8 @@ func _ready() -> void:
 	speed_label = get_node_or_null(speed_label_path)
 	
 	slots = [slot1, slot2, slot3, slot4]
-	itemBublegum = false
-	itemShield = true
+	itemBublegum = true
+	itemShield = false
 	itemBoots = false
 	
 	shield_timer = $shield_timer

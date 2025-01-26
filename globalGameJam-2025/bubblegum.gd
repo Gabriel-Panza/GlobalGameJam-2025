@@ -11,8 +11,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if $AnimatedSprite2D:
 		if $AnimatedSprite2D.frame == 6:
+			$Sprite2D.visible = true
 			$AnimatedSprite2D.queue_free()
 	if $Sprite2D.visible == true:
+		$RichTextLabel.visible = false
 		var timer = $Timer
 		if timer.is_stopped():
 			timer.start()
@@ -29,9 +31,9 @@ func _on_impact_body_entered(body: Node2D) -> void:
 			if target.is_in_group("Inimigo"):
 				print(target)
 				if $AnimatedSprite2D:
-					$AnimatedSprite2D.visible = false
-					$AnimatedSprite2D.play("default")
-				$Sprite2D.visible = true 
+					$AnimatedSprite2D.visible = true
+					$RichTextLabel.visible = true
+					$AnimatedSprite2D.play("default") 
 				target.speed = target.speed / 2
 				target.get_node_or_null("bubble_effect").visible = true
 
