@@ -47,7 +47,8 @@ func _process(_delta: float) -> void:
 func take_damage(amount):
 	health -= amount
 	$RichTextLabel.visible = true
-	$RichTextLabel.text = $RichTextLabel.text % amount
+	if $RichTextLabel.text == "[wave amp=100 freq=9] [fade] - %s [/fade] [/wave]":
+		$RichTextLabel.text = $RichTextLabel.text % amount
 	if health <= 0:
 		die()
 	await get_tree().create_timer(1).timeout
