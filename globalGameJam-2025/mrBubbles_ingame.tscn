@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cy71b3ixrl8fo"]
+[gd_scene load_steps=4 format=3 uid="uid://cy71b3ixrl8fo"]
 
 [ext_resource type="Script" path="res://mr_bubbles_ingame.gd" id="1_x3rsf"]
 [ext_resource type="SpriteFrames" uid="uid://bm82gywqi57py" path="res://sprites/Personagens/mr_bubbles/mrBubbles_ingame.tres" id="2_xc411"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b46qe"]
+size = Vector2(36, 42)
 
 [node name="MrBubblesIngame" type="CharacterBody2D"]
 script = ExtResource("1_x3rsf")
@@ -11,3 +14,11 @@ position = Vector2(-38, 33)
 scale = Vector2(2.5, 2.5)
 sprite_frames = ExtResource("2_xc411")
 animation = &"idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-37, 31)
+shape = SubResource("RectangleShape2D_b46qe")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_MrBubbles_area2D_entered"]

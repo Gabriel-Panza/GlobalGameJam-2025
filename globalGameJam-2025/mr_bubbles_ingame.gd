@@ -54,15 +54,18 @@ func animationManager():
 func randi_range(min: int, max: int) -> int:
 	return randi() % (max - min + 1) + min
 	
-func _on_MrBubbles_body_entered(body):
-	if body.is_in_group("XP") or body.is_in_group("Gold") or body.is_in_group("HP"):
-		if body.is_in_group("XP"):
-			player.gain_xp(15)
-		elif body.is_in_group("Gold"):
-			player.gold += 15
-			player.emit_signal("gold_updated", player.gold)
-		elif body.is_in_group("HP"):
-			player.hp += 15
-			player.emit_signal("hp_updated", player.health, player.maxHealth)
-		player.emit_signal("stats_updated")
-		body.queue_free()
+func _on_MrBubbles_area2D_entered(area):
+	for body in area.get_overlapping_bodies():
+		if body.is_in_group("XP") or body.is_in_group("Gold") or body.is_in_group("HP"):
+			if body.is_in_group("XP"):
+				player.gain_xp(15)
+			if body.is_in_group("bigXP"):
+				player.gain_xp(45)
+			elif body.is_in_group("Gold"):
+				player.gold += 15
+				player.emit_signal("gold_updated", player.gold)
+			elif body.is_in_group("HP"):
+				player.hp += 15
+				player.emit_signal("hp_updated", player.health, player.maxHealth)
+			player.emit_signal("stats_updated")
+			body.queue_free()

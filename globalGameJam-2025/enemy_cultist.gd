@@ -79,7 +79,7 @@ func die() -> void:
 	if random <= 0.1:
 		gamescene.spawn_drop(position)
 	if player:
-		gamescene._spawn_xp("res://itemXP.tscn", position)
+		gamescene._spawn_xp("res://itemBigXP.tscn", position)
 	queue_free()
 
 func animationManager():

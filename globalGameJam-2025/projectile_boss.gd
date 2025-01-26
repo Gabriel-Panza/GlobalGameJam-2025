@@ -1,26 +1,57 @@
 extends CharacterBody2D
 
-var target_direction: Vector2 = Vector2.ZERO
-var speed: float = 600.0
+var speed = 0
 
-# Path to the player
+@export var damage: int = 25
+@export var radius: float = 80.0
+@export var warning_animation: String = "warning"
+@export var tornado_animation: String = "tornado"
+
 var player_path: NodePath = "/root/GameScene/Player"
-var player
+var player: Node2D
+var animation_player: AnimatedSprite2D
 
 func _ready() -> void:
 	player = get_node_or_null(player_path)
+	animation_player = $AnimatedSprite2D
 	if player:
-		target_direction = (player.global_position - global_position).normalized()
+		position = player.global_position
+		play_warning_animation()
 
-func _physics_process(delta):
-	# Move the projectile in the calculated direction
-	position += target_direction * speed * delta
-	
-	# If speed is zero, remove the projectile
-	if speed == 0:
+func _process(delta: float) -> void:
+	if player and player.speed <= 0:
 		queue_free()
 
-func _on_impact_body_entered(body):
-	if body.is_in_group("Player"):
-		body.take_damage(25)
-		queue_free()
+func play_warning_animation() -> void:
+	# Configura e executa a animação de aviso
+	animation_player.animation = warning_animation
+	animation_player.play()
+	await get_tree().create_timer(1).timeout
+	play_tornado_animation()
+
+func play_tornado_animation() -> void:
+	# Configura e executa a animação do tornado
+	animation_player.animation = tornado_animation
+	animation_player.play()
+
+	# Adiciona um detector de dano enquanto o tornado está ativo
+	var tornado_area = Area2D.new()
+	add_child(tornado_area)
+
+	var collision = CircleShape2D.new()
+	collision.radius = radius
+
+	var shape = CollisionShape2D.new()
+	shape.shape = collision
+	tornado_area.add_child(shape)
+
+	# Remove o tornado após a animação
+	await get_tree().create_timer(1.5).timeout
+	queue_free()
+
+func _on_animated_sprite_2d_animation_changed() -> void:
+	var area = get_node_or_null("Impact")
+	if area:
+		for body in area.get_overlapping_bodies():
+			if body.is_in_group("Player"):
+				body.take_damage(damage)

@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b7q5t2nux781h" path="res://options_menu.tscn" id="11_yyxd5"]
 [ext_resource type="AudioStream" uid="uid://c257snirak1ty" path="res://music/Musica Menu - Bubbleman is Here.mp3" id="12_snkdm"]
 [ext_resource type="PackedScene" uid="uid://m2qqrdff3gkt" path="res://sprites/StatsUp/menu_click.tscn" id="13_wiicy"]
-[ext_resource type="PackedScene" path="res://cutscene.tscn" id="14_mvgy6"]
+[ext_resource type="PackedScene" uid="uid://db3il3xt8t2el" path="res://cutscene.tscn" id="14_mvgy6"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

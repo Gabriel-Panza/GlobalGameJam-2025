@@ -14,7 +14,7 @@ var shoot_timer
 var projectile_scene: PackedScene
 
 var min_distance: float = 200.0
-var max_distance: float = 300.0
+var max_distance: float = 600.0
 var distance_to_player
 
 var damage: int = 25
@@ -25,7 +25,7 @@ func _ready() -> void:
 	navigation_agent = get_node_or_null("NavigationAgent2D")
 	player = get_node_or_null(player_path)
 	aparencia = get_node_or_null("aparencia")
-	projectile_scene = preload("res://projectile_enemy.tscn")
+	projectile_scene = preload("res://projectile_boss.tscn")
 	shoot_timer = get_node_or_null("Timer")
 	shoot_timer.connect("timeout", Callable(self, "_shoot_projectile"))
 	add_to_group("Inimigo")
@@ -51,12 +51,9 @@ func _process(_delta: float) -> void:
 		animationManager()
 
 func _shoot_projectile() -> void:
-	if player and distance_to_player < max_distance and speed > 0:
+	if player and speed > 0 and aparencia.animation == "attackFar":
 		var projectile = projectile_scene.instantiate()
-		projectile.global_position = global_position
-		var direction = (player.global_position - global_position).normalized()
-		if projectile.has_method("set_velocity"): # Certifique-se que o projétil tenha um método para definir velocidade
-			projectile.set_velocity(direction * projectile.speed)
+		projectile.global_position = player.global_position
 		gamescene.add_child(projectile)
 
 func take_damage(amount):
@@ -86,11 +83,27 @@ func animationManager():
 		aparencia.play("attackClose")
 	elif velocity != Vector2.ZERO and distance_to_player > max_distance:
 		aparencia.play("walk")
-	else:
+	elif distance_to_player > min_distance and distance_to_player < max_distance:
 		aparencia.play("attackFar")
 	
 	# Determinar a direção do jogador em relação ao inimigo
 	if player and player.global_position.x > global_position.x:
-		aparencia.flip_h = true
-	elif player and player.global_position.x < global_position.x:
 		aparencia.flip_h = false
+	elif player and player.global_position.x < global_position.x:
+		aparencia.flip_h = true
+
+func _apply_damage() -> void:
+	if player:
+		player.take_damage(damage)
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.name == "Area2D":
+		_apply_damage()
+		$Timer.start()
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.name == "Area2D":
+		$Timer.stop()
+	for body in area.get_overlapping_bodies():
+		if body.is_in_group("Player"):
+			body.take_damage(damage)

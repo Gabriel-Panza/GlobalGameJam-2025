@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsrm6vklla4fh"]
+
+[ext_resource type="Script" path="res://item.gd" id="1_a1oar"]
+[ext_resource type="Texture2D" uid="uid://do61at0wunt4w" path="res://sprites/Drops/Large_XP_Soap_.png" id="2_4d1vg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qllp8"]
+size = Vector2(114, 116)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4pso"]
+size = Vector2(114, 116)
+
+[node name="itemBigXP" type="Area2D" groups=["bigXP"]]
+script = ExtResource("1_a1oar")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4d1vg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qllp8")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["HP"]]
+shape = SubResource("RectangleShape2D_q4pso")

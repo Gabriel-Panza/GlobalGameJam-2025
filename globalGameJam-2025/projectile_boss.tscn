@@ -1,25 +1,126 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddu6tka1lhi7f"]
+[gd_scene load_steps=18 format=3 uid="uid://ddu6tka1lhi7f"]
 
 [ext_resource type="Script" path="res://projectile_boss.gd" id="1_0mceg"]
-[ext_resource type="Texture2D" uid="uid://dq5fal2wbrhhr" path="res://sprites/Projectiles/Bubble_Gun_Enemy_Projectile.png" id="2_hxy7r"]
+[ext_resource type="Texture2D" uid="uid://clsoqh24wmc8d" path="res://sprites/Personagens/inimigos/TheBubblerAttackFarTornado.png" id="2_33nuj"]
+[ext_resource type="Texture2D" uid="uid://die7lap8wjdrm" path="res://sprites/Personagens/inimigos/TheBubblerAttackFarCircle.png" id="3_wry38"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl012"]
+atlas = ExtResource("2_33nuj")
+region = Rect2(0, 0, 52, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk87o"]
+atlas = ExtResource("2_33nuj")
+region = Rect2(52, 0, 52, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u24to"]
+atlas = ExtResource("2_33nuj")
+region = Rect2(104, 0, 52, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdacw"]
+atlas = ExtResource("2_33nuj")
+region = Rect2(156, 0, 52, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bahit"]
+atlas = ExtResource("2_33nuj")
+region = Rect2(208, 0, 52, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu6up"]
+atlas = ExtResource("2_33nuj")
+region = Rect2(260, 0, 52, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgohc"]
+atlas = ExtResource("3_wry38")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nif8"]
+atlas = ExtResource("3_wry38")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4ya1"]
+atlas = ExtResource("3_wry38")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl2jn"]
+atlas = ExtResource("3_wry38")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bygjw"]
+atlas = ExtResource("3_wry38")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gxse"]
+atlas = ExtResource("3_wry38")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8y8nf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl012")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rk87o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u24to")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdacw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bahit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu6up")
+}],
+"loop": true,
+"name": &"tornado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgohc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nif8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4ya1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dl2jn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bygjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gxse")
+}],
+"loop": true,
+"name": &"warning",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_maafy"]
-radius = 32.3883
+radius = 39.0288
 
 [node name="projectile" type="CharacterBody2D" groups=["Vivos"]]
+scale = Vector2(2, 2)
 collision_mask = 3
 script = ExtResource("1_0mceg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(9.5, 1.90735e-06)
 scale = Vector2(2.28125, 2.25)
-texture = ExtResource("2_hxy7r")
+sprite_frames = SubResource("SpriteFrames_8y8nf")
+animation = &"warning"
+frame_progress = 0.55017
 
 [node name="Impact" type="Area2D" parent="."]
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Impact"]
-position = Vector2(9, 0)
+position = Vector2(10.5, 1.5)
 shape = SubResource("CircleShape2D_maafy")
 
-[connection signal="body_entered" from="Impact" to="." method="_on_impact_body_entered"]
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]

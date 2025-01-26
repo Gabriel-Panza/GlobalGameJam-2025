@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdhui8cl28jjd"
-path="res://.godot/imported/TheBubblerAreaUnderPlayer.png-ae286db4c0b560c36e3b4bcf7c7311c8.ctex"
+uid="uid://clsoqh24wmc8d"
+path="res://.godot/imported/TheBubblerAttackFarTornado.png-432910c312b406c5728d63b946f14a18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Personagens/inimigos/TheBubblerAreaUnderPlayer.png"
-dest_files=["res://.godot/imported/TheBubblerAreaUnderPlayer.png-ae286db4c0b560c36e3b4bcf7c7311c8.ctex"]
+source_file="res://sprites/Personagens/inimigos/TheBubblerAttackFarTornado.png"
+dest_files=["res://.godot/imported/TheBubblerAttackFarTornado.png-432910c312b406c5728d63b946f14a18.ctex"]
 
 [params]
 
