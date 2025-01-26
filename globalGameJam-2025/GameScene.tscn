@@ -12,7 +12,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(1660, -879, -1654, -883, -1673, 1270, -1249, 1267, -1205, -228, -1205, -775, -1098, -775, -1096, -226, -1214, -228, -1317, 1266, -1001, 1275, -1014, 501, -904, 501, -908, 1016, -1009, 1015, -1066, 1271, -488, 1273, -493, 63, -399, 63, -401, 375, -503, 374, -599, 1277, 782, 1272, 842, 890, 844, 501, 952, 501, 955, 890, 842, 890, 728, 1272, 1645, 1283, 1658, -440, 974, -452, 963, -786, 1089, -783, 1081, -450, 1658, -384)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mb347"]
-size = Vector2(7.51779, 105.708)
+size = Vector2(12.7804, 105.708)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1flx"]
 size = Vector2(115, 587)
@@ -69,7 +69,7 @@ collision_layer = 65535
 collision_mask = 65535
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/LimiteEsquerdo"]
-position = Vector2(64.2216, 217.209)
+position = Vector2(13, 217.209)
 scale = Vector2(16.8173, 20.5136)
 shape = SubResource("RectangleShape2D_mb347")
 
@@ -80,12 +80,12 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/LimiteDireito"]
-position = Vector2(-79.2145, 241.972)
+position = Vector2(-39, 241.972)
 scale = Vector2(16.8173, 20.7936)
 shape = SubResource("RectangleShape2D_mb347")
 
 [node name="LimiteCima" type="StaticBody2D" parent="Limites"]
-position = Vector2(384, -913)
+position = Vector2(384, -934)
 rotation = 1.5708
 scale = Vector2(1.15315, 1.6)
 disable_mode = 1
@@ -106,7 +106,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/LimiteBaixo"]
-position = Vector2(-34.151, 246.781)
+position = Vector2(2.15439, 246.781)
 scale = Vector2(16.8173, 19.9936)
 shape = SubResource("RectangleShape2D_mb347")
 
