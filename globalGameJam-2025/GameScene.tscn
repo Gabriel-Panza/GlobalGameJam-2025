@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://b6dxk82l08c5d"]
+[gd_scene load_steps=18 format=4 uid="uid://b6dxk82l08c5d"]
 
 [ext_resource type="Script" path="res://GameScene.gd" id="1_8uqw1"]
 [ext_resource type="TileSet" uid="uid://dgclrcnucqxj7" path="res://sprites/Tilesets/Chao_Parede.tres" id="2_sgk41"]
@@ -30,6 +30,18 @@ size = Vector2(111, 323)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gy05"]
 size = Vector2(111, 390)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkvdl"]
+size = Vector2(188, 133)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ge71e"]
+size = Vector2(178, 259)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjb6h"]
+size = Vector2(382, 138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3up5"]
+size = Vector2(574, 127)
+
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_8uqw1")
 
@@ -53,7 +65,6 @@ tile_map_data = PackedByteArray("AADm/w8AAAAFAAIAAADn/w8AAAAGAAIAAADo/w8AAAACAAI
 tile_set = ExtResource("3_c7aac")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_snjid")
 
 [node name="Player" parent="." instance=ExtResource("3_3x3mf")]
@@ -136,6 +147,7 @@ shape = SubResource("RectangleShape2D_y1flx")
 [node name="Esteira2" type="StaticBody2D" parent="Limites/Objetos"]
 visible = false
 position = Vector2(-960, 685)
+collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Esteira2"]
@@ -170,6 +182,112 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Esteira5"]
 position = Vector2(-1.5, 29)
 shape = SubResource("RectangleShape2D_4gy05")
+
+[node name="Caixa1" type="StaticBody2D" parent="Limites/Objetos"]
+position = Vector2(-604, 696)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Caixa1"]
+position = Vector2(-3, 55.5)
+shape = SubResource("RectangleShape2D_xkvdl")
+
+[node name="Caixa2" type="StaticBody2D" parent="Limites/Objetos"]
+position = Vector2(-1179, 948)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Caixa2"]
+position = Vector2(-3, 55.5)
+shape = SubResource("RectangleShape2D_xkvdl")
+
+[node name="Caixa3" type="StaticBody2D" parent="Limites/Objetos"]
+position = Vector2(-1493, 380)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Caixa3"]
+position = Vector2(-3, 55.5)
+shape = SubResource("RectangleShape2D_xkvdl")
+
+[node name="Caixa4" type="StaticBody2D" parent="Limites/Objetos"]
+position = Vector2(-1429, -654)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Caixa4"]
+position = Vector2(-3, 55.5)
+shape = SubResource("RectangleShape2D_xkvdl")
+
+[node name="Caixa5" type="StaticBody2D" parent="Limites/Objetos"]
+position = Vector2(741, 49)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Caixa5"]
+position = Vector2(-3, 55.5)
+shape = SubResource("RectangleShape2D_xkvdl")
+
+[node name="Caixa6" type="StaticBody2D" parent="Limites/Objetos"]
+position = Vector2(1508, 252)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Caixa6"]
+position = Vector2(-3, 55.5)
+shape = SubResource("RectangleShape2D_xkvdl")
+
+[node name="Caixa7" type="StaticBody2D" parent="Limites/Objetos"]
+position = Vector2(1249, -587)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Caixa7"]
+position = Vector2(-3, 55.5)
+shape = SubResource("RectangleShape2D_xkvdl")
+
+[node name="Caixa8" type="StaticBody2D" parent="Limites/Objetos"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Caixa8"]
+position = Vector2(-927, -341)
+shape = SubResource("RectangleShape2D_ge71e")
+
+[node name="Caixa9" type="StaticBody2D" parent="Limites/Objetos"]
+position = Vector2(2500, 64)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Caixa9"]
+position = Vector2(-927, -341)
+shape = SubResource("RectangleShape2D_ge71e")
+
+[node name="Caixa10" type="StaticBody2D" parent="Limites/Objetos"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Caixa10"]
+position = Vector2(510, -471)
+shape = SubResource("RectangleShape2D_fjb6h")
+
+[node name="Caixa11" type="StaticBody2D" parent="Limites/Objetos"]
+position = Vector2(-448, 1604)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Caixa11"]
+position = Vector2(510, -471)
+shape = SubResource("RectangleShape2D_fjb6h")
+
+[node name="Caixa12" type="StaticBody2D" parent="Limites/Objetos"]
+position = Vector2(1312, 1064)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Objetos/Caixa12"]
+position = Vector2(1, 7.5)
+shape = SubResource("RectangleShape2D_e3up5")
 
 [node name="Bubblegum_timer" type="Timer" parent="."]
 wait_time = 3.0
