@@ -24,7 +24,6 @@ func _process(delta: float) -> void:
 
 func play_warning_animation() -> void:
 	# Configura e executa a animação de aviso
-	animation_player.animation = warning_animation
 	animation_player.play()
 	await get_tree().create_timer(1).timeout
 	play_tornado_animation()
