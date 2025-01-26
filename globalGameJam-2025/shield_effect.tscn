@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://shield_effect.gd" id="1_8lvda"]
 [ext_resource type="Texture2D" uid="uid://db1frkbprh142" path="res://sprites/Acessorios/Pop_Shield_Effect.png" id="1_1116x"]
-[ext_resource type="AudioStream" uid="uid://dghtshs7jue4t" path="res://SFX/Shield_Recharged.mp3" id="3_v6xgh"]
+[ext_resource type="AudioStream" uid="uid://dq1skqoca1ho0" path="res://SFX/Shield_Recharged.mp3" id="3_v6xgh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t4cbo"]
 radius = 93.0

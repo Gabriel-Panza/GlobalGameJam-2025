@@ -229,6 +229,7 @@ func pause_timers():
 	enemy_timer.set_paused(true)
 	drop_timer.set_paused(true)
 	atkSpeed_timer.set_paused(true)
+	
 
 func resume_timers():
 	enemy_timer.set_paused(false)

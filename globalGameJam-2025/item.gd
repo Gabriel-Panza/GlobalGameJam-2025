@@ -36,7 +36,7 @@ func _process_xp_item():
 		som.stream = load("res://SFX/XP_Pickup.mp3")
 		som.volume_db = 24
 		som.play()
-		player.gain_xp(value)
+		player.gain_xp(value * 2)
 
 func _process_big_xp_item():
 	if player:
@@ -44,7 +44,7 @@ func _process_big_xp_item():
 		som.stream = load("res://SFX/XP_Pickup.mp3")
 		som.volume_db = 24
 		som.play()
-		player.gain_xp(value * 3)
+		player.gain_xp(value * 4)
 		
 func _process_hp_item():
 	if player:

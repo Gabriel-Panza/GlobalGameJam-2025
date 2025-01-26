@@ -103,7 +103,8 @@ func _pause_game():
 	pause_menu.show()
 	if game_scene:
 		game_scene.pause_timers()
-	
+	if player.get_node_or_null("Shield"):
+		player.get_node_or_null("Shield").get_node_or_null("turn_on").set_paused(true)
 	for obj in get_tree().get_nodes_in_group("Vivos"):
 		if obj in get_tree().get_nodes_in_group("Inimigo"):
 			speedEnemy = obj.speed
@@ -126,6 +127,8 @@ func _unpause_game():
 			obj.speed = speedProjectile
 	if game_scene:
 		game_scene.resume_timers()
+	if player.get_node_or_null("Shield"):
+		player.get_node_or_null("Shield").get_node_or_null("turn_on").set_paused(false)
 
 func _on_options_button_pressed() -> void:
 	$menu_click.play()

@@ -26,4 +26,5 @@ func _on_impact_body_entered(body):
 			get_parent().add_child(impacto)
 		else:
 			body.take_damage(player.ataque)
+	if body.is_in_group("Limites"):
 		queue_free()

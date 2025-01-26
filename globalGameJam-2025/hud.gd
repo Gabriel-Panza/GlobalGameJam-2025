@@ -62,5 +62,5 @@ func _apply_effect(option):
 		"option_4":
 			player.critico += player.original_critico + 0.025
 		"option_5":
-			timer.wait_time -= 0.005
-			player.atkSpeed += 0.005
+			timer.wait_time -= 0.05
+			player.atkSpeed += 0.05
