@@ -32,8 +32,8 @@ func _ready() -> void:
 		print("Jogador ou câmera não encontrados!")
 
 func _on_hp_updated(current_hp, max_health) -> void:
-	$ProgressBar2.value = current_hp
 	$ProgressBar2.max_value = max_health
+	$ProgressBar2.value = current_hp
 	
 func _on_gold_updated(gold) -> void:
 	$Label3.text = "Gold: %d" % gold

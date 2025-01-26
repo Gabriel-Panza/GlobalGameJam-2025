@@ -6,8 +6,7 @@ var label3_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/Label3"
 var label3
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	GameState.load_game()
+func _ready() -> void:	
 	label3 = get_node_or_null(label3_path)
 	if label3:
 		label3.position.y -= 82

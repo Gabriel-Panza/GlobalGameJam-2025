@@ -67,8 +67,11 @@ func animationManager():
 		else:
 			aparencia.flip_h = false
 	elif health <=0:
+		if game_scene:
+			game_scene.pause_timers()
+		for obj in get_tree().get_nodes_in_group("Vivos"):
+			obj.speed = 0
 		aparencia.play("death")
-		speed = 0
 		await get_tree().create_timer(2.5).timeout
 		die()
 	else:
@@ -133,8 +136,6 @@ func take_damage(amount):
 		health -= amount
 		emit_signal("hp_updated", health, maxHealth)
 		emit_signal("stats_updated")
-		#if health <= 0:
-		#	die()
 
 func die():
 	if game_scene:
@@ -194,7 +195,7 @@ func selectWeapon():
 		"res://punch.tscn":
 			pause_control.slots[0].texture = load(weapon_data[arma])
 			projetil = preload("res://punch.tscn")
-			ataque = 12
+			ataque = 10
 			original_ataque = 10
 			atkSpeed_timer.wait_time = 0.4
 			atkSpeed_timer.set_paused(true)

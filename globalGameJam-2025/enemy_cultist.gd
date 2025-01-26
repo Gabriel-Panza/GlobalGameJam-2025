@@ -14,8 +14,8 @@ var player
 var shoot_timer
 var projectile_scene: PackedScene
 
-var min_distance: float = 300.0
-var max_distance: float = 400.0
+var min_distance: float = 200.0
+var max_distance: float = 300.0
 var distance_to_player
 
 var damage: int = 15
@@ -57,16 +57,22 @@ func _process(_delta: float) -> void:
 		animationManager()
 
 func _shoot_projectile() -> void:
-	if distance_to_player > min_distance and distance_to_player < max_distance and player and speed>0:
+	if distance_to_player < max_distance and player and speed>0:
 		var projectile = projectile_scene.instantiate()
-		projectile.position = position
+		projectile.position = Vector2.ZERO
 		# Configurar a direção do projétil
 		add_child(projectile)
 
 func take_damage(amount):
 	health -= amount
+	$RichTextLabel.visible = true
+	if $RichTextLabel.text == "[wave amp=100 freq=9] [fade] - %s [/fade] [/wave]":
+		$RichTextLabel.text = $RichTextLabel.text % amount
 	if health <= 0:
 		die()
+	await get_tree().create_timer(1).timeout
+	$RichTextLabel.visible = false
+	$RichTextLabel.text = "[tornado radius = 10 freq = 2.2] - %s [/tornado]"
 		
 func die() -> void:
 	var random = randf_range(0, 1)
