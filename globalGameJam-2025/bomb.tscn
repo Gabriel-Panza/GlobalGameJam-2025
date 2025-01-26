@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwdd2vwife42i"]
+[gd_scene load_steps=6 format=3 uid="uid://cwdd2vwife42i"]
 
 [ext_resource type="Script" path="res://bomb.gd" id="1_jf8w7"]
 [ext_resource type="Texture2D" uid="uid://jjfs2y8bxxab" path="res://sprites/Projectiles/Explubble_Bomb_Projectile.png" id="2_4uckv"]
 [ext_resource type="Texture2D" uid="uid://bh1gfqxwab3ep" path="res://sprites/Weapons/Impact_Frame_Placeholder.png" id="3_kr7ui"]
+[ext_resource type="AudioStream" uid="uid://xcuwl3nhi5e7" path="res://SFX/Explubble_BOOM.mp3" id="4_esp3g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jglgo"]
 radius = 163.003
@@ -30,5 +31,9 @@ texture = ExtResource("3_kr7ui")
 
 [node name="Fuse" type="Timer" parent="."]
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_esp3g")
+
 [connection signal="body_entered" from="Impact" to="." method="_on_impact_body_entered"]
 [connection signal="timeout" from="Fuse" to="." method="_on_fuse_timeout"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

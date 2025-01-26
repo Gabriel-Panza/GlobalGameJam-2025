@@ -1,1 +1,1 @@
-{"arma":"res://projectile.tscn","ataque":1,"atkSpeed":0,"critico":0,"gold":250,"maxHp":2,"movespeed":1,"mrBubbles":1}
+{"arma":"res://bomb.tscn","ataque":1,"atkSpeed":0,"critico":0,"gold":530,"maxHp":3,"movespeed":1,"mrBubbles":1}

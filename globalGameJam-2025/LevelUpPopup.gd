@@ -6,11 +6,11 @@ var speedPlayer
 var speedEnemy
 var speedProjectile
 var options = [
-	{ "id": "option_1", "text": "Speed Up" },
-	{ "id": "option_2", "text": "Health Up" },
-	{ "id": "option_3", "text": "Attack Up" },
-	{ "id": "option_4", "text": "Crit-Rate Up" },
-	{ "id": "option_5", "text": "Atk-Speed Up" }
+	{ "id": "option_1", "text": "Speed Up", "icon": "res://sprites/StatsUp/mvspeed_up_texture.tres" },
+	{ "id": "option_2", "text": "Health Up", "icon": "res://sprites/StatsUp/Hp_up_texture.tres" },
+	{ "id": "option_3", "text": "Attack Up", "icon": "res://sprites/StatsUp/atk_up_texture.tres" },
+	{ "id": "option_4", "text": "Crit-Rate Up", "icon": "res://sprites/StatsUp/crit_up_texture.tres" },
+	{ "id": "option_5", "text": "Atk-Speed Up", "icon": "res://sprites/StatsUp/speed_up_texture.tres" }
 ]
 
 signal option_selected(option)
@@ -29,6 +29,7 @@ func show_popup():
 	for i in range(3):
 		var button = $VBoxContainer.get_child(i)
 		button.text = randomized_options[i]["text"]
+		button.set_button_icon(load(randomized_options[i]["icon"]))
 		button.disconnect("pressed", Callable(self, "_on_option_pressed"))
 		button.connect("pressed", Callable(self, "_on_option_pressed").bind(randomized_options[i]["id"]))
 
@@ -44,6 +45,7 @@ func show_popup():
 		obj.speed = 0
 
 func _on_option_pressed(option: Variant) -> void:
+	$menu_click.play()
 	for obj in get_tree().get_nodes_in_group("Vivos"):
 		if obj in get_tree().get_nodes_in_group("Inimigo"):
 			obj.speed = speedEnemy

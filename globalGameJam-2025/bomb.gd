@@ -36,8 +36,10 @@ func explode() -> void:
 	exploded = true
 	show_flash()
 	apply_area_damage()
-	await get_tree().create_timer(0.05).timeout
-	queue_free()
+	$AudioStreamPlayer2D.play()
+	await get_tree().create_timer(0.1).timeout
+	$ImpactFramePlaceholder.queue_free()
+	$Sprite2D.queue_free()
 
 func apply_area_damage() -> void:
 	var area = get_node_or_null("Impact")
@@ -55,3 +57,7 @@ func show_flash() -> void:
 	if area:
 		flash = $ImpactFramePlaceholder
 		flash.visible = true
+
+
+func _on_audio_stream_player_2d_finished() -> void:
+	queue_free()

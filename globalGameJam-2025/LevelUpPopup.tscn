@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://njuy4b4rglov"]
+[gd_scene load_steps=3 format=3 uid="uid://72d6vlngrfmv"]
 
 [ext_resource type="Script" path="res://LevelUpPopup.gd" id="1_n24re"]
+[ext_resource type="PackedScene" uid="uid://m2qqrdff3gkt" path="res://sprites/StatsUp/menu_click.tscn" id="2_e6wor"]
 
 [node name="LevelUpPopup" type="Panel"]
 anchors_preset = 8
@@ -42,3 +43,5 @@ layout_direction = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Option3"
+
+[node name="menu_click" parent="." instance=ExtResource("2_e6wor")]

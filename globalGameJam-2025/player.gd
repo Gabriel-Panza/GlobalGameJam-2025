@@ -122,6 +122,7 @@ func _on_atk_speed_timeout():
 func take_damage(amount):
 	var shield = get_node_or_null("/root/GameScene/Player/Shield")
 	if shield and shield.visible:
+		$Shield_Sound.play()
 		shield.visible = false
 	else:
 		health -= amount
