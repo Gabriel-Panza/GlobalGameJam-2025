@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://8w0wxygunrxx"]
+[gd_scene load_steps=5 format=3 uid="uid://8w0wxygunrxx"]
 
 [ext_resource type="Texture2D" uid="uid://bhlkosuxo33hi" path="res://sprites/Projectiles/Bubble_Gun_Projectile.png" id="1_c6pcf"]
 [ext_resource type="Script" path="res://projectile.gd" id="1_xt63k"]
+[ext_resource type="AudioStream" uid="uid://632mnbukwsbc" path="res://SFX/Bubble Gun.mp3" id="3_2mg6b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_maafy"]
 radius = 32.3883
@@ -21,5 +22,8 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Impact"]
 position = Vector2(9, 0)
 shape = SubResource("CircleShape2D_maafy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_2mg6b")
 
 [connection signal="body_entered" from="Impact" to="." method="_on_impact_body_entered"]

@@ -19,7 +19,7 @@ var max_distance: float = 300.0
 var distance_to_player
 
 var damage: int = 15
-var health: int = 65
+var health: int = 60
 
 func _ready() -> void:
 	gamescene = get_node_or_null(gamescene_path)
@@ -37,7 +37,7 @@ func _ready() -> void:
 	shoot_timer.start()
 
 func _process(_delta: float) -> void:
-	if player and player.speed>0:
+	if player and speed>0:
 		distance_to_player = global_position.distance_to(player.global_position)
 		
 		if distance_to_player < min_distance:
@@ -65,19 +65,18 @@ func _shoot_projectile() -> void:
 
 func take_damage(amount):
 	health -= amount
-	$RichTextLabel.text = "[wave amp=100 freq=9] [fade] - %s [/fade] [/wave]" % amount
 	$RichTextLabel.visible = true
-	
+	if $RichTextLabel.text == "[wave amp=100 freq=9] [fade] - %s [/fade] [/wave]":
+		$RichTextLabel.text = $RichTextLabel.text % amount
 	if health <= 0:
 		die()
-		
 	await get_tree().create_timer(1).timeout
 	$RichTextLabel.visible = false
 	$RichTextLabel.text = "[tornado radius = 10 freq = 2.2] - %s [/tornado]"
 		
 func die() -> void:
 	var random = randf_range(0, 1)
-	if random <= 0.15:
+	if random <= 0.1:
 		gamescene.spawn_drop(position)
 	if player:
 		gamescene._spawn_xp("res://itemXP.tscn", position)

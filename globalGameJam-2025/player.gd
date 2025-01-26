@@ -71,7 +71,6 @@ func animationManager():
 			game_scene.pause_timers()
 		for obj in get_tree().get_nodes_in_group("Vivos"):
 			obj.speed = 0
-		z_index = 3
 		aparencia.play("death")
 		await get_tree().create_timer(2.5).timeout
 		die()

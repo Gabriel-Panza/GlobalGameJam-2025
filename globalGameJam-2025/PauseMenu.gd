@@ -74,12 +74,9 @@ func _ready() -> void:
 	
 func _process(delta):
 	if player and player.speed > 0:
-		shield_timer.set_paused(false)
 		if Input.is_action_just_pressed("ui_cancel"):
 			if not pause_menu.is_visible():
 				_pause_game()
-	else:
-		shield_timer.set_paused(true)
 
 func create_shield():
 	if itemShield:

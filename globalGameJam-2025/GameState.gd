@@ -33,11 +33,11 @@ func save_game():
 		JavaScript.eval("localStorage.setItem('save_data', '" + save_data_string.replace("'", "\\'") + "');")
 		print("Jogo salvo com sucesso no localStorage!")
 	else:  # Para outras plataformas
-		var file = FileAccess.open(save_file_path, FileAccess.WRITE)
+		var file = FileAccess.open(save_file_path, FileAccess.ModeFlags.WRITE)
 		if file:
-			file.store_string(JSON.stringify(save_data))
+			file.store_string(JSON.new().stringify(save_data))  # Converte dicionário para string
 			file.close()
-			print("Jogo salvo com sucesso!")
+			print("Jogo salvo com sucesso no arquivo!")
 
 # Função para carregar os dados
 func load_game():
@@ -55,23 +55,19 @@ func load_game():
 			print("Nenhum dado encontrado no localStorage!")
 	else:  # Para outras plataformas
 		if FileAccess.file_exists(save_file_path):
-			var file = FileAccess.open(save_file_path, FileAccess.READ)
+			var file = FileAccess.open(save_file_path, FileAccess.ModeFlags.READ)
 			if file:
-				var save_data = JSON.parse_string(file.get_as_text())
+				var json = JSON.new()
+				var save_data = json.parse(file.get_as_text())
 				file.close()
 				
 				if save_data:
-					gold = save_data.get("gold", 0)
-					arma = save_data.get("arma", "res://projectile.tscn")
-					maxHp = save_data.get("maxHp", 0)
-					ataque = save_data.get("ataque", 0)
-					movespeed = save_data.get("movespeed", 0)
-					atkSpeed = save_data.get("atkSpeed", 0)
-					critico = save_data.get("critico", 0)
-					mrBubbles = save_data.get("mrBubbles", 0)
-					print("Jogo carregado com sucesso!")
+					_apply_loaded_data(save_data)
+					print("Jogo carregado com sucesso do arquivo!")
 				else:
-					print("Erro ao carregar o arquivo de salvamento:")
+					print("Erro ao carregar o arquivo de salvamento!")
+		else:
+			print("Arquivo de salvamento não encontrado!")
 
 # Função auxiliar para aplicar os dados carregados
 func _apply_loaded_data(save_data: Dictionary) -> void:
