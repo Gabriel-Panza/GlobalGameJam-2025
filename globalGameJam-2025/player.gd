@@ -23,7 +23,7 @@ var original_health = 300
 var maxHealth = 300
 var original_maxHealth = 300
 var gold = 0
-var ataque = 25
+var ataque = 100
 var original_ataque = 25
 var critico = 0
 var original_critico = 0
@@ -157,6 +157,9 @@ func die():
 	game_over.visible = true
 
 func win():
+	$Collectable_Sound.stream = load("res://SFX/Victory_Jingle.mp3")
+	$Collectable_Sound.play()
+	game_scene.get_node_or_null("Music").stop()
 	if game_scene:
 		game_scene.pause_timers()
 	for obj in get_tree().get_nodes_in_group("Vivos"):
