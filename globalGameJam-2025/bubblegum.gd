@@ -1,24 +1,21 @@
 extends Node2D
 
 var inimigos_afetados = []
+var animatedSprite = get_node_or_null("AnimatedSprite2D")
+var sprite
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	sprite = get_node_or_null("Sprite2D")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if $AnimatedSprite2D:
-		if $AnimatedSprite2D.frame == 6:
-			$AnimatedSprite2D.queue_free()
-	if $Sprite2D.visible == true:
-		var timer = $Timer
+	if animatedSprite:
+		if animatedSprite.frame == 6:
+			animatedSprite.queue_free()
+	if sprite.visible == true:
+		var timer = get_node_or_null("Timer")
 		if timer.is_stopped():
 			timer.start()
-
-
-
 
 func _on_impact_body_entered(body: Node2D) -> void:
 	var area = get_node_or_null("Impact")
@@ -28,10 +25,10 @@ func _on_impact_body_entered(body: Node2D) -> void:
 			inimigos_afetados.append(target)
 			if target.is_in_group("Inimigo"):
 				print(target)
-				if $AnimatedSprite2D:
-					$AnimatedSprite2D.visible = false
-					$AnimatedSprite2D.play("default")
-				$Sprite2D.visible = true 
+				if animatedSprite:
+					animatedSprite.visible = false
+					animatedSprite.play("default")
+				sprite.visible = true 
 				target.speed = target.speed / 2
 				target.get_node_or_null("bubble_effect").visible = true
 

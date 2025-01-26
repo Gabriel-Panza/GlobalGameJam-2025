@@ -1,16 +1,17 @@
 extends CharacterBody2D
 
-@onready var navigation_agent = $NavigationAgent2D
+var navigation_agent
 
 var speed: float = 100.0
 var original_speed: float = 100.0
-@onready var aparencia = $aparencia
+var aparencia
+
 var gamescene_path: NodePath = "/root/GameScene"
 var gamescene
 var player_path: NodePath = "/root/GameScene/Player"
 var player
 
-@onready var damage_timer = $Timer
+var damage_timer
 
 var damage: int = 15
 var health: int = 50
@@ -18,6 +19,9 @@ var health: int = 50
 func _ready() -> void:
 	gamescene = get_node_or_null(gamescene_path)
 	player = get_node_or_null(player_path)
+	navigation_agent = get_node_or_null("NavigationAgent2D")
+	aparencia = get_node_or_null("aparencia")
+	damage_timer = get_node_or_null("Timer")
 	damage_timer.connect("timeout", Callable(self, "_apply_damage"))
 	add_to_group("Inimigo")
 	

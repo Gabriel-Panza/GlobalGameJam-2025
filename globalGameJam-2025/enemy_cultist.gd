@@ -1,27 +1,33 @@
 extends CharacterBody2D
 
-@onready var navigation_agent = $NavigationAgent2D
+var navigation_agent
 
 var speed: float = 100.0
 var original_speed: float = 100.0
-@onready var aparencia = $aparencia
+var aparencia
+
 var gamescene_path: NodePath = "/root/GameScene"
 var gamescene
 var player_path: NodePath = "/root/GameScene/Player"
 var player
 
-@onready var shoot_timer = $Timer
-@onready var projectile_scene: PackedScene = preload("res://projectile_enemy.tscn")
+var shoot_timer
+var projectile_scene: PackedScene
 
 var min_distance: float = 300.0
 var max_distance: float = 400.0
+var distance_to_player
 
 var damage: int = 15
 var health: int = 60
 
 func _ready() -> void:
 	gamescene = get_node_or_null(gamescene_path)
+	navigation_agent = get_node_or_null("NavigationAgent2D")
 	player = get_node_or_null(player_path)
+	aparencia = get_node_or_null("aparencia")
+	projectile_scene = preload("res://projectile_enemy.tscn")
+	shoot_timer = get_node_or_null("Timer")
 	shoot_timer.connect("timeout", Callable(self, "_shoot_projectile"))
 	add_to_group("Inimigo")
 	
@@ -32,7 +38,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if player and speed>0:
-		var distance_to_player = global_position.distance_to(player.global_position)
+		distance_to_player = global_position.distance_to(player.global_position)
 		
 		if distance_to_player < min_distance:
 			# Fugir do jogador
@@ -51,7 +57,7 @@ func _process(_delta: float) -> void:
 		animationManager()
 
 func _shoot_projectile() -> void:
-	if player and speed>0:
+	if distance_to_player > min_distance and distance_to_player < max_distance and player and speed>0:
 		var projectile = projectile_scene.instantiate()
 		projectile.position = position
 		# Configurar a direção do projétil

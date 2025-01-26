@@ -7,10 +7,11 @@ var pause_control: Control
 var player_path: NodePath = "/root/GameScene/Player"
 var player
 
-@onready var sprite = $Sprite2D
+var sprite
 
 func _ready():
 	player = get_node_or_null(player_path)
+	sprite = get_node_or_null("Sprite2D")
 	pause_control = get_node_or_null(pause_control_path)
 	connect("body_entered", Callable(self, "_on_body_entered"))
 

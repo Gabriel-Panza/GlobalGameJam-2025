@@ -66,7 +66,7 @@ func _ready() -> void:
 	itemShield = false
 	itemBoots = false
 	
-	shield_timer = $shield_timer
+	shield_timer = get_node_or_null("shield_timer")
 	shield_timer.name = "Escudo"
 	shield_timer.connect("timeout", Callable(self, "on_timeout_shield"))
 	#shield_timer.set_paused(true)

@@ -27,7 +27,7 @@ func show_popup():
 	
 	# Atualiza os botões com as opções randomizadas
 	for i in range(3):
-		var button = $VBoxContainer.get_child(i)
+		var button = get_node_or_null("VBoxContainer").get_child(i)
 		button.text = randomized_options[i]["text"]
 		button.disconnect("pressed", Callable(self, "_on_option_pressed"))
 		button.connect("pressed", Callable(self, "_on_option_pressed").bind(randomized_options[i]["id"]))

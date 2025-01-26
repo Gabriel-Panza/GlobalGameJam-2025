@@ -28,7 +28,6 @@ var timer_path: NodePath = "/root/GameScene/Player/AtkSpeed"
 var atkSpeed_timer: Timer
 
 var spawn_position
-var mudou: bool = true
 
 @export var item_scenes: Array[String] = [
 	"res://itemHP.tscn",
@@ -164,11 +163,8 @@ func clamp_position_to_bounds(position: Vector2) -> Vector2:
 	return position
 
 func spawn_enemy():
-	if (mudou and enemies_list.size()>1):
-		enemy_timer.wait_time = spawn_interval*3
-		mudou = false
-	for enemy in enemies_list:
-		_spawn_entity(enemy, Vector2.ZERO)
+	var random_index = randi() % enemies_list.size()
+	_spawn_entity(enemies_list[random_index], Vector2.ZERO)
 
 func spawn_drop(position: Vector2 = Vector2.ZERO):
 	var random_index

@@ -14,7 +14,7 @@ var game_scene_path: NodePath = "/root/GameScene"
 var game_scene: Node
 var arma
 var projetil
-@onready var aparencia = $Aparencia
+var aparencia
 var new_position
 
 # Variaveis de HUD
@@ -53,6 +53,7 @@ func _ready() -> void:
 	game_over = get_node_or_null(game_over_path)
 	game_win = get_node_or_null(game_win_path)
 	game_scene = get_node_or_null(game_scene_path)
+	aparencia = get_node_or_null("Aparencia")
 
 func animationManager():
 	if velocity_vector.x != 0 or velocity_vector.y != 0:

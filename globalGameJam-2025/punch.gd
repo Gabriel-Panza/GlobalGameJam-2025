@@ -15,9 +15,10 @@ var elapsed_time: float = 0.0
 var duration: float = 0.8
 var curve_amplitude: float = 100.0
 
-@onready var sprite = $Sprite2D
+var sprite
 
 func _ready() -> void:
+	sprite = get_node_or_null("Sprite2D")
 	player = get_node_or_null(player_path)
 	if player:
 		var mouse_position = get_global_mouse_position()

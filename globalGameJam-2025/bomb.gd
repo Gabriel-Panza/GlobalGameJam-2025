@@ -10,9 +10,6 @@ var exploded: bool = false
 var player_path: NodePath = "/root/GameScene/Player"
 var player
 
-# ColorRect
-var flash
-
 func _ready() -> void:
 	player = get_node_or_null(player_path)
 	var mouse_position = get_global_mouse_position()
@@ -52,6 +49,6 @@ func explode_after_timeout() -> void:
 	
 func show_flash() -> void:
 	var area = get_node_or_null("Impact/CollisionShape2D")
+	var effect = get_node_or_null("ImpactFramePlaceholder")
 	if area:
-		flash = $ImpactFramePlaceholder
-		flash.visible = true
+		effect.visible = true

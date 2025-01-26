@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://0pibtj0q264t" path="res://sprites/Personagens/BubblemanIdle.png" id="2_d1d1q"]
 [ext_resource type="Texture2D" uid="uid://d2s7y4s6dxlnw" path="res://sprites/Personagens/BubblemanDeath.png" id="2_hfahf"]
 [ext_resource type="Texture2D" uid="uid://cewpjl4mdtdp4" path="res://sprites/Personagens/BubblemanWalk.png" id="3_vk6oi"]
-[ext_resource type="PackedScene" path="res://Camera2D.tscn" id="3_yunjf"]
+[ext_resource type="PackedScene" uid="uid://dy77dt25sj2ey" path="res://Camera2D.tscn" id="3_yunjf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nqnr"]
 radius = 27.0
