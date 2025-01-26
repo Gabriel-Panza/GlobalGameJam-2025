@@ -11,7 +11,11 @@ var time_since_last_decision: float = 0.0
 
 func _ready() -> void:
 	if GameState.mrBubbles >= 1:
-		$MrBubbles.frames = load("res://sprites/Personagens/mr bubbles/agent_bubbles.tres")
+		var skin = randi_range(1,2)
+		if skin == 1:
+			$MrBubbles.frames = load("res://sprites/Personagens/mr bubbles/agent_bubbles.tres")
+		else:
+			$MrBubbles.frames = load("res://sprites/Personagens/mr bubbles/bubble_bubbles.tres")
 	player = get_node_or_null(player_path)
 
 func _process(delta: float) -> void:
