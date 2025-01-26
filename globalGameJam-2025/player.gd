@@ -170,7 +170,7 @@ func win():
 	game_win.visible = true
 
 func trail():
-	if pause_control.itemBoots:
+	if pause_control and pause_control.itemBoots:
 		var trail = load("res://trail.tscn").instantiate()
 		trail.position.y = position.y + 50
 		trail.position.x = position.x

@@ -42,6 +42,8 @@ var total_time: int = 10 * 60
 
 var pause_control_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl"
 var pause_control
+var sprite2d_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/Sprite2D"
+var sprite2d
 var cronometro_timer_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/Cronometro/Timer"
 var cronometro_timer
 var cronometro_label_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/Cronometro"
@@ -57,6 +59,7 @@ var label2_progress
 
 func _ready() -> void:	
 	adaptHUD()
+	sprite2d = get_node_or_null(sprite2d_path)
 	pause_control = get_node_or_null("Player/Camera2D/CanvasLayer/HUD/PauseControl")
 	cronometro_timer = get_node_or_null(cronometro_timer_path)
 	cronometro_timer.set_wait_time(1.0)
@@ -101,6 +104,8 @@ func _ready() -> void:
 	drop_timer.autostart = true
 	drop_timer.connect("timeout", Callable(self, "spawn_drop"))
 	add_child(drop_timer)
+	
+	sprite2d.visible = true
 	
 func adaptHUD() -> void:
 	cronometro_label = get_node_or_null(cronometro_label_path)

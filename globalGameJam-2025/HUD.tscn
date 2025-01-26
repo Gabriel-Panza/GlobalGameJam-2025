@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqimjgvjf1le5"]
+[gd_scene load_steps=8 format=3 uid="uid://cqimjgvjf1le5"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_esuf2"]
 [ext_resource type="PackedScene" uid="uid://72d6vlngrfmv" path="res://LevelUpPopup.tscn" id="2_jet5o"]
 [ext_resource type="PackedScene" uid="uid://cxkyc58pgy43i" path="res://PauseMenu.tscn" id="3_4wqrd"]
+[ext_resource type="Texture2D" uid="uid://mn8m2pe2pipk" path="res://Menu/Icons/pop_up.png" id="4_y5jun"]
+[ext_resource type="Script" path="res://tooltip_sprite.gd" id="5_wbs88"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tafyd"]
 bg_color = Color(1, 0, 1, 1)
@@ -84,3 +86,9 @@ theme_override_font_sizes/font_size = 30
 text = "Time: 10:00"
 
 [node name="Timer" type="Timer" parent="Cronometro"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(542, 294)
+texture = ExtResource("4_y5jun")
+script = ExtResource("5_wbs88")

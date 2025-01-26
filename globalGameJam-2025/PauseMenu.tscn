@@ -567,4 +567,7 @@ autostart = true
 [connection signal="pressed" from="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer/item1" to="MrBubbleInterface/Area2D" method="_on_item1_button_pressed"]
 [connection signal="pressed" from="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer/item2" to="MrBubbleInterface/Area2D" method="_on_item2_button_pressed"]
 [connection signal="pressed" from="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer/item3" to="MrBubbleInterface/Area2D" method="_on_item3_button_pressed"]
+[connection signal="pressed" from="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2/item4" to="MrBubbleInterface/Area2D" method="_on_item_4_pressed"]
+[connection signal="pressed" from="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2/item5" to="MrBubbleInterface/Area2D" method="_on_item_5_pressed"]
+[connection signal="pressed" from="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2/item6" to="MrBubbleInterface/Area2D" method="_on_item_6_pressed"]
 [connection signal="timeout" from="shield_timer" to="." method="on_timeout_shield"]

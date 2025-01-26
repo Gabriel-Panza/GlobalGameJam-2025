@@ -116,3 +116,12 @@ func _on_item2_button_pressed() -> void:
 
 func _on_item3_button_pressed() -> void:
 	interact_with_shop("item3")
+
+func _on_item_4_pressed() -> void:
+	interact_with_shop("item4")
+
+func _on_item_5_pressed() -> void:
+	interact_with_shop("item5")
+
+func _on_item_6_pressed() -> void:
+	interact_with_shop("item6")
