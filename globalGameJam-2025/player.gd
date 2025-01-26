@@ -67,6 +67,9 @@ func animationManager():
 		else:
 			aparencia.flip_h = false
 	elif health <=0:
+		$AtkSound.stream = load("res://SFX/Defeat_Jingle.mp3")
+		$AtkSound.play()
+		game_scene.get_node_or_null("Music").stop()
 		if game_scene:
 			game_scene.pause_timers()
 		for obj in get_tree().get_nodes_in_group("Vivos"):
@@ -115,6 +118,8 @@ func _on_atk_speed_timeout():
 		var tiro = projetil.instantiate()
 		tiro.position = position
 		if tiro.is_in_group("Punch"):
+			$AtkSound.stream = load("res://SFX/Bubble Gantlets.mp3")
+			$AtkSound.play()
 			tiro.add_to_group("PunchEsquerdo")
 			var tiro2 = projetil.instantiate()
 			tiro2.add_to_group("PunchDireito")
@@ -124,6 +129,7 @@ func _on_atk_speed_timeout():
 			owner.add_child(tiro)
 			return
 		else:
+			$AtkSound.play()
 			tiro.direction = (position - get_global_mouse_position()).normalized()
 		owner.add_child(tiro)
 

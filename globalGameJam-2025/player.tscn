@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b4iryf56vfhmk"]
+[gd_scene load_steps=44 format=3 uid="uid://b4iryf56vfhmk"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_sp03d"]
 [ext_resource type="Texture2D" uid="uid://0pibtj0q264t" path="res://sprites/Personagens/BubblemanIdle.png" id="2_d1d1q"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cewpjl4mdtdp4" path="res://sprites/Personagens/BubblemanWalk.png" id="3_vk6oi"]
 [ext_resource type="PackedScene" uid="uid://dy77dt25sj2ey" path="res://Camera2D.tscn" id="3_yunjf"]
 [ext_resource type="AudioStream" uid="uid://bnq24qvvd1i0m" path="res://SFX/Shield_Popping.mp3" id="6_mebad"]
+[ext_resource type="AudioStream" uid="uid://632mnbukwsbc" path="res://SFX/Bubble Gun.mp3" id="7_kklcs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nqnr"]
 radius = 27.0
@@ -295,5 +296,8 @@ autostart = true
 
 [node name="Shield_Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_mebad")
+
+[node name="AtkSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_kklcs")
 
 [connection signal="timeout" from="AtkSpeed" to="." method="_on_atk_speed_timeout"]

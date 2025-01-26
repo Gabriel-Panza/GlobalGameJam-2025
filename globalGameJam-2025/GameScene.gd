@@ -101,7 +101,7 @@ func _ready() -> void:
 	drop_timer.autostart = true
 	drop_timer.connect("timeout", Callable(self, "spawn_drop"))
 	add_child(drop_timer)
-
+	
 func adaptHUD() -> void:
 	cronometro_label = get_node_or_null(cronometro_label_path)
 	if cronometro_label:
