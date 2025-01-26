@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://b2p1k5scgcri8"]
+[gd_scene load_steps=35 format=4 uid="uid://b2p1k5scgcri8"]
 
 [ext_resource type="Script" path="res://tela_inicial.gd" id="1_3717t"]
 [ext_resource type="Texture2D" uid="uid://bao12i0hfsea" path="res://sprites/Tilesets/tileset chao area tranquila inicial.png" id="1_hkxae"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cqr7g2mwmwdko" path="res://sprites/Tilesets/fabrica.png" id="7_84eid"]
 [ext_resource type="Script" path="res://mr_bubbles.gd" id="8_8v3ya"]
 [ext_resource type="Texture2D" uid="uid://byjca4j2s6iuh" path="res://sprites/Personagens/mr_bubbles/shop do mr bubbles.png" id="8_f8qkt"]
+[ext_resource type="Texture2D" uid="uid://bjtnba2jcru6w" path="res://Menu/Icons/Weapons_Ballon.png" id="9_ee6fv"]
 [ext_resource type="Script" path="res://casa.gd" id="10_1mqwt"]
 [ext_resource type="Texture2D" uid="uid://tdd1ltw1s5eb" path="res://sprites/Tilesets/casa bubbleman.png" id="11_l2drk"]
 [ext_resource type="AudioStream" uid="uid://c7uylfyb8a8l4" path="res://music/musica tela inicial.mp3" id="14_fb1lv"]
@@ -1075,6 +1076,12 @@ position = Vector2(583, 328)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(576, 18.5)
 shape = SubResource("RectangleShape2D_fl7t0")
+
+[node name="Weapons" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(437, 132)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("9_ee6fv")
 
 [node name="BubbleGun" type="CharacterBody2D" parent="."]
 z_index = 1

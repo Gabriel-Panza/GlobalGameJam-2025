@@ -38,7 +38,7 @@ var spawn_position
 ]
 
 # Tempo total em segundos (10 minutos)
-var total_time: int = 10 * 60 + 1
+var total_time: int = 10 * 60 
 
 var pause_control_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl"
 var pause_control
@@ -128,7 +128,7 @@ func _update_cronometro() -> void:
 		if total_time>0:
 			total_time -= 1
 
-		if total_time % (120) == 0:
+		if total_time % (150) == 0 and not total_time % (300) == 0:
 			enemies_list.append("res://enemy_cultist.tscn")
 		if total_time % (300) == 0:
 			var boss = load("res://enemy_bubbler.tscn").instantiate()
