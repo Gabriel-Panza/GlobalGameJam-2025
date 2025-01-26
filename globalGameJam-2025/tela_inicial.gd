@@ -7,7 +7,6 @@ var label3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameState.load_game()
 	label3 = get_node_or_null(label3_path)
 	if label3:
 		label3.position.y -= 82
