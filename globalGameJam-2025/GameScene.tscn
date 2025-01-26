@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://b6dxk82l08c5d"]
+[gd_scene load_steps=14 format=4 uid="uid://b6dxk82l08c5d"]
 
 [ext_resource type="Script" path="res://GameScene.gd" id="1_8uqw1"]
 [ext_resource type="TileSet" uid="uid://dgclrcnucqxj7" path="res://sprites/Tilesets/Chao_Parede.tres" id="2_sgk41"]
 [ext_resource type="PackedScene" uid="uid://cc1g3ofhfukk7" path="res://player.tscn" id="3_3x3mf"]
 [ext_resource type="TileSet" uid="uid://dqpgo1qlrbc0b" path="res://sprites/Tilesets/Foreground.tres" id="3_c7aac"]
 [ext_resource type="PackedScene" uid="uid://b0nufv2vq22rm" path="res://mrBubbles_ingame.tscn" id="5_ajis8"]
+[ext_resource type="AudioStream" uid="uid://dt6pyvommj80c" path="res://music/Battle music.mp3" id="6_qdt4j"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_snjid"]
 vertices = PackedVector2Array(-1644.08, -872.977, 1649.95, -869.008, 1099.24, -792.758, 952.656, -796.25, -388.938, 53, -1085.96, -215.828, 964.32, -442.172, 1090.76, -439.953, 1647.65, -395.273, 961.922, 491, 834.047, 491, -503.039, 53, 831.953, 900, 965.078, 900, 1635.07, 1272.87, 740.563, 1262.15, -898.078, 1026.1, -391.063, 385.102, -893.922, 491, -501.672, 384.008, 1648.04, -395.219, -587.859, 1266.95, -587.398, 1262.66, -1088.04, -785, -1215, -785, -1662.91, 1259.92, -1215, -218.008, -1275.23, 1257.18, -1011.22, 1261.18, -1011.16, 1264.7, -1015.19, 1024.93, -1024.17, 491)
@@ -160,5 +161,7 @@ wait_time = 3.0
 autostart = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qdt4j")
+autoplay = true
 
 [connection signal="timeout" from="Bubblegum_timer" to="." method="_on_bubblegum_timer_timeout"]
