@@ -15,6 +15,7 @@ var player
 
 func _ready() -> void:
 	impact_flash = get_node_or_null("ImpactFramePlaceholder")
+	impact_flash.modulate = Color.hex(0xCDF5FD)
 	sprite = get_node_or_null("Sprite2D")
 	sound = get_node_or_null("AudioStreamPlayer2D")
 	player = get_node_or_null(player_path)

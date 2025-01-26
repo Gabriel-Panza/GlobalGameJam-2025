@@ -29,10 +29,17 @@ func _on_body_entered(body):
 
 func _process_xp_item():
 	if player:
+		var som = player.get_node_or_null("Collectable_Sound")
+		som.stream = load("res://SFX/XP_Pickup.mp3")
+		som.volume_db = 24
+		som.play()
 		player.gain_xp(value)
 
 func _process_hp_item():
 	if player:
+		var som = player.get_node_or_null("Collectable_Sound")
+		som.stream = load("res://SFX/POP_Soda_Gulp.mp3")
+		som.play()
 		if player.health + value <= player.maxHealth:
 			player.health += value
 		else:
@@ -42,6 +49,9 @@ func _process_hp_item():
 	
 func _process_gold_item():
 	if player:
+		var som = player.get_node_or_null("Collectable_Sound")
+		som.stream = load("res://SFX/Gold_Pickup.mp3")
+		som.play()
 		player.gold += value*2
 		player.emit_signal("gold_updated", player.gold)
 

@@ -25,7 +25,7 @@ var original_maxHealth = 300
 var gold = 0
 var ataque = 25
 var original_ataque = 25
-var critico = 0
+var critico = 1
 var original_critico = 0
 var atkSpeed = 1
 var atkSpeed_timer
@@ -139,6 +139,9 @@ func take_damage(amount):
 		shield_sound.play()
 		shield.visible = false
 	else:
+		$Collectable_Sound.stream = load("res://SFX/Taking Damage.mp3")
+		$Collectable_Sound.volume_db = -5
+		$Collectable_Sound.play()
 		health -= amount
 		emit_signal("hp_updated", health, maxHealth)
 		emit_signal("stats_updated")

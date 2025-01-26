@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccrc1um0jten6"]
+[gd_scene load_steps=5 format=3 uid="uid://5fpbfk1a5n4h"]
 
 [ext_resource type="Script" path="res://item.gd" id="1_rb1wb"]
 [ext_resource type="Texture2D" uid="uid://d2vh14j4g6ovn" path="res://sprites/Drops/Bubloon.png" id="2_hheqm"]

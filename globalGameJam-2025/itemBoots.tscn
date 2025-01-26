@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhjxyka12vw1j"]
+[gd_scene load_steps=4 format=3 uid="uid://f15bsnnuhv1k"]
 
 [ext_resource type="Script" path="res://item.gd" id="1_k8xnf"]
 [ext_resource type="Texture2D" uid="uid://d2b4xokobvp2n" path="res://sprites/Acessorios/Soappy_Boots.png" id="2_68t30"]
