@@ -78,8 +78,8 @@ func _ready() -> void:
 		player.emit_signal("stats_updated")
 	atkSpeed_timer = get_node_or_null(timer_path)
 	if atkSpeed_timer:
-		atkSpeed_timer.set_paused(false)
 		atkSpeed_timer.wait_time -= GameState.atkSpeed
+		atkSpeed_timer.set_paused(false)
 		player.atkSpeed += (player.atkSpeed * 0.10) * GameState.atkSpeed
 
 	# Obtenha as posições globais dos nós dos limites
@@ -165,7 +165,7 @@ func clamp_position_to_bounds(position: Vector2) -> Vector2:
 
 func spawn_enemy():
 	if (mudou and enemies_list.size()>1):
-		enemy_timer.wait_time = spawn_interval*2
+		enemy_timer.wait_time = spawn_interval*3
 		mudou = false
 	for enemy in enemies_list:
 		_spawn_entity(enemy, Vector2.ZERO)

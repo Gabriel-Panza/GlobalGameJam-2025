@@ -22,11 +22,11 @@ var item6: Label
 
 # Preços dos itens
 const ITEM_PRICES = {
-	"item1": 500,
-	"item2": 1000,
-	"item3": 1000,
-	"item4": 1000,
-	"item5": 500,
+	"item1": 200,
+	"item2": 500,
+	"item3": 500,
+	"item4": 500,
+	"item5": 200,
 	"item6": 100000
 }
 
@@ -94,7 +94,7 @@ func _on_Area2D_body_entered(body):
 		player.speed = 0
 		item1.text = "              Quant.: %d" % (5-GameState.maxHp)
 		item2.text = "              Quant.: %d" % (5-GameState.ataque)
-		item3.text = "              Quant.: %d" % (5-GameState.movespeed)
+		item3.text = "              Quant.: %d" % (3-GameState.movespeed)
 		item4.text = "              Quant.: %d" % (5-GameState.atkSpeed)
 		item5.text = "              Quant.: %d" % (5-GameState.critico)
 		item6.text = "              Quant.: %d" % (1-GameState.mrBubbles)
