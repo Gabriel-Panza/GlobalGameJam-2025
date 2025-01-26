@@ -141,3 +141,10 @@ func _on_retry_button_pressed() -> void:
 
 func _on_hub_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://tela_inicial.tscn")
+
+
+func _on_h_slider_value_changed(value: float) -> void:
+	var music = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("Music")
+	music.set_volume_db(value)
+	
+	

@@ -159,4 +159,6 @@ shape = SubResource("RectangleShape2D_4gy05")
 wait_time = 3.0
 autostart = true
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+
 [connection signal="timeout" from="Bubblegum_timer" to="." method="_on_bubblegum_timer_timeout"]

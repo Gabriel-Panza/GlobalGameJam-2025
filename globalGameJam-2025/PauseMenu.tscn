@@ -28,6 +28,7 @@
 bg_color = Color(0.2, 0.239216, 0.270588, 1)
 
 [node name="PauseControl" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -43,7 +44,6 @@ grow_vertical = 2
 script = ExtResource("1_2v82j")
 
 [node name="PauseMenu" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -231,7 +231,9 @@ horizontal_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="PauseMenu/OptionsMenu/VBoxContainer"]
 layout_mode = 2
-value = 50.0
+min_value = -80.0
+max_value = 24.0
+value = 24.0
 
 [node name="Label3" type="Label" parent="PauseMenu/OptionsMenu/VBoxContainer"]
 layout_mode = 2
@@ -553,6 +555,7 @@ autostart = true
 [connection signal="pressed" from="PauseMenu/HBoxContainer/VBoxContainer/ResumeButton" to="." method="_unpause_game"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="value_changed" from="PauseMenu/OptionsMenu/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="PauseMenu/OptionsMenu/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="GameOver/MarginContainer/TextureButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="GameOver/MarginContainer2/TextureButton" to="." method="_on_hub_button_pressed"]
