@@ -52,7 +52,14 @@ func apply_area_damage() -> void:
 	if area:
 		for body in area.get_overlapping_bodies():
 			if body.is_in_group("Inimigo"):
-				body.take_damage(player.ataque)
+				if randf_range(0, 1) <= player.critico:
+					body.take_damage(player.ataque * 2)
+					var impacto = preload("res://crit_text.tscn").instantiate()
+					impacto.text = impacto.text % "BOOM!"
+					impacto.position = body.position
+					get_parent().add_child(impacto)
+				else:
+					body.take_damage(player.ataque)
 
 func explode_after_timeout() -> void:
 	await get_tree().create_timer(fuse_time).timeout
