@@ -25,9 +25,6 @@ func _process(delta: float) -> void:
 		if timer.is_stopped():
 			timer.start()
 
-
-
-
 func _on_impact_body_entered(body: Node2D) -> void:
 	var area = get_node_or_null("Impact")
 	if area:

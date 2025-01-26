@@ -45,6 +45,8 @@ func _physics_process(delta: float) -> void:
 				position = current_position2
 		else:
 			queue_free()
+	else:
+		queue_free()
 
 func calculate_bezier(t: float, p0: Vector2, p1: Vector2, p2: Vector2) -> Vector2:
 	# Fórmula da curva de Bézier quadrática

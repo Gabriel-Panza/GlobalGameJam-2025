@@ -29,7 +29,7 @@ func _ready() -> void:
 		navigation_agent.target_position = player.global_position
 
 func _process(_delta: float) -> void:
-	if speed > 0:
+	if player.speed > 0:
 		if player:
 			# Atualizar a posição do alvo no NavigationAgent2D
 			navigation_agent.target_position = player.global_position
@@ -50,18 +50,19 @@ func _process(_delta: float) -> void:
 
 func take_damage(amount):
 	health -= amount
+	$RichTextLabel.text = "[wave amp=100 freq=9] [fade] - %s [/fade] [/wave]" % amount
 	$RichTextLabel.visible = true
-	if $RichTextLabel.text == "[wave amp=100 freq=9] [fade] - %s [/fade] [/wave]":
-		$RichTextLabel.text = $RichTextLabel.text % amount
+	
 	if health <= 0:
 		die()
+		
 	await get_tree().create_timer(1).timeout
 	$RichTextLabel.visible = false
 	$RichTextLabel.text = "[tornado radius = 10 freq = 2.2] - %s [/tornado]"
 
 func die() -> void:
 	var random = randf_range(0,1)
-	if random <= 0.1:
+	if random <= 0.15:
 		gamescene.spawn_drop(position)
 	if player:
 		gamescene._spawn_xp("res://itemXP.tscn", position)

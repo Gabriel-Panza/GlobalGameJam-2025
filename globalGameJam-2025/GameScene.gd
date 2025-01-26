@@ -39,7 +39,6 @@ var spawn_position
 
 # Tempo total em segundos (20 minutos)
 var total_time: int = 10 * 60
-var cont = 0
 
 var pause_control_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl"
 var pause_control
@@ -129,19 +128,11 @@ func _update_cronometro() -> void:
 		total_time -= 1
 
 		if total_time % (120) == 0:
-			if cont==0:
-				cont+=1
-				enemies_list.append("res://enemy_cultist.tscn")
-			elif cont==1:
-				cont+=1
-				# Instancio o miniboss
-			elif cont==2:
-				cont+=1
-				# Instancio o boss
-			elif cont==3:
-				cont+=1
-			else:
-				cont+=1
+			enemies_list.append("res://enemy_cultist.tscn")
+		if total_time % (599) == 0:
+			var boss = load("res://enemy_bubbler.tscn").instantiate()
+			boss.position = Vector2(0,300)
+			add_child(boss)
 
 		var minutes = total_time / 60
 		var seconds = total_time % 60
@@ -233,12 +224,9 @@ func _spawn_xp(xp_scene_path: String, position: Vector2) -> void:
 		add_child(xp_instance)
 
 func pause_timers():
-	if enemy_timer.is_paused() == false:
-		enemy_timer.set_paused(true)
-	if drop_timer.is_paused() == false:
-		drop_timer.set_paused(true)
-	if atkSpeed_timer.is_paused() == false:
-		atkSpeed_timer.set_paused(true)
+	enemy_timer.set_paused(true)
+	drop_timer.set_paused(true)
+	atkSpeed_timer.set_paused(true)
 
 func resume_timers():
 	enemy_timer.set_paused(false)

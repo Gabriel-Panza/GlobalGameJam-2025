@@ -85,6 +85,7 @@ func give_buff_to_player(item_name: String):
 	elif item_name == "item6":
 		GameState.mrBubbles += 1
 		item6.text = "              Quant.: %d" % (1-GameState.mrBubbles)
+	GameState.save_game()
 	player.emit_signal("stats_updated")
 
 

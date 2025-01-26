@@ -30,6 +30,9 @@ func _physics_process(delta: float) -> void:
 	# Aplica gravidade no eixo Y
 	velocity.y += gravity * delta
 	position += velocity * delta
+	
+	if speed == 0:
+		queue_free()
 
 func _on_impact_body_entered(body):
 	if exploded:
