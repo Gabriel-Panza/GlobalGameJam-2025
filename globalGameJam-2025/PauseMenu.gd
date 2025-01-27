@@ -77,6 +77,10 @@ func _process(delta):
 		if Input.is_action_just_pressed("ui_cancel"):
 			if not pause_menu.is_visible():
 				_pause_game()
+	elif player and player.speed <= 0:
+		if Input.is_action_just_pressed("ui_cancel"):
+			if pause_menu.is_visible():
+				_unpause_game()
 
 func create_shield():
 	if itemShield:

@@ -48,6 +48,11 @@ func _ready():
 	item5 = get_node_or_null("/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl/MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2/item5/item2_2")
 	item6 = get_node_or_null("/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl/MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2/item6/item3_2")
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		if mrBubblesShop.is_visible():
+			_on_leave_button_pressed()
+
 # Função chamada quando o jogador interage com a loja
 func interact_with_shop(item_name: String):
 	if item_name in ITEM_PRICES:

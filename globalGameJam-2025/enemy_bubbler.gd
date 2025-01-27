@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 var navigation_agent
-var speed: float = 100.0
-var original_speed: float = 100.0
+var speed: float = 200.0
+var original_speed: float = 200.0
 var aparencia
 
 var gamescene_path: NodePath = "/root/GameScene"
@@ -21,7 +21,7 @@ var max_distance: float = 450.0
 var distance_to_player
 
 var damage: int = 30
-var health: int = 2000
+var health: int = 5000
 
 func _ready() -> void:
 	camera = get_node_or_null(camera_path)
