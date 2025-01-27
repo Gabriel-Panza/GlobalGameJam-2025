@@ -3,7 +3,7 @@ extends CharacterBody2D
 var speed: float = 600.0
 var player_path: NodePath = "/root/GameScene/Player"
 var player
-
+var mouse_position
 # Variáveis para o movimento em arco
 var start_position: Vector2 = Vector2.ZERO
 var end_position: Vector2 = Vector2.ZERO
@@ -21,7 +21,7 @@ func _ready() -> void:
 	sprite = get_node_or_null("Sprite2D")
 	player = get_node_or_null(player_path)
 	if player:
-		var mouse_position = get_global_mouse_position()
+		mouse_position = get_global_mouse_position()
 		_calculate_swing_positions(mouse_position)
 		position = start_position
 		
@@ -96,10 +96,31 @@ func _on_impact_body_entered(body):
 	if body.is_in_group("Inimigo"):
 		if randf_range(0, 1) <= player.critico:
 			body.take_damage(player.ataque * 2)
-			var impacto = preload("res://crit_text.tscn").instantiate()
-			impacto.text = impacto.text % "BAM!"
-			impacto.position = body.position
-			get_parent().add_child(impacto)
+			var popup = Sprite2D.new()
+			popup.visible = true
+			if is_in_group("PunchEsquerdo"):
+				popup.position = body.position - Vector2(75, 50)
+			else:
+				popup.position = body.position - Vector2(-75, 50)
+			popup.texture = load("res://Crit Ballons/BAM!.png")
+			popup.scale *= 3
+			popup.add_to_group("Popup")
+			get_parent().add_child(popup)
+			await get_tree().create_timer(0.5).timeout
+			for obj in get_tree().get_nodes_in_group("Popup"):
+				obj.queue_free()
 		else:
 			body.take_damage(player.ataque)
-		queue_free()
+			var direction = (mouse_position - player.global_position).normalized()
+			var angle = rad_to_deg(direction.angle())
+			var target_position
+			if angle > 135 or angle <= -135:
+				target_position = Vector2(body.position.x * -100, body.position.y)
+			elif angle > 45 and angle <= 135:
+				target_position = Vector2(body.position.x, body.position.y * 100)
+			elif angle >= -45 and angle <= 45:
+				target_position = Vector2(body.position.x * 100, body.position.y)
+			elif angle > -135 and angle < -45:
+				target_position = Vector2(body.position.x, body.position.y * -100)
+			body.position = body.position.move_toward(target_position, get_physics_process_delta_time() * speed)
+			queue_free()

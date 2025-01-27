@@ -89,6 +89,7 @@ text = "Time: 10:00"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
+z_index = 1
 position = Vector2(542, 294)
 texture = ExtResource("4_y5jun")
 script = ExtResource("5_wbs88")

@@ -20,11 +20,18 @@ func _on_impact_body_entered(body):
 	if body.is_in_group("Inimigo"):
 		if randf_range(0,1) <= player.critico:
 			body.take_damage(player.ataque*2)
-			var impacto = preload("res://crit_text.tscn").instantiate()
-			impacto.text = impacto.text % "POW!"
-			impacto.position = body.position
-			get_parent().add_child(impacto)
+			var popup = Sprite2D.new()
+			popup.visible = true
+			popup.position = body.position - Vector2(75, 50)
+			popup.texture = load("res://Crit Ballons/POW!.png")
+			popup.scale *= 3
+			popup.add_to_group("Popup")
+			get_parent().add_child(popup)
+			await get_tree().create_timer(0.5).timeout
+			for obj in get_tree().get_nodes_in_group("Popup"):
+				obj.queue_free()
 		else:
-			body.take_damage(player.ataque)
-	if body.is_in_group("Limites"):
+			if is_instance_valid(body):
+				body.take_damage(player.ataque)
+	if body and is_instance_valid(body) and body.is_in_group("Limites"):
 		queue_free()

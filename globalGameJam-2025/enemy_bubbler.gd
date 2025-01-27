@@ -21,7 +21,7 @@ var max_distance: float = 300.0
 var distance_to_player
 
 var damage: int = 25
-var health: int = 1
+var health: int = 1200
 
 func _ready() -> void:
 	camera = get_node_or_null(camera_path)

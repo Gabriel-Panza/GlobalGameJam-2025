@@ -38,7 +38,7 @@ var spawn_position
 ]
 
 # Tempo total em segundos (10 minutos)
-var total_time: int = 5 * 60 + 1 
+var total_time: int = 10 * 60
 
 var pause_control_path = "/root/GameScene/Player/Camera2D/CanvasLayer/HUD/PauseControl"
 var pause_control
