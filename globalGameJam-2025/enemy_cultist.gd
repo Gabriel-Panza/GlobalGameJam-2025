@@ -37,7 +37,7 @@ func _ready() -> void:
 	shoot_timer.start()
 
 func _process(_delta: float) -> void:
-	if player and speed>0:
+	if player and player.speed>0:
 		distance_to_player = global_position.distance_to(player.global_position)
 		
 		if distance_to_player < min_distance:

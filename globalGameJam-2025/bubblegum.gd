@@ -29,9 +29,8 @@ func _on_impact_body_entered(body: Node2D) -> void:
 	var area = get_node_or_null("Impact")
 	if area:
 		for target in area.get_overlapping_bodies():
-			print(target)
-			inimigos_afetados.append(target)
 			if target.is_in_group("Inimigo"):
+				inimigos_afetados.append(target)
 				if is_instance_valid(animatedSprite) and animatedSprite:
 					animatedSprite.visible = true
 					label.visible = true
@@ -43,6 +42,8 @@ func _on_impact_body_entered(body: Node2D) -> void:
 func _on_timer_timeout() -> void:
 	for target in inimigos_afetados:
 		if target and is_instance_valid(target):
-			target.speed = target.original_speed
-			target.get_node_or_null("bubble_effect").visible = false
+			if target.has("speed") and target.has("original_speed"):
+				target.speed = target.original_speed
+			if target.has_node("bubble_effect"):
+				target.get_node_or_null("bubble_effect").visible = false
 	queue_free()

@@ -183,8 +183,8 @@ func selectWeapon():
 		"res://projectile.tscn":
 			pause_control.slots[0].texture = load(weapon_data[arma])
 			projetil = preload("res://projectile.tscn")
-			ataque = 25
-			original_ataque = 25
+			ataque = 15
+			original_ataque = 15
 			atkSpeed_timer.wait_time = 1
 			atkSpeed_timer.set_paused(true)
 			if tela_inicial:

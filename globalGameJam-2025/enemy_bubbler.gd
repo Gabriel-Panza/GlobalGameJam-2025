@@ -9,19 +9,22 @@ var gamescene_path: NodePath = "/root/GameScene"
 var gamescene
 var player_path: NodePath = "/root/GameScene/Player"
 var player
+var camera_path: NodePath = "/root/GameScene/Player/Camera2D"
+var camera: Camera2D
 
 var damage_timer
 var shoot_timer
 var projectile_scene: PackedScene
 
 var min_distance: float = 200.0
-var max_distance: float = 600.0
+var max_distance: float = 300.0
 var distance_to_player
 
 var damage: int = 25
-var health: int = 1200
+var health: int = 1
 
 func _ready() -> void:
+	camera = get_node_or_null(camera_path)
 	gamescene = get_node_or_null(gamescene_path)
 	navigation_agent = get_node_or_null("NavigationAgent2D")
 	player = get_node_or_null(player_path)
@@ -72,14 +75,18 @@ func take_damage(amount):
 	$RichTextLabel.text = "[tornado radius=10 freq=2.2] - %s [/tornado]"
 
 func die() -> void:
-	var random = randf_range(0, 1)
-	if random <= 0.15:
-		gamescene.spawn_drop(position)
-	if player:
-		gamescene._spawn_xp("res://itemXP.tscn", position)
-	
-	await get_tree().create_timer(1).timeout
+	if gamescene:
+		gamescene.pause_timers()
+	damage_timer.set_paused(true)
+	shoot_timer.set_paused(true)
+	for obj in get_tree().get_nodes_in_group("Vivos"):
+		obj.speed = 0
+	aparencia.flip_h = false
+	aparencia.play("die")
+	camera.position = global_position - camera.global_position
+	await get_tree().create_timer(6.5).timeout
 	queue_free()
+	player.win()
 
 func animationManager():
 	if velocity != Vector2.ZERO and distance_to_player < min_distance:
