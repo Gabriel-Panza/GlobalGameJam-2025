@@ -43,7 +43,6 @@ var bubblegum_timer: Timer
 var boots_timer: Timer
 var shield_timer: Timer
 
-
 func _ready() -> void:
 	slot1 = get_node_or_null(slot1_path)
 	slot2 = get_node_or_null(slot2_path)
@@ -160,4 +159,7 @@ func _on_h_slider_value_changed(value: float) -> void:
 	var music = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("Music")
 	music.set_volume_db(value)
 	
-	
+
+func _on_h_slider_2_value_changed(value: float) -> void:
+	for som in get_tree().get_nodes_in_group("SFX"):
+		som.set_volume_db(value)

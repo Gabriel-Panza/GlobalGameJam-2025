@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bd3yfncty63h0"]
+[gd_scene load_steps=5 format=3 uid="uid://br8tv8n0gdc1t"]
 
 [ext_resource type="Script" path="res://item.gd" id="1_xo32s"]
 [ext_resource type="Texture2D" uid="uid://crbbh5rjyond6" path="res://sprites/Drops/XP_Soap.png" id="2_0pmq1"]

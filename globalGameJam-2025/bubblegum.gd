@@ -5,13 +5,16 @@ var animatedSprite
 var sprite
 var label
 var timer
+var sound
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	animatedSprite = get_node_or_null("AnimatedSprite2D") 
 	sprite = get_node_or_null("Sprite2D") 
-	label = get_node_or_null("RichTextLabel") 
+	label = get_node_or_null("FX") 
 	timer = get_node_or_null("Timer") 
+	sound = get_node_or_null("/root/GameScene/Player").get_node_or_null("AtkSound")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -34,7 +37,9 @@ func _on_impact_body_entered(body: Node2D) -> void:
 				if is_instance_valid(animatedSprite) and animatedSprite:
 					animatedSprite.visible = true
 					label.visible = true
-					animatedSprite.play("default") 
+					animatedSprite.play("default")
+					$SFX.volume_db = sound.volume_db
+					$SFX.play()
 				target.speed = target.speed / 2
 				target.get_node_or_null("bubble_effect").visible = true
 

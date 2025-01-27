@@ -44,4 +44,4 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Option3"
 
-[node name="menu_click" parent="." instance=ExtResource("2_e6wor")]
+[node name="menu_click" parent="." groups=["SFX"] instance=ExtResource("2_e6wor")]

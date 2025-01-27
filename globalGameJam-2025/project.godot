@@ -21,6 +21,7 @@ GameState="*res://GameState.gd"
 
 [display]
 
+window/size/resizable=false
 window/stretch/mode="viewport"
 
 [global_group]
@@ -41,6 +42,7 @@ Punch=""
 Bomb=""
 bigXP=""
 Limites=""
+SFX=""
 
 [input]
 

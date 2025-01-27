@@ -1,10 +1,11 @@
-[gd_scene load_steps=44 format=4 uid="uid://b4iryf56vfhmk"]
+[gd_scene load_steps=45 format=4 uid="uid://b4iryf56vfhmk"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_sp03d"]
 [ext_resource type="Texture2D" uid="uid://0pibtj0q264t" path="res://sprites/Personagens/BubblemanIdle.png" id="2_d1d1q"]
 [ext_resource type="Texture2D" uid="uid://d2s7y4s6dxlnw" path="res://sprites/Personagens/BubblemanDeath.png" id="2_hfahf"]
 [ext_resource type="Texture2D" uid="uid://cewpjl4mdtdp4" path="res://sprites/Personagens/BubblemanWalk.png" id="3_vk6oi"]
 [ext_resource type="PackedScene" uid="uid://dy77dt25sj2ey" path="res://Camera2D.tscn" id="3_yunjf"]
+[ext_resource type="Script" path="res://collectable_sound.gd" id="6_uer4g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nqnr"]
 radius = 27.0
@@ -298,12 +299,13 @@ limit_bottom = 1600
 [node name="AtkSpeed" type="Timer" parent="."]
 autostart = true
 
-[node name="Shield_Sound" type="AudioStreamPlayer2D" parent="."]
+[node name="Shield_Sound" type="AudioStreamPlayer2D" parent="." groups=["SFX"]]
 stream = SubResource("AudioStreamMP3_cplhk")
 
-[node name="AtkSound" type="AudioStreamPlayer2D" parent="."]
+[node name="AtkSound" type="AudioStreamPlayer2D" parent="." groups=["SFX"]]
 stream = SubResource("AudioStreamMP3_pf7do")
 
-[node name="Collectable_Sound" type="AudioStreamPlayer2D" parent="."]
+[node name="Collectable_Sound" type="AudioStreamPlayer2D" parent="." groups=["SFX"]]
+script = ExtResource("6_uer4g")
 
 [connection signal="timeout" from="AtkSpeed" to="." method="_on_atk_speed_timeout"]

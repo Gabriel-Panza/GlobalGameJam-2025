@@ -77,6 +77,8 @@ offset_left = 587.0
 offset_top = 399.0
 offset_right = 803.0
 offset_bottom = 472.0
+min_value = -80.0
+max_value = 24.0
 
 [node name="Volume2" type="Label" parent="."]
 layout_mode = 0
@@ -98,7 +100,8 @@ offset_bottom = 579.0
 texture_normal = ExtResource("3_rdgis")
 texture_hover = ExtResource("4_lvl4i")
 
-[node name="menu_click" parent="." instance=ExtResource("8_hfwbs")]
+[node name="menu_click" parent="." groups=["SFX"] instance=ExtResource("8_hfwbs")]
 
 [connection signal="value_changed" from="HSlider" to="HSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="HSlider2" to="HSlider" method="_on_h_slider_2_value_changed"]
 [connection signal="pressed" from="BackButton" to="HSlider" method="_on_return_pressed"]

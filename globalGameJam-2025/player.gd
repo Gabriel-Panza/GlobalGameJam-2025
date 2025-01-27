@@ -131,7 +131,6 @@ func take_damage(amount):
 		shield.visible = false
 	else:
 		$Collectable_Sound.stream = load("res://SFX/Taking Damage.mp3")
-		$Collectable_Sound.volume_db = -5
 		$Collectable_Sound.play()
 		health -= amount
 		emit_signal("hp_updated", health, maxHealth)
@@ -140,9 +139,8 @@ func take_damage(amount):
 		die()
 
 func die():
-	$AtkSound.stream = load("res://SFX/Defeat_Jingle.mp3")
-	$AtkSound.play()
-	game_scene.get_node_or_null("Music").stop()
+	game_scene.get_node_or_null("Music").stream = load("res://SFX/Defeat_Jingle.mp3")
+	game_scene.get_node_or_null("Music").play()
 	if game_scene:
 		game_scene.pause_timers()
 	for obj in get_tree().get_nodes_in_group("Vivos"):
@@ -155,9 +153,8 @@ func die():
 	game_over.visible = true
 
 func win():
-	$Collectable_Sound.stream = load("res://SFX/Victory_Jingle.mp3")
-	$Collectable_Sound.play()
-	game_scene.get_node_or_null("Music").stop()
+	game_scene.get_node_or_null("Music").stream = load("res://SFX/Victory_Jingle.mp3")
+	game_scene.get_node_or_null("Music").play()
 	if game_scene:
 		game_scene.pause_timers()
 	for obj in get_tree().get_nodes_in_group("Vivos"):

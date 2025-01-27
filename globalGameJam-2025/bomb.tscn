@@ -36,7 +36,7 @@ texture = ExtResource("3_wup6x")
 
 [node name="Fuse" type="Timer" parent="."]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." groups=["SFX"]]
 stream = SubResource("AudioStreamMP3_hcem6")
 
 [connection signal="body_entered" from="Impact" to="." method="_on_impact_body_entered"]

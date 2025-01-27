@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dfoxv60v3og0b"]
+[gd_scene load_steps=15 format=3 uid="uid://dfoxv60v3og0b"]
 
 [ext_resource type="Texture2D" uid="uid://0iroymmiwgc4" path="res://sprites/Projectiles/Bubble_Gum_Pop.png" id="1_8cpci"]
 [ext_resource type="Script" path="res://bubblegum.gd" id="1_d1f26"]
 [ext_resource type="Texture2D" uid="uid://re04ruowaqpk" path="res://sprites/Acessorios/Bubble_Gum_Puddle.png" id="3_l08nc"]
-[ext_resource type="FontFile" uid="uid://cu6t5r07fskv5" path="res://Bangers/Bangers-Regular.ttf" id="4_ijdos"]
+[ext_resource type="Texture2D" uid="uid://dnbttlonuv7ub" path="res://Crit Ballons/POP!.png" id="5_0dxt1"]
+[ext_resource type="AudioStream" uid="uid://6i1ntrumvnvc" path="res://SFX/Chewing_Gum_POP.mp3" id="5_0gigp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fkun0"]
 
@@ -89,17 +90,14 @@ texture = ExtResource("3_l08nc")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="SFX" type="AudioStreamPlayer2D" parent="." groups=["SFX"]]
+stream = ExtResource("5_0gigp")
+
+[node name="FX" type="Sprite2D" parent="."]
 visible = false
-offset_left = 42.0
-offset_top = -35.0
-offset_right = 150.0
-offset_bottom = 29.0
-theme_override_colors/default_color = Color(0.69208, 0.471918, 0.69095, 1)
-theme_override_fonts/normal_font = ExtResource("4_ijdos")
-theme_override_font_sizes/normal_font_size = 60
-bbcode_enabled = true
-text = "[wave amp=100]POP![/wave]"
+position = Vector2(-3.50001, 0)
+scale = Vector2(3.53125, 2.5625)
+texture = ExtResource("5_0dxt1")
 
 [connection signal="body_entered" from="Impact" to="." method="_on_impact_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

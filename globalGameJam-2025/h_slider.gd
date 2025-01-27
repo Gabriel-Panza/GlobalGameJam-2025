@@ -15,3 +15,7 @@ func _on_value_changed(value: float) -> void:
 	var musica = get_parent().get_parent().get_node_or_null("AudioStreamPlayer2D")
 	musica.set_volume_db(value)
 	
+
+
+func _on_h_slider_2_value_changed(value: float) -> void:
+	$"../menu_click".set_volume_db(value)
