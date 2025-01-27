@@ -10,7 +10,7 @@ var atkSpeed = 0
 var critico = 0
 var mrBubbles = 0
 
-var save_file_path = "res://save_data.json"
+var save_file_path = "user://save_data.json"
 
 var JavaScript = JavaScriptBridge
 
@@ -45,33 +45,29 @@ func load_game():
 		var save_data_string = JavaScript.eval("localStorage.getItem('save_data');")
 		if save_data_string != null and save_data_string != "":
 			var json = JSON.new()
-			var save_data = json.parse(save_data_string)
-			if save_data:
-				_apply_loaded_data(save_data)
+			var parse_result = json.parse(save_data_string)
+			if parse_result:
+				_apply_loaded_data(parse_result)
 				print("Jogo carregado com sucesso do localStorage!")
 			else:
-				print("Erro ao carregar os dados do localStorage!")
+				print("Erro ao carregar os dados do localStorage: ", parse_result.error_string)
 		else:
 			print("Nenhum dado encontrado no localStorage!")
 	else:  # Para outras plataformas
 		if FileAccess.file_exists(save_file_path):
 			var file = FileAccess.open(save_file_path, FileAccess.READ)
 			if file:
-				var save_data = JSON.parse_string(file.get_as_text())
+				var save_data_string = file.get_as_text()
 				file.close()
 				
-				if save_data:
-					gold = save_data.get("gold", 0)
-					arma = save_data.get("arma", "res://projectile.tscn")
-					maxHp = save_data.get("maxHp", 0)
-					ataque = save_data.get("ataque", 0)
-					movespeed = save_data.get("movespeed", 0)
-					atkSpeed = save_data.get("atkSpeed", 0)
-					critico = save_data.get("critico", 0)
-					mrBubbles = save_data.get("mrBubbles", 0)
+				var parse_result = JSON.parse_string(save_data_string)
+				if parse_result:
+					_apply_loaded_data(parse_result)
 					print("Jogo carregado com sucesso!")
 				else:
-					print("Erro ao carregar o arquivo de salvamento:")
+					print("Erro ao carregar o arquivo de salvamento: ", parse_result.error_string)
+		else:
+			print("Nenhum arquivo de salvamento encontrado.")
 
 # Função auxiliar para aplicar os dados carregados
 func _apply_loaded_data(save_data: Dictionary) -> void:
@@ -83,3 +79,7 @@ func _apply_loaded_data(save_data: Dictionary) -> void:
 	atkSpeed = save_data.get("atkSpeed", 0)
 	critico = save_data.get("critico", 0)
 	mrBubbles = save_data.get("mrBubbles", 0)
+
+# Carregar os dados ao iniciar o jogo
+func _ready():
+	load_game()

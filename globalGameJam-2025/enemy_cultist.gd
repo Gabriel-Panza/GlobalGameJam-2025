@@ -15,7 +15,7 @@ var shoot_timer
 var projectile_scene: PackedScene
 
 var min_distance: float = 200.0
-var max_distance: float = 300.0
+var max_distance: float = 375.0
 var distance_to_player
 
 var damage: int = 15
@@ -63,7 +63,7 @@ func _process(_delta: float) -> void:
 		speed = 0
 
 func _shoot_projectile() -> void:
-	if distance_to_player < max_distance and player and speed>0:
+	if  distance_to_player > min_distance and distance_to_player < max_distance and player and speed>0:
 		var projectile = projectile_scene.instantiate()
 		projectile.position = Vector2.ZERO
 		# Configurar a direção do projétil

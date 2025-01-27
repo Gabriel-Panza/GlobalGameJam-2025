@@ -49,14 +49,13 @@ text = "Health"
 [node name="ProgressBar2" type="ProgressBar" parent="."]
 visible = false
 offset_left = 124.0
-offset_top = 5.0
+offset_top = -3.0
 offset_right = 208.0
-offset_bottom = 32.0
-scale = Vector2(5.37916, 0.908527)
+offset_bottom = 24.0
+scale = Vector2(3, 1.5)
 theme_override_styles/fill = SubResource("StyleBoxFlat_wo74x")
 max_value = 300.0
 value = 300.0
-show_percentage = false
 
 [node name="Label3" type="Label" parent="."]
 z_index = 2

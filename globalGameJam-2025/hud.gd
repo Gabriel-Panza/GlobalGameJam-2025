@@ -57,6 +57,7 @@ func _apply_effect(option):
 		"option_2":
 			player.health += player.original_health * 0.10
 			player.maxHealth += player.original_maxHealth * 0.10
+			_on_hp_updated(player.health, player.maxHealth)
 		"option_3":
 			player.ataque += player.original_ataque * 0.10
 		"option_4":

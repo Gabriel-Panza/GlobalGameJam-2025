@@ -22,7 +22,6 @@ func _ready() -> void:
 	navigation_agent = get_node_or_null("NavigationAgent2D")
 	aparencia = get_node_or_null("aparencia")
 	damage_timer = get_node_or_null("Timer")
-	damage_timer.connect("timeout", Callable(self, "_apply_damage"))
 	add_to_group("Inimigo")
 	
 	if navigation_agent and player:

@@ -245,7 +245,7 @@ func resume_timers():
 	atkSpeed_timer.set_paused(false)
 
 func SpawnGum():
-	if pause_control.itemBublegum:
+	if pause_control and pause_control.itemBublegum:
 		var bolha = load("res://bubblegum.tscn").instantiate()
 		var eixo_x = randi_range(-1700, 1700)
 		var eixo_y = randi_range(-800, 1300)
