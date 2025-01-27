@@ -53,8 +53,14 @@ func _process(_delta: float) -> void:
 		else:
 			velocity = Vector2.ZERO
 		
+		shoot_timer.set_paused(false)
+		speed = original_speed
+		
 		move_and_slide()
 		animationManager()
+	else:
+		shoot_timer.set_paused(true)
+		speed = 0
 
 func _shoot_projectile() -> void:
 	if distance_to_player < max_distance and player and speed>0:
@@ -75,10 +81,10 @@ func take_damage(amount):
 		
 func die() -> void:
 	var random = randf_range(0, 1)
-	if random <= 0.15:
-		gamescene.spawn_drop(position)
+	if random <= 0.2:
+		gamescene.spawn_drop(position-Vector2(50,50))
 	if player:
-		gamescene._spawn_xp("res://itemBigXP.tscn", position)
+		gamescene._spawn_xp("res://itemBigXP.tscn", position+Vector2(50,50))
 	queue_free()
 
 func animationManager():

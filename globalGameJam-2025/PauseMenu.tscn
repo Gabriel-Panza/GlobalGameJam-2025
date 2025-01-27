@@ -143,6 +143,14 @@ position = Vector2(-19.4904, 15.1545)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("4_4c0hw")
 
+[node name="Label" type="Label" parent="PauseMenu/HBoxContainer/VBoxContainer2/Atk_Speed/Sprite2D"]
+offset_left = -23.7888
+offset_top = -11.4334
+offset_right = 16.2112
+offset_bottom = 11.5666
+tooltip_text = "This represents how fast you shoot"
+mouse_filter = 0
+
 [node name="Critico" type="Label" parent="PauseMenu/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 tooltip_text = "This represents the odds of dealing double damage"
@@ -472,7 +480,7 @@ theme_override_constants/separation = 30
 
 [node name="item4" type="TextureButton" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-tooltip_text = "This will grow your crit-rate in 10%"
+tooltip_text = "This will grow your atk-speed in 10% of the original value"
 texture_normal = ExtResource("13_do6oq")
 
 [node name="item1" type="Label" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2/item4"]
@@ -498,7 +506,7 @@ vertical_alignment = 1
 
 [node name="item5" type="TextureButton" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-tooltip_text = "This will grow your atk-speed in 10% of the original value"
+tooltip_text = "This will grow your crit-rate in 10%"
 texture_normal = ExtResource("14_30rwr")
 
 [node name="item2" type="Label" parent="MrBubbleInterface/MarginContainer3/VBoxContainer/HBoxContainer2/item5"]
@@ -534,7 +542,7 @@ offset_top = 84.229
 offset_right = 151.0
 offset_bottom = 107.229
 theme_override_constants/outline_size = 4
-text = "            Price: 100.000"
+text = "            Price: 2.000"
 horizontal_alignment = 1
 vertical_alignment = 1
 

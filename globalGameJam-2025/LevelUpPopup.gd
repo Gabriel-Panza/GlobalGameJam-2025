@@ -6,7 +6,7 @@ var speedPlayer
 var speedEnemy
 var speedProjectile
 var options = [
-	{ "id": "option_1", "text": "Move-Speed Up", "icon": "res://sprites/StatsUp/mvspeed_up_texture.tres" },
+	{ "id": "option_1", "text": "Move Speed Up", "icon": "res://sprites/StatsUp/mvspeed_up_texture.tres" },
 	{ "id": "option_2", "text": "Health Up", "icon": "res://sprites/StatsUp/Hp_up_texture.tres" },
 	{ "id": "option_3", "text": "Attack Up", "icon": "res://sprites/StatsUp/atk_up_texture.tres" },
 	{ "id": "option_4", "text": "Crit-Rate Up", "icon": "res://sprites/StatsUp/crit_up_texture.tres" },

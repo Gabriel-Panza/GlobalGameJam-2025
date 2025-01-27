@@ -1,5 +1,8 @@
 extends Control
 
+func _ready() -> void:
+	GameState.load_game()
+	
 func _on_start_game_pressed() -> void:
 	$menu_click.play()
 	await get_tree().create_timer(0.1).timeout

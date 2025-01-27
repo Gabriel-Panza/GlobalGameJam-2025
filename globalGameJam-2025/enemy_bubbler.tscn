@@ -509,7 +509,7 @@ position = Vector2(4.5, -3)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_uamcd")
 animation = &"die"
-frame_progress = 0.811865
+frame_progress = 0.0812846
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.5, 21.5)

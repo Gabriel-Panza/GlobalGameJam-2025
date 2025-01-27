@@ -106,7 +106,7 @@ func _on_impact_body_entered(body):
 			popup.scale *= 3
 			popup.add_to_group("Popup")
 			get_parent().add_child(popup)
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(0.4).timeout
 			for obj in get_tree().get_nodes_in_group("Popup"):
 				obj.queue_free()
 		else:

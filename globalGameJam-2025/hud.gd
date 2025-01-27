@@ -55,12 +55,12 @@ func _apply_effect(option):
 		"option_1":
 			player.speed += player.original_speed * 0.05
 		"option_2":
-			player.health += player.original_health * 0.05
-			player.maxHealth += player.original_maxHealth * 0.05
+			player.health += player.original_health * 0.10
+			player.maxHealth += player.original_maxHealth * 0.10
 		"option_3":
 			player.ataque += player.original_ataque * 0.10
 		"option_4":
-			player.critico += player.original_critico + 0.025
+			player.critico += player.original_critico + 0.05
 		"option_5":
 			timer.wait_time -= 0.05
 			player.atkSpeed += 0.05

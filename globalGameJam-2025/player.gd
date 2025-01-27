@@ -23,9 +23,9 @@ var original_health = 300
 var maxHealth = 300
 var original_maxHealth = 300
 var gold = 0
-var ataque = 100
+var ataque = 25
 var original_ataque = 25
-var critico = 1
+var critico = 0
 var original_critico = 0
 var atkSpeed = 1
 var atkSpeed_timer
@@ -67,15 +67,6 @@ func animationManager():
 		else:
 			aparencia.flip_h = false
 	elif health <=0:
-		$AtkSound.stream = load("res://SFX/Defeat_Jingle.mp3")
-		$AtkSound.play()
-		game_scene.get_node_or_null("Music").stop()
-		if game_scene:
-			game_scene.pause_timers()
-		for obj in get_tree().get_nodes_in_group("Vivos"):
-			obj.speed = 0
-		aparencia.play("death")
-		await get_tree().create_timer(2.5).timeout
 		die()
 	else:
 		aparencia.play("idle")
@@ -110,7 +101,7 @@ func gain_xp(amount: int) -> void:
 
 func level_up() -> void:
 	level += 1
-	xp_to_next_level = int(xp_to_next_level * 1.5)  # Aumenta o requisito de XP
+	xp_to_next_level = int(xp_to_next_level * 1.25)
 	emit_signal("level_updated", level, current_xp, xp_to_next_level)
 
 func _on_atk_speed_timeout():
@@ -145,12 +136,19 @@ func take_damage(amount):
 		health -= amount
 		emit_signal("hp_updated", health, maxHealth)
 		emit_signal("stats_updated")
+	if health <= 0:
+		die()
 
 func die():
+	$AtkSound.stream = load("res://SFX/Defeat_Jingle.mp3")
+	$AtkSound.play()
+	game_scene.get_node_or_null("Music").stop()
 	if game_scene:
 		game_scene.pause_timers()
 	for obj in get_tree().get_nodes_in_group("Vivos"):
 		obj.speed = 0
+	aparencia.play("death")
+	await get_tree().create_timer(2.5).timeout
 	GameState.gold += gold
 	GameState.arma = arma
 	GameState.save_game()

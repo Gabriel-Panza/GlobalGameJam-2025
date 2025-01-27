@@ -17,7 +17,7 @@ func _physics_process(delta):
 	position += target_direction * speed * delta
 	
 	# If speed is zero, remove the projectile
-	if speed == 0:
+	if player and player.speed == 0:
 		queue_free()
 
 func _on_impact_body_entered(body):

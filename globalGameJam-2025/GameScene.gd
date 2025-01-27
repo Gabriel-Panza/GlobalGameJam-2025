@@ -133,9 +133,9 @@ func _update_cronometro() -> void:
 		if total_time>0:
 			total_time -= 1
 
-		if total_time % (120) == 0 and not total_time % (240) == 0 and not total_time % (360) == 0:
+		if total_time % (480) == 0 and total_time != 0:
 			enemies_list.append("res://enemy_cultist.tscn")
-		if total_time % (300) == 0:
+		if total_time % (300) == 0 and total_time != 0:
 			var boss = load("res://enemy_bubbler.tscn").instantiate()
 			boss.position = Vector2(0,300)
 			add_child(boss)

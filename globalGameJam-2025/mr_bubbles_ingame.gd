@@ -58,14 +58,14 @@ func _on_MrBubbles_area2D_entered(area):
 	for body in area.get_overlapping_bodies():
 		if body.is_in_group("XP") or body.is_in_group("Gold") or body.is_in_group("HP"):
 			if body.is_in_group("XP"):
-				player.gain_xp(15)
+				player.gain_xp(30)
 			if body.is_in_group("bigXP"):
-				player.gain_xp(45)
+				player.gain_xp(60)
 			elif body.is_in_group("Gold"):
-				player.gold += 15
+				player.gold += 30
 				player.emit_signal("gold_updated", player.gold)
 			elif body.is_in_group("HP"):
-				player.hp += 15
+				player.hp += 20
 				player.emit_signal("hp_updated", player.health, player.maxHealth)
 			player.emit_signal("stats_updated")
 			body.queue_free()

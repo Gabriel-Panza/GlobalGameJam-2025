@@ -27,7 +27,7 @@ const ITEM_PRICES = {
 	"item3": 500,
 	"item4": 500,
 	"item5": 200,
-	"item6": 100000
+	"item6": 2000
 }
 
 func _ready():

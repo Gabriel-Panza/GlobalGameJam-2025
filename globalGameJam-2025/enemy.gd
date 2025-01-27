@@ -61,10 +61,10 @@ func take_damage(amount):
 
 func die() -> void:
 	var random = randf_range(0,1)
-	if random <= 0.15:
-		gamescene.spawn_drop(position)
+	if random <= 0.2:
+		gamescene.spawn_drop(position-Vector2(50,50))
 	if player:
-		gamescene._spawn_xp("res://itemXP.tscn", position)
+		gamescene._spawn_xp("res://itemXP.tscn", position+Vector2(50,50))
 	queue_free()
 
 func _apply_damage() -> void:

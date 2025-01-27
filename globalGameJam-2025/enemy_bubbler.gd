@@ -17,11 +17,11 @@ var shoot_timer
 var projectile_scene: PackedScene
 
 var min_distance: float = 200.0
-var max_distance: float = 300.0
+var max_distance: float = 450.0
 var distance_to_player
 
-var damage: int = 25
-var health: int = 1200
+var damage: int = 30
+var health: int = 2000
 
 func _ready() -> void:
 	camera = get_node_or_null(camera_path)
@@ -53,8 +53,16 @@ func _process(_delta: float) -> void:
 		else:
 			velocity = Vector2.ZERO
 		
+		damage_timer.set_paused(false)
+		shoot_timer.set_paused(false)
+		speed = original_speed
+		
 		move_and_slide()
 		animationManager()
+	else:
+		damage_timer.set_paused(true)
+		shoot_timer.set_paused(true)
+		speed = 0
 
 func _shoot_projectile() -> void:
 	if player and speed > 0 and aparencia.animation == "attackFar":
