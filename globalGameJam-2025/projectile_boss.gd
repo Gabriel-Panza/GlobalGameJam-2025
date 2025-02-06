@@ -13,7 +13,7 @@ var animation_player: AnimatedSprite2D
 
 func _ready() -> void:
 	player = get_node_or_null(player_path)
-	animation_player = $AnimatedSprite2D
+	animation_player = get_node_or_null("AnimatedSprite2D")
 	if player:
 		position = player.global_position
 		play_warning_animation()
@@ -25,24 +25,13 @@ func _process(delta: float) -> void:
 func play_warning_animation() -> void:
 	# Configura e executa a animação de aviso
 	animation_player.play()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1.25).timeout
 	play_tornado_animation()
 
 func play_tornado_animation() -> void:
 	# Configura e executa a animação do tornado
 	animation_player.animation = tornado_animation
 	animation_player.play()
-
-	# Adiciona um detector de dano enquanto o tornado está ativo
-	var tornado_area = Area2D.new()
-	add_child(tornado_area)
-
-	var collision = CircleShape2D.new()
-	collision.radius = radius
-
-	var shape = CollisionShape2D.new()
-	shape.shape = collision
-	tornado_area.add_child(shape)
 
 	# Remove o tornado após a animação
 	await get_tree().create_timer(1.5).timeout

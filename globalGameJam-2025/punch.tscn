@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ddc1lkraa6l30" path="res://sprites/Projectiles/Soap_Gauntlet_Projectile.png" id="2_e4pnj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2vrnw"]
-radius = 33.0
-height = 96.0
+radius = 23.0
+height = 70.0
 
 [node name="Punch" type="CharacterBody2D" groups=["Punch", "Vivos"]]
 collision_mask = 3
